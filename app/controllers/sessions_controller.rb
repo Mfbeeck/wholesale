@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   @supplier = Supplier.find_by(username: params[:username]).try(:authenticate, params[:password])
 
   if @supplier
-    # logged in, hooray
     session[:supplier_id] = @supplier.id
     redirect_to suppliers_path
     else

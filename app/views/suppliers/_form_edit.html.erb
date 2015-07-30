@@ -1,0 +1,13 @@
+<%= form_for @supplier do |f| %>
+
+  <p><%= f.label :company_name %></p>
+  <p><%= f.text_field :company_name, placeholder: "Company Name" %></p>
+  <p><%= f.label :address %></p>
+  <p><%= f.text_field :address, placeholder: "Address" %></p>
+  <p><%= f.label :email %></p>
+  <p><%= f.text_field :email, placeholder: "E-mail" %></p>
+  <p><%= f.label :username %></p>
+  <p><%= f.text_field :username, placeholder: "Username" %></p>
+  <p><%= f.submit %></p>
+
+<% end %>

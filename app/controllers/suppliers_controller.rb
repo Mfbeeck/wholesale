@@ -10,9 +10,10 @@ class SuppliersController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.new supplier_params
+    @supplier = Supplier.new(supplier_params)
 
     if @supplier.save
+      session[:supplier_id] = @supplier.id
       redirect_to @supplier, notice: "Supplier was successfully created"
     else
       render action: "new"
