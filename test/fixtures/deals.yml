@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  price: 1.5
+  image: MyString
+  threshold: 1
+  start_date: MyString
+  end_date: MyString
+  status: MyString
+  supplier_id: 
+
+two:
+  name: MyString
+  description: MyString
+  price: 1.5
+  image: MyString
+  threshold: 1
+  start_date: MyString
+  end_date: MyString
+  status: MyString
+  supplier_id: 
