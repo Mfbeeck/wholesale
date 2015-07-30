@@ -1,0 +1,14 @@
+<h1>Supplier Sign Up Page</h1>
+<% @supplier.each do |supplier| %>
+  <ul>
+    <li><%= supplier.username %></li>
+    <li><%= supplier.email %></li>
+    <li>
+      <%= link_to 'Show', supplier %> |
+      <%= link_to 'Edit', edit_supplier_path(supplier) %> |
+      <%= link_to 'Destroy', supplier, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to 'New Supplier', new_supplier_path %>

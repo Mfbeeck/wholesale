@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  root 'suppliers#show'
+
+  # get 'suppliers/new'
+  #
+  # get 'suppliers/create'
+  #
+  # get 'suppliers/edit'
+  #
+  # get 'suppliers/update'
+  #
+  # get 'suppliers/destroy'
+  #
+  # get 'suppliers/show'
+
+  resources :suppliers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
