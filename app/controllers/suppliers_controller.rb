@@ -10,10 +10,10 @@ class SuppliersController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.new user_params
+    @supplier = Supplier.new supplier_params
 
     if @supplier.save
-      redirect_to root_path, notice: "Supplier was successfully created"
+      redirect_to @supplier, notice: "Supplier was successfully created"
     else
       render action: "new"
     end
@@ -26,6 +26,15 @@ class SuppliersController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @supplier.update(supplier_params)
+        format.html { redirect_to @supplier, notice: 'Supplier was successfully updated.' }
+        format.json { render :show, status: :ok, location: @supplier }
+      else
+        format.html { render :edit }
+        format.json { render json: @supplier.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
@@ -42,8 +51,8 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find(params[:id])
   end
 
-  def user_params
-    params.require(:supplier).permit(:username, :password, :password_confirmation)
+  def supplier_params
+    params.require(:supplier).permit(:company_name, :address, :email, :username, :password, :password_confirmation)
   end
 
 end

@@ -1,8 +1,10 @@
-<h1>Supplier Sign Up Page</h1>
+<h1>Our Suppliers</h1>
 <% @supplier.each do |supplier| %>
   <ul>
-    <li><%= supplier.username %></li>
-    <li><%= supplier.email %></li>
+    <li><strong>Company Name:</strong> <%= supplier.company_name %></li>
+    <li><strong>Username:</strong> <%= supplier.username %></li>
+    <li><strong>E-mail:</strong> <%= supplier.email %></li>
+    <li><strong>Address:</strong> <%= supplier.address %></li>
     <li>
       <%= link_to 'Show', supplier %> |
       <%= link_to 'Edit', edit_supplier_path(supplier) %> |

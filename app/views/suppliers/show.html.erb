@@ -1,2 +1,11 @@
-<h1>Your Supplier Homepage</h1>
+<p id="notice"><%= notice %></p>
+
+<h1><%= @supplier.company_name %> Homepage</h1>
+<ul>
+  <li><strong>Username:</strong> <%= @supplier.username %></li>
+  <li><strong>E-mail:</strong> <%= @supplier.email %></li>
+  <li><strong>Address:</strong> <%= @supplier.address %></li>
+</ul>
+
+
 <p>Create and manage your deals here</p>
