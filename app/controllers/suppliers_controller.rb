@@ -1,4 +1,6 @@
 class SuppliersController < ApplicationController
+  layout "supplier"
+
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
   def index
