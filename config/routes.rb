@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
   resource :sessions
   resources :suppliers
+  resources :consumers
   delete 'logout' => 'sessions#destroy'
   # get 'suppliers/new'
   #
