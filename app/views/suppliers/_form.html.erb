@@ -1,14 +1,20 @@
 <%= form_for @supplier do |f| %>
   <p>
-    <%# f.label :username %>
+    <%= f.text_field :company_name, placeholder: "Company Name" %>
+  </p>
+  <p>
+    <%= f.text_field :address, placeholder: "Address" %>
+  </p>
+  <p>
+    <%= f.text_field :email, placeholder: "E-mail" %>
+  </p>
+  <p>
     <%= f.text_field :username, placeholder: "Username" %>
   </p>
   <p>
-    <%# f.label :password %>
     <%= f.password_field :password, placeholder: "Password" %>
   </p>
   <p>
-    <%# f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
   </p>
   <p>
