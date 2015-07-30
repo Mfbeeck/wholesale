@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
   resource :sessions
   resources :suppliers
-
+  delete 'logout' => 'sessions#destroy'
   # get 'suppliers/new'
   #
   # get 'suppliers/create'
