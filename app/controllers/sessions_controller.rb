@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-  @supplier = Supplier.find_by(username: params[:username]).try(:authenticate, params[:password])
+    @supplier = Supplier.find_by(username: params[:username]).try(:authenticate, params[:password])
 
-  if @supplier
-    session[:supplier_id] = @supplier.id
-    redirect_to suppliers_path
+    if @supplier
+      session[:supplier_id] = @supplier.id
+      redirect_to suppliers_path
     else
-    render action: 'new'
+      render action: 'new'
     end
   end
 

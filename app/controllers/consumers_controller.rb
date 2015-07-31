@@ -15,7 +15,6 @@ class ConsumersController < ApplicationController
 		@consumer = Consumer.new(consumer_params)
 		@consumer.save
 		redirect_to consumer_path(@consumer)
-
 	end
 
 	def update
