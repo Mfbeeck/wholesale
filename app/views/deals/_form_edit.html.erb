@@ -1,0 +1,23 @@
+<%= form_for @deal do |f| %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name, placeholder: "Deal Name" %></p>
+
+  <p><%= f.label :description %></p>
+  <p><%= f.text_area :description, placeholder: "Description" %></p>
+
+  <p><%= f.label :price %></p>
+  <p><%= f.text_field :price, placeholder: "Price" %></p>
+
+  <p><%= f.label :threshold %></p>
+  <p><%= f.text_field :threshold, placeholder: "Threshold" %></p>
+
+  <p><%= f.label :start_date %></p>
+  <p><%= f.date_field :start_date, placeholder: "Start Date" %></p>
+
+  <p><%= f.label :end_date %></p>
+  <p><%= f.date_field :end_date, placeholder: "End Date" %></p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

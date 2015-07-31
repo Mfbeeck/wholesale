@@ -5,7 +5,7 @@ class SuppliersController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @supplier = Supplier.all
+    @suppliers = Supplier.all
   end
 
   def new

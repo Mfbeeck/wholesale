@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
+
   root 'sessions#new'
+
   resource :sessions
-  resources :suppliers
+
+  resources :suppliers do
+    resources :deals
+  end
+
+  resources :deals
+
   resources :consumers
+
   delete 'logout' => 'sessions#destroy'
-  # get 'suppliers/new'
-  #
-  # get 'suppliers/create'
-  #
-  # get 'suppliers/edit'
-  #
-  # get 'suppliers/update'
-  #
-  # get 'suppliers/destroy'
-  #
-  # get 'suppliers/show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

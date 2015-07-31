@@ -1,0 +1,13 @@
+
+
+<h1><%= @deal.name %></h1>
+<ul>
+  <li><strong>Description:</strong> <%= @deal.description %></li>
+  <li><strong>Price:</strong> <%= @deal.price %></li>
+  <li><strong>Minimum Units Required:</strong> <%= @deal.threshold %></li>
+  <li><strong>Deal Starts:</strong> <%= @deal.start_date %></li>
+  <li><strong>Deal Ends:</strong> <%= @deal.end_date %></li>
+</ul>
+
+
+<%= link_to 'Back', deals_path %>

@@ -1,0 +1,17 @@
+<h1>Deals</h1>
+
+<% @deals.each do |deal| %>
+  <ul>
+    <li><strong>Deal Name:</strong> <%= deal.name %></li>
+    <li><strong>Deal Description:</strong> <%= deal.description %></li>
+    <li><strong>Deal Price:</strong> <%= deal.price %></li>
+    <li>
+      <%= link_to 'Show', deal %> |
+      <%= link_to 'Edit', edit_deal_path(deal) %> |
+      <%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to 'New Deal', new_deal_path %>
