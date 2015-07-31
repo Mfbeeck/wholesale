@@ -1,5 +1,8 @@
 class SuppliersController < ApplicationController
+  layout "supplier"
+
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in
 
   def index
     @supplier = Supplier.all

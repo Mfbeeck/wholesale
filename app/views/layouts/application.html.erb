@@ -8,19 +8,6 @@
 </head>
 <body>
 
-
-  <% if current_supplier %>
-    <ul>
-      <li><%= current_supplier.email %></li>
-      <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-    </ul>
-  <% else %>
-    <ul>
-      <li><%= link_to "Login", root_path %></a></li>
-      <li><%= link_to "Signup", 'signup' %></a></li>
-    </ul>
-  <% end %>
-
 <p class="flash"><%= flash.notice %></p>
 
 

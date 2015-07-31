@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wholesale | Suppliers</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div>
+  <% if current_supplier %>
+    <ul>
+      <li><%= current_supplier.email %></li>
+      <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+    </ul>
+  <% else %>
+    <ul>
+      <li><%= link_to "Login", root_path %></a></li>
+      <li><%= link_to "Signup", new_supplier_path %></a></li>
+    </ul>
+  <% end %>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
