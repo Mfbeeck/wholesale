@@ -15,6 +15,14 @@ class ConsumersController < ApplicationController
 		@consumer = Consumer.new(consumer_params)
 		@consumer.save
 		redirect_to consumer_path(@consumer)
+		flash.notice = "The consumer \"#{@consumer.email}\" was successfully created."
+	end
+
+	def destroy
+		@consumer = Consumer.find(params[:id])
+		@consumer.destroy
+		redirect_to consumers_path
+		flash.notice = "The consumer \"#{@consumer.email}\" was successfully deleted."
 	end
 
 	def update
