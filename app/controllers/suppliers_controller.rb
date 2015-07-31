@@ -24,6 +24,7 @@ class SuppliersController < ApplicationController
   end
 
   def show
+    @deal = Deal.new
   end
 
   def edit

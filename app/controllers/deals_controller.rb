@@ -1,5 +1,6 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :destroy, :edit, :update]
+  before_action :set_supplier, only: [:create]
 
   def index
     @deals = Deal.all
@@ -18,7 +19,7 @@ class DealsController < ApplicationController
   def update
     respond_to do |format|
       if @deal.update(deal_params)
-        format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
+        format.html { redirect_to @supplier, notice: 'Deal was successfully updated.' }
         format.json { render :show, status: :ok, location: @supplier }
       else
         format.html { render :edit }
@@ -28,7 +29,7 @@ class DealsController < ApplicationController
   end
 
   def create
-    @deal = Deal.new(deal_params)
+    @deal = @supplier.deals.new(deal_params)
 
     if @deal.save
       #session[:supplier_id] = @supplier.id
@@ -49,12 +50,18 @@ class DealsController < ApplicationController
 
   private
 
+  def set_supplier
+    #security fix
+    #@supplier = current_supplier.suppliers.find(params[:supplier_id])
+    @supplier = Supplier.find(params[:supplier_id])
+  end
+
   def set_deal
     @deal = Deal.find(params[:id])
   end
 
   def deal_params
-    params.require(:deal).permit(:name, :description, :price, :threshold, :start_date, :end_date)
+    params.require(:deal).permit(:name, :description, :price, :threshold, :start_date, :end_date, :suplier_id)
   end
 
 end

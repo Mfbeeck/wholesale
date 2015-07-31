@@ -1,4 +1,15 @@
-<%= form_for @deal do |f| %>
+<%= form_for [@supplier, @deal] do |f| %>
+  <% if @deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+      <ul>
+      <% @deal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.text_field :name, placeholder: "Deal Name" %>
   </p>

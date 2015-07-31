@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
   resource :sessions
 
+  resources :consumers
+
+  resources :deals
+
   resources :suppliers do
     resources :deals
   end
 
-  resources :deals
-
-  resources :consumers
 
   delete 'logout' => 'sessions#destroy'
 
