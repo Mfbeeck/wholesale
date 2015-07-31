@@ -1,4 +1,4 @@
-<%= form_for @deal do |f| %>
+<%= form_for [@supplier, @deal] do |f| %>
   <p><%= f.label :name %></p>
   <p><%= f.text_field :name, placeholder: "Deal Name" %></p>
 

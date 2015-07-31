@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create
+  def create_supplier
     @supplier = Supplier.find_by(username: params[:username]).try(:authenticate, params[:password])
 
     if @supplier
@@ -14,6 +14,18 @@ class SessionsController < ApplicationController
       render action: 'new'
     end
   end
+
+  # def create_consumer
+  #   @consumer = Consumer.find_by(username: params[:username]).try(:authenticate, params[:password])
+  #
+  #   if @consumer
+  #     session[:consumer_id] = @consumer.id
+  #     redirect_to consumers_path
+  #   else
+  #     render action: 'new'
+  #   end
+  # end
+
 
   def destroy
     session[:supplier_id] = nil

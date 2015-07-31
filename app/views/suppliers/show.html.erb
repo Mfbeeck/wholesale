@@ -7,8 +7,26 @@
   <li><strong>Address:</strong> <%= @supplier.address %></li>
 </ul>
 
+<hr>
 
-<p>Create and manage your deals here</p>
+
+<h3>Create and manage your deals here</h3>
+
+<% @supplier.deals.each do |deal| %>
+  <ul>
+    <li><strong>Description:</strong> <%= deal.description %></li>
+    <li><strong>Price:</strong> <%= deal.price %></li>
+    <li><strong>Minimum Units Required:</strong> <%= deal.threshold %></li>
+    <li><strong>Deal Starts:</strong> <%= deal.start_date %></li>
+    <li><strong>Deal Ends:</strong> <%= deal.end_date %></li>
+  </ul>
+  <%= link_to 'Edit Deal', edit_supplier_deal_path(@supplier, deal) %> |
+  <%= link_to 'Delete Deal', supplier_deal_path(@supplier, deal), method: :delete %>
+<% end %>
+
+<hr>
+
+<h3>Create New Deal</h3>
 
 <%= render 'deals/form' %>
 
