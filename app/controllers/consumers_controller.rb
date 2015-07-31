@@ -1,4 +1,5 @@
 class ConsumersController < ApplicationController
+	layout "consumer"
 	def index
 		@consumers = Consumer.all
 	end

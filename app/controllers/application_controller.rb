@@ -7,13 +7,21 @@ class ApplicationController < ActionController::Base
   private
 
   helper_method :current_supplier
+  helper_method :current_consumer
+
 
   def current_supplier
     @current_supplier ||= Supplier.find(session[:supplier_id]) if session[:supplier_id]
   end
 
+  def current_consumer
+    @current_consumer ||= Consumer.find(session[:consumer_id]) if session[:consumer_id]
+  end
+
+
   def require_logged_in
     return true if current_supplier
+    # return true if (current_supplier || current_consumer)
 
     redirect_to root_path
     return false

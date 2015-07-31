@@ -1,4 +1,5 @@
 class DealsController < ApplicationController
+
   before_action :set_deal, only: [:show, :destroy, :edit, :update]
   before_action :set_supplier, only: [:create, :edit, :update]
 

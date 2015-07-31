@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root 'sessions#new'
 
+  post '/login_supplier' => 'sessions#login_supplier'
+  post '/login_consumer' => 'sessions#login_consumer'
+
+
+  # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
   resource :sessions
 
   resources :consumers
