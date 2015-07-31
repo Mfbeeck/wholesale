@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deal_id: 
+  consumer_id: 
+  token: MyString
+  quantity: 1
+
+two:
+  deal_id: 
+  consumer_id: 
+  token: MyString
+  quantity: 1

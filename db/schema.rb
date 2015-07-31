@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730221709) do
+ActiveRecord::Schema.define(version: 20150731224944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 20150730221709) do
 
   add_index "deals", ["supplier_id"], name: "index_deals_on_supplier_id", using: :btree
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "deal_id"
+    t.integer  "consumer_id"
+    t.string   "token"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "orders", ["consumer_id"], name: "index_orders_on_consumer_id", using: :btree
+  add_index "orders", ["deal_id"], name: "index_orders_on_deal_id", using: :btree
+
   create_table "suppliers", force: :cascade do |t|
     t.string   "username"
     t.string   "first_name"
@@ -58,4 +70,6 @@ ActiveRecord::Schema.define(version: 20150730221709) do
   add_index "suppliers", ["username"], name: "index_suppliers_on_username", unique: true, using: :btree
 
   add_foreign_key "deals", "suppliers"
+  add_foreign_key "orders", "consumers"
+  add_foreign_key "orders", "deals"
 end

@@ -5,6 +5,7 @@
     <li><strong>Deal Name:</strong> <%= deal.name %></li>
     <li><strong>Deal Description:</strong> <%= deal.description %></li>
     <li><strong>Deal Price:</strong> <%= deal.price %></li>
+    <li><strong>Supplier:</strong> <%= deal.supplier.company_name %></li>
     <li>
       <%= link_to 'Show', deal %> |
       <%= link_to 'Edit', edit_deal_path(deal) %> |
