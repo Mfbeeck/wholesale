@@ -16,6 +16,10 @@ class OrdersController < ApplicationController
   def update
   end
 
+  def index
+    @orders = Order.all
+  end
+
   def edit
   end
 
