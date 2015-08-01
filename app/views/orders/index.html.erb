@@ -1,0 +1,14 @@
+<h1>Orders</h1>
+
+<% @orders.each do |order| %>
+  <ul>
+    <li><strong>Consumer that ordered:</strong> <%= order.consumer_id %></li>
+    <li><strong>Deal ordered from:</strong> <%= order.deal_id %></li>
+    <li><strong>Quantity:</strong> <%= order.quantity %></li>
+    <li>
+      <%= link_to 'Order', order %>
+    </li>
+  </ul>
+<% end %>
+
+<!-- <%# link_to 'New Deal', new_deal_path %> -->
