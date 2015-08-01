@@ -1,5 +1,7 @@
-<h1>Deals</h1>
+<%= link_to 'Consumer Dashboard', new_consumer_session_path %>
+<%= link_to 'Supplier Dashboard', new_supplier_session_path %>
 
+<h1>Deals</h1>
 <% @deals.each do |deal| %>
   <ul>
     <li><strong>Deal Name:</strong> <%= deal.name %></li>

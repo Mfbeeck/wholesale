@@ -1,7 +1,7 @@
 class DealsController < ApplicationController
 
   before_action :set_deal, only: [:show, :destroy, :edit, :update]
-  before_action :set_supplier, only: [:create, :edit, :update]
+  before_action :set_supplier, only: [:create, :edit, :update, :destroy]
   # before_action :set_consumer, only: [:show]
 
 
@@ -38,7 +38,7 @@ class DealsController < ApplicationController
 
     if @deal.save
       #session[:supplier_id] = @supplier.id
-      redirect_to @deal, notice: "Deal was successfully created"
+      redirect_to @supplier, notice: "Deal was successfully created"
     else
       render action: "new"
     end
@@ -47,7 +47,7 @@ class DealsController < ApplicationController
   def destroy
     @deal.destroy
     respond_to do |format|
-      format.html { redirect_to deals_path, notice: 'Deal was successfully destroyed.' }
+      format.html { redirect_to supplier_path(@supplier), notice: 'Deal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -58,7 +58,7 @@ class DealsController < ApplicationController
   def set_supplier
     #security fix
     #@supplier = current_supplier.suppliers.find(params[:supplier_id])
-    @supplier = Supplier.find(params[:supplier_id])
+    @supplier = current_supplier
   end
 
   def set_deal

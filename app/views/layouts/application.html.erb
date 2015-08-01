@@ -8,10 +8,18 @@
 </head>
 <body>
 
-<p class="flash"><%= flash.notice %></p>
-
+<%= link_to 'Deals Page (Home)', deals_path %>
 
 <%= yield %>
 
 </body>
 </html>
+
+<div>
+  <% if current_supplier %>
+    <ul>
+      <li>Supplier: <%= current_supplier.email %></li>
+      <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+    </ul>
+  <% end %>
+</div>
