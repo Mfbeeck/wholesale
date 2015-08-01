@@ -3,16 +3,20 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   post '/login_supplier' => 'sessions#login_supplier'
+
   post '/login_consumer' => 'sessions#login_consumer'
-
-
-  # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   resource :sessions
 
-  resources :consumers
+  resources :orders
 
-  resources :deals
+  resources :deals do
+    resources :orders
+  end
+
+  resources :consumers do
+    resources :orders
+  end
 
   resources :suppliers do
     resources :deals

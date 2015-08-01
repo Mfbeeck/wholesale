@@ -7,10 +7,7 @@
     <li><strong>Deal Price:</strong> <%= deal.price %></li>
     <li><strong>Supplier:</strong> <%= deal.supplier.company_name %></li>
     <li>
-      <%= link_to 'Show', deal %> |
-      <%= link_to 'Edit', edit_deal_path(deal) %> |
-      <%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+      <%= link_to 'Order Now', deal %>
     </li>
   </ul>
 <% end %>
