@@ -35,7 +35,11 @@ class SessionsController < ApplicationController
 
 
   def destroy
-    session[:supplier_id] = nil
+    if current_supplier
+      session[:supplier_id] = nil
+    elsif current_consumer
+      session[:consumer_id] = nil
+    end
     redirect_to root_path
   end
 

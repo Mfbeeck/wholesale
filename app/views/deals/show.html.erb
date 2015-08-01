@@ -7,17 +7,23 @@
   <li><strong>Deal Ends:</strong> <%= @deal.end_date %></li>
 </ul>
 
-<form action="" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-    data-amount= <%= "#{@deal.price}" %>
-    data-name= <%= "#{@deal.name}" %>
-    data-description= <%= "#{@deal.description}" %>
-    data-image="/128x128.png">
-  </script>
-</form>
 
-<%= render 'form_order' %>
+
+<% if current_consumer %>
+
+  <form action="" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+      data-amount= <%= "#{@deal.price}" %>
+      data-name= <%= "#{@deal.name}" %>
+      data-description= <%= "#{@deal.description}" %>
+      data-image="/128x128.png">
+    </script>
+  </form>
+
+  <%= render 'form_order' %>
+
+<% end %>
 
 <%= link_to 'Back', deals_path %>

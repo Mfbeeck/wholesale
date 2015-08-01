@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
   private
 
   helper_method :current_supplier
@@ -15,11 +14,18 @@ class ApplicationController < ActionController::Base
   end
 
   def current_consumer
-    if !current_supplier.id
+    if current_supplier.nil?
     @current_consumer ||= Consumer.find(session[:consumer_id]) if session[:consumer_id]
     end
   end
 
+  def force_consumer_login
+    redirect_to new_consumer_session
+  end
+
+  def force_supplier_login
+    redirect_to new_supplier_session
+  end
 
   def require_logged_in
     return true if (current_supplier || current_consumer)
@@ -27,4 +33,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
     return false
   end
+
+
 end
