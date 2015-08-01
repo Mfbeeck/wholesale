@@ -9,7 +9,7 @@
     <li><strong>Deal Price:</strong> <%= deal.price %></li>
     <li><strong>Supplier:</strong> <%= deal.supplier.company_name %></li>
     <li>
-      <% if current_consumer %>
+      <% if current_consumer || current_supplier %>
         <%= link_to 'Order Now', deal %>
       <% else %>
         <%= link_to 'Order Now', new_consumer_session_path %>

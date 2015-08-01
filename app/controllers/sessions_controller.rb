@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
     if @supplier
       session[:supplier_id] = @supplier.id
-      redirect_to suppliers_path
+      redirect_to supplier_path(@supplier)
     else
       render action: 'new_supplier'
     end
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
     if @consumer
       session[:consumer_id] = @consumer.id
-      redirect_to consumers_path
+      redirect_to consumer_path(@consumer)
     else
       render action: 'new_consumer'
     end

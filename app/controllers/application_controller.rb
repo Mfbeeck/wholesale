@@ -27,6 +27,12 @@ class ApplicationController < ActionController::Base
     redirect_to new_supplier_session
   end
 
+  def check_if_logged_in
+    if current_consumer || current_supplier
+    else
+    end
+  end
+
   def require_logged_in
     return true if (current_supplier || current_consumer)
 
