@@ -15,13 +15,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_consumer
+    if !current_supplier.id
     @current_consumer ||= Consumer.find(session[:consumer_id]) if session[:consumer_id]
+    end
   end
 
 
   def require_logged_in
-    return true if current_supplier
-    # return true if (current_supplier || current_consumer)
+    return true if (current_supplier || current_consumer)
 
     redirect_to root_path
     return false

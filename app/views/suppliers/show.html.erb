@@ -10,7 +10,7 @@
 <hr>
 
 
-<h3>Create and manage your deals here</h3>
+<h3>Manage your deals here</h3>
 
 <% @supplier.deals.each do |deal| %>
   <ul>
@@ -26,8 +26,5 @@
 
 <hr>
 
-<h3>Create New Deal</h3>
-
-<%= render 'deals/form' %>
-
-<%= link_to 'Back', suppliers_path %>
+<%= link_to 'Create New Deal', new_deal_path %>
+<br>

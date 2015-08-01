@@ -1,7 +1,14 @@
 class SessionsController < ApplicationController
-  layout "supplier"
 
-  def new
+  def new_supplier
+    if current_supplier.nil?
+    else
+      @supplier = current_supplier
+      redirect_to supplier_path(@supplier)
+    end
+  end
+
+  def new_consumer
   end
 
   def login_supplier
@@ -11,7 +18,7 @@ class SessionsController < ApplicationController
       session[:supplier_id] = @supplier.id
       redirect_to suppliers_path
     else
-      render action: 'new'
+      render action: 'new_supplier'
     end
   end
 
@@ -22,7 +29,7 @@ class SessionsController < ApplicationController
       session[:consumer_id] = @consumer.id
       redirect_to consumers_path
     else
-      render action: 'new'
+      render action: 'new_consumer'
     end
   end
 

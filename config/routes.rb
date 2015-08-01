@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'sessions#new'
+  root 'deals#index'
+
+  get '/new_supplier_session' => 'sessions#new_supplier'
+  get '/new_consumer_session' => 'sessions#new_consumer'
+
+
 
   post '/login_supplier' => 'sessions#login_supplier'
 
