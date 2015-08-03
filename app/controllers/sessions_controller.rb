@@ -1,10 +1,19 @@
 class SessionsController < ApplicationController
 
   def new_supplier
-
+    if current_supplier.nil?
+    else
+      @supplier = current_supplier
+      redirect_to supplier_path(@supplier)
+    end
   end
 
   def new_consumer
+    if current_consumer.nil?
+    else
+      @consumer = current_consumer
+      redirect_to consumer_path(@consumer)
+    end
   end
 
   def login_supplier

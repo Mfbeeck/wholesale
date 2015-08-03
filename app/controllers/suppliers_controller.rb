@@ -23,6 +23,7 @@ class SuppliersController < ApplicationController
 
   def show
     @deal = Deal.new
+    # @orders = deal.orders.all
   end
 
   def edit

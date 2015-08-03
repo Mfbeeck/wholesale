@@ -1,13 +1,13 @@
+<div class = "display_deal">
 <h1><%= @deal.name %></h1>
 <ul>
+  <li><%= image_tag @deal.url, size: "250x200" %></li>
   <li><strong>Description:</strong> <%= @deal.description %></li>
   <li><strong>Price:</strong> <%= @deal.price %></li>
   <li><strong>Minimum Units Required:</strong> <%= @deal.threshold %></li>
   <li><strong>Deal Starts:</strong> <%= @deal.start_date %></li>
   <li><strong>Deal Ends:</strong> <%= @deal.end_date %></li>
 </ul>
-
-
 
 <% if current_consumer %>
 
@@ -23,7 +23,11 @@
   </form>
 
   <%= render 'form_order' %>
+<% else %>
+<p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
 
 <% end %>
+
+</div>
 
 <%= link_to 'Back', deals_path %>

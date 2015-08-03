@@ -13,9 +13,12 @@ class ConsumersController < ApplicationController
 
 	def create
 		@consumer = Consumer.new(consumer_params)
-		@consumer.save
-		redirect_to consumer_path(@consumer)
-		flash.notice = "The consumer \"#{@consumer.email}\" was successfully created."
+		if @consumer.save
+			session[:consumer_id] = @consumer.id
+			redirect_to consumer_path(@consumer), notice: "#{@consumer.username} was successfully created"
+		else
+			render action: "new"
+		end
 	end
 
 	def destroy
@@ -28,7 +31,7 @@ class ConsumersController < ApplicationController
 	def update
 		@consumer = Consumer.find(params[:id])
 		@consumer.update(consumer_params)
-		redirect_to consumers_path
+		redirect_to consumer_path(@consumer)
 		flash.notice = "The consumer \"#{@consumer.username}\" was successfully updated."
 	end
 

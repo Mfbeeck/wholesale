@@ -6,29 +6,34 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id = "body">
 
-<%= link_to 'Deals Page (Home)', deals_path %>
+<div id="navbar_container">
+	<nav class="navbar">
+			<li><%= link_to 'Deals Page (Home)', deals_path %></li>
+
+			<li><% if current_supplier %>
+			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
+			&nbsp;&nbsp;
+			<%= link_to "Log out", logout_path, method: "delete" %>
+			<% else %> 
+			<%= link_to 'Supplier Dashboard', new_supplier_session_path %>
+			<% end %>
+			</li>
+			
+			<li><% if current_consumer %>
+			<%= link_to "Username: #{current_consumer.username}", consumer_path(current_consumer)%>
+			&nbsp;&nbsp;
+			<%= link_to "Log out", logout_path, method: "delete" %>
+			<% else %> 
+			<%= link_to 'Consumer Dashboard', new_consumer_session_path %> 
+			<% end %>
+			</li>
+	</nav>
+</div>
 
 <%= yield %>
 
 </body>
 </html>
 
-<div>
-  <% if current_supplier %>
-    <ul>
-      <li>Supplier: <%= current_supplier.email %></li>
-      <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-    </ul>
-  <% end %>
-</div>
-
-<div>
-  <% if current_consumer %>
-    <ul>
-      <li>Consumer: <%= current_consumer.email %></li>
-      <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-    </ul>
-  <% end %>
-</div>

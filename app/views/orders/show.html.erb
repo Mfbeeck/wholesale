@@ -1,2 +1,5 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<ul>
+    <li><strong>Consumer that ordered:</strong> <%= @order.consumer_id %></li>
+    <li><strong>Deal ordered from:</strong> <%= @order.deal_id %></li>
+    <li><strong>Quantity:</strong> <%= @order.quantity %></li>
+  </ul>
