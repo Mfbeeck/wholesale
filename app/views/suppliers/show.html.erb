@@ -5,6 +5,7 @@
   <li><strong>Username:</strong> <%= @supplier.username %></li>
   <li><strong>E-mail:</strong> <%= @supplier.email %></li>
   <li><strong>Address:</strong> <%= @supplier.address %></li>
+
 </ul>
 
 <hr>
@@ -22,6 +23,11 @@
     <li><strong>Minimum Units Required:</strong> <%= deal.threshold %></li>
     <li><strong>Deal Starts:</strong> <%= deal.start_date %></li>
     <li><strong>Deal Ends:</strong> <%= deal.end_date %></li>
+    <%if deal.is_threshold_reached%>
+    <li style = "color: green"><strong>Current Number of Participants: </strong><%= deal.orders.count %> (Lottery Ready)</li>
+    <%else%>
+    <li style = "color: red"><strong>Current Number of Participants: </strong><%= deal.orders.count %> (Awaiting <%= deal.threshold - deal.orders.count%> Participants)</li>
+    <%end%>
   </ul>
   <%= link_to 'Edit Deal', edit_supplier_deal_path(@supplier, deal) %> |
   <%= link_to 'Delete Deal', supplier_deal_path(@supplier, deal), method: :delete %>
