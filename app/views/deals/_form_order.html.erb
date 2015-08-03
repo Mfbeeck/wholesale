@@ -1,5 +1,5 @@
 <%= form_for @order do |f| %>
-  <p><%= f.label :quantity %>: <%= f.number_field :quantity, step: 1 %></p>
+  <!-- <p><%# f.label :quantity %>: <%= f.number_field :quantity, step: 1 %></p> -->
   <p><%= f.hidden_field :consumer_id, { :value => current_consumer.id } %></p>
   <p><%= f.hidden_field :deal_id, { :value => @deal.id } %></p>
   <p>

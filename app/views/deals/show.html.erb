@@ -1,64 +1,19 @@
 <div class = "display_deal">
-<h1><%= @deal.name %></h1>
-<ul>
-  <li><%= image_tag @deal.url, size: "250x200" %></li>
-  <li><strong>Description:</strong> <%= @deal.description %></li>
-  <li><strong>Price:</strong> <%= @deal.price %> USD</li>
-  <li><strong>Minimum Units Required:</strong> <%= @deal.threshold %></li>
-  <li><strong>Deal Starts:</strong> <%= @deal.start_date %></li>
-  <li><strong>Deal Ends:</strong> <%= @deal.end_date %></li>
-</ul>
+  <h1><%= @deal.name %></h1>
+  <ul>
+    <li><%= image_tag @deal.url, size: "250x200" %></li>
+    <li><strong>Description:</strong> <%= @deal.description %></li>
+    <li><strong>Price:</strong> <%= @deal.price %> USD</li>
+    <li><strong>Minimum Units Required:</strong> <%= @deal.threshold %></li>
+    <li><strong>Deal Starts:</strong> <%= @deal.start_date %></li>
+    <li><strong>Deal Ends:</strong> <%= @deal.end_date %></li>
+  </ul>
 
-<% if current_consumer %>
-
-  <!-- <form action="" method="POST">
-    <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-      data-amount= <%= "#{@deal.price}" %>
-      data-name= <%= "#{@deal.name}" %>
-      data-description= <%= "#{@deal.description}" %>
-
-    </script>
-  </form> -->
-
-
-
-  <%= form_tag charges_path do %>
-    <% puts "**********************************************************" %>
-    <% puts @deal.price %>
-    <% puts "**********************************************************" %>
-    <% @amount = @deal.price %>
-
-    <article>
-       <%= label_tag 'amount', 'To Pay', class: 'amount' %>
-       <%= label_tag 'amount', "$#{@amount}.00", class: 'amount-figure' %>
-   </article>
-
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-email=<%= current_consumer.email %>
-            data-name= "Wholesale"
-            data-key= "<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-amount= <%= @amount * 100 %>
-            data-description= "<%= @deal.description %>"
-            data-bitcoin= false
-            data-image="/128x128.png">></script>
-
+  <% if current_consumer %>
+    <%= render 'form_order' %>
+  <% else %>
+    <p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
   <% end %>
-
-
-
-
-
-
-
-
-  <%= render 'form_order' %>
-<% else %>
-<p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
-
-<% end %>
-
 </div>
 
 <%= link_to 'Back', deals_path %>

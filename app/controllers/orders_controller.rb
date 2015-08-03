@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.save
       #session[:supplier_id] = @supplier.id
-      redirect_to consumer_orders_path(@consumer), notice: "Order was successfully created"
+      redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
     else
       render action: "new"
     end
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if session[:consumer_id] == @order.consumer_id
     else
-      redirect_to orders_path  
+      redirect_to orders_path
     end
   end
 
