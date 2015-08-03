@@ -1,6 +1,9 @@
 <%= form_for [@supplier, @deal] do |f| %>
   <p><%= f.label :name %></p>
   <p><%= f.text_field :name, placeholder: "Deal Name" %></p>
+  
+  <p><%= f.label "Image Url" %></p>
+  <p><%= f.text_field :url, placeholder: "Image Url" %></p>
 
   <p><%= f.label :description %></p>
   <p><%= f.text_area :description, placeholder: "Description" %></p>
@@ -9,7 +12,8 @@
   <p><%= f.text_field :price, placeholder: "Price" %></p>
 
   <p><%= f.label :threshold %></p>
-  <p><%= f.text_field :threshold, placeholder: "Threshold" %></p>
+
+  <p><%= f.number_field :threshold, placeholder: "Threshold", step: 1 %></p>
 
   <p><%= f.label :start_date %></p>
   <p><%= f.date_field :start_date, placeholder: "Start Date" %></p>

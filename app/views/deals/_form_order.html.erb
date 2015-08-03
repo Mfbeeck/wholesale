@@ -3,6 +3,6 @@
   <p><%= f.hidden_field :consumer_id, { :value => current_consumer.id } %></p>
   <p><%= f.hidden_field :deal_id, { :value => @deal.id } %></p>
   <p>
-    <%= f.submit %>
+    <%= f.submit :data => { :confirm => "Are you sure you want to place this order?" }%>
   </p>
 <% end %>

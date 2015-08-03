@@ -14,6 +14,9 @@
 
 <% @supplier.deals.each do |deal| %>
   <ul>
+    <% if !deal.url.empty? %>
+    <li><%= image_tag "#{deal.url}", size: "250x200" %></li>
+    <%end%>
     <li><strong>Description:</strong> <%= deal.description %></li>
     <li><strong>Price:</strong> <%= deal.price %></li>
     <li><strong>Minimum Units Required:</strong> <%= deal.threshold %></li>
@@ -23,7 +26,9 @@
   <%= link_to 'Edit Deal', edit_supplier_deal_path(@supplier, deal) %> |
   <%= link_to 'Delete Deal', supplier_deal_path(@supplier, deal), method: :delete %>
 <% end %>
-
+<%#= @orders.each do |order| %>
+<%#=order.quantity%>
+<%#end%>
 <hr>
 
 <%= link_to 'Create New Deal', new_deal_path %>

@@ -13,3 +13,54 @@
  *= require_tree .
  *= require_self
  */
+
+#navbar_container {
+	background-color: #000080;
+	padding: 10px;
+	width: 102%;
+	margin-left: -1vw;
+	margin-top: -1.3vh;
+}
+
+#body {
+	background-color: #E6E6DC;
+}
+
+
+.deals_list {
+	background-color: white;
+	border-radius: 5px;
+	padding-left: 2vw;
+	margin-left: 0vw;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: blue;
+}
+
+.navbar a{
+	color: white;
+}
+.navbar li {
+	color: white;
+	display: inline;
+	margin-right: 23vw;
+	margin-left: 3vw;
+}
+
+.navbar a:hover {
+	color: grey;
+}
+
+.deal_block {
+	display: inline-block;
+}
+
+.display_deal {
+	text-align: center
+}
+

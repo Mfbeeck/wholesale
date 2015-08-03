@@ -10,8 +10,12 @@
       </ul>
     </div>
   <% end %>
+
   <p>
     <%= f.text_field :name, placeholder: "Deal Name" %>
+  </p>
+  <p>
+    <%= f.text_field :url, placeholder: "Image Url" %>
   </p>
   <p>
     <%= f.text_area :description, placeholder: "Description" %>
@@ -20,7 +24,7 @@
     <%= f.text_field :price, placeholder: "Price" %>
   </p>
   <p>
-    <%= f.text_field :threshold, placeholder: "Threshold" %>
+    <%= f.number_field :threshold, placeholder: "Threshold", step: 1 %>
   </p>
   <p>
     <%= f.date_field :start_date, placeholder: "Start Date" %>
