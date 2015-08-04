@@ -14,16 +14,24 @@
  *= require_self
  */
 
-#navbar_container {
+body {
+	margin: 0;
+}
+
+.navbar {
 	background-color: #000080;
 	padding: 10px;
 	width: 102%;
-	margin-left: -1vw;
-	margin-top: -1.3vh;
+	z-index: 9999;
+	margin-left: 0vw;
+	margin-top: 0vh;
+	height: 4vh;
+	/*position: fixed;*/
 }
 
 #body {
 	background-color: #E6E6DC;
+	font-family: 'Hind', sans-serif;
 }
 
 
@@ -33,8 +41,27 @@
 	padding-left: 2vw;
 	margin-left: 0vw;
 	padding-top: .1vh;
-	margin-top: 3vh;
+	margin-top: 0.5vh;
 	padding-bottom: 1vh;
+	width: 67.5vw;
+	margin-left: auto ;
+  margin-right: 0.5vw;
+	float:right;
+}
+
+.consumer_column {
+	background-color: white;
+	border-radius: 5px;
+	/*padding-left: 2vw;*/
+	margin-left: 0.5vw;
+	padding-top: .1vh;
+	margin-top: 0.5vh;
+	padding-bottom: 1vh;
+	width: 27.5vw;
+	/*margin-left: auto ;*/
+  margin-right: auto ;
+	float:left;
+	position: fixed;
 }
 
 a {
@@ -66,4 +93,3 @@ a:visited {
 .display_deal {
 	text-align: center
 }
-
