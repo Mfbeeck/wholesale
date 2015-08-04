@@ -22,17 +22,15 @@
 
 <script>
 
-        $('.new_address_form').hide();
-
+  $('.new_address_form').hide();
 
   $('input:radio[name="shipping"]').click(function() {
     if ($("input[type='radio']:checked").val() == "current_address"){
         var defaultValue = $('.current_order_address').text();
         $('.new_address_form').hide();
         $('#order_address').replaceWith("<input type='hidden' name='order[address]' id='order_address' value='" + defaultValue + "'>");
-
-
       }
+      
     else if ($("input[type='radio']:checked").val() == "new_address"){
         $('.new_address_form').show();
         $('#order_address').replaceWith('<input type="text" name="order[address]" id="order_address">');
