@@ -2,13 +2,14 @@
 
 <% @orders.each do |order| %>
   <ul>
-    <li><strong>Consumer that ordered:</strong> <%= order.consumer_id %></li>
-    <li><strong>Deal ordered from:</strong> <%= order.deal_id %></li>
-    <li><strong>Quantity:</strong> <%= order.quantity %></li>
-    <li>
+  	<!-- <li><strong>Deal name:</strong> <%#= order.deal_id %></li>
+ -->    <li><strong>Deal ordered from dealer with id:</strong> <%= order.deal_id %></li>
       <%= link_to 'Order Details', order %>
     </li>
   </ul>
 <% end %>
+
+<%= link_to 'Back To Consumer Home', consumer_path(current_consumer)%>
+
 
 <!-- <%# link_to 'New Deal', new_deal_path %> -->

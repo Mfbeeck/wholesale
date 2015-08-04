@@ -1,0 +1,7 @@
+<%= form_for @order do |f| %>
+  <p><%= f.label "Shipping Address:" %></p>
+  <p><%= f.text_field :address %></p>
+  <p>
+    <%= f.submit "Confirm Shipping Address" %>
+  </p>
+<% end %>
