@@ -14,13 +14,19 @@
  *= require_self
  */
 
-#navbar_container {
+body {
+	margin: 0;
+}
+
+.navbar {
 	background-color: #000080;
 	padding: 10px;
 	width: 102%;
-	margin-left: -1vw;
+	z-index: 9999;
+	margin-left: 0vw;
 	margin-top: 0vh;
-	position: fixed;
+	height: 4vh;
+	/*position: fixed;*/
 }
 
 #body {
@@ -35,7 +41,7 @@
 	padding-left: 2vw;
 	margin-left: 0vw;
 	padding-top: .1vh;
-	margin-top: 5vh;
+	margin-top: 0.5vh;
 	padding-bottom: 1vh;
 	width: 67.5vw;
 	margin-left: auto ;
@@ -49,7 +55,7 @@
 	/*padding-left: 2vw;*/
 	margin-left: 0.5vw;
 	padding-top: .1vh;
-	margin-top: 5vh;
+	margin-top: 0.5vh;
 	padding-bottom: 1vh;
 	width: 27.5vw;
 	/*margin-left: auto ;*/

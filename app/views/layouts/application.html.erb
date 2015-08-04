@@ -7,11 +7,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id = "body">
+<body id="body">
 
 <div id="navbar_container">
 	<nav class="navbar">
-			<li><%= link_to 'Deals Page (Home)', deals_path %></li>
+		<ul>
+      <li><%= link_to 'Deals Page (Home)', deals_path %></li>
 
 			<li><% if current_supplier %>
 			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
@@ -30,6 +31,7 @@
 			<%= link_to 'Consumer Dashboard', new_consumer_session_path %>
 			<% end %>
 			</li>
+    </ul>
 	</nav>
 </div>
 
