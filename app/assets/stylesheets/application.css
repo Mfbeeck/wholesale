@@ -32,6 +32,9 @@
 	border-radius: 5px;
 	padding-left: 2vw;
 	margin-left: 0vw;
+	padding-top: .1vh;
+	margin-top: 3vh;
+	padding-bottom: 1vh;
 }
 
 a {

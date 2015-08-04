@@ -1,8 +1,32 @@
-<%= form_for @order do |f| %>
-  <!-- <p><%# f.label :quantity %>: <%= f.number_field :quantity, step: 1 %></p> -->
-  <p><%= f.hidden_field :consumer_id, { :value => current_consumer.id } %></p>
-  <p><%= f.hidden_field :deal_id, { :value => @deal.id } %></p>
-  <p>
-    <%= f.submit :data => { :confirm => "Are you sure you want to place this order?" }%>
-  </p>
+
+<h3>Click on the blue button to bet on a brand new <%= "#{@deal.name}" %> </h3>
+
+<%= form_tag create_charge_path(@deal) do %>
+
+
+  <% puts "**********************************************************" %>
+  <% puts "This is the order form #{@deal.price}" %>
+  <% puts "**********************************************************" %>
+
+  <% @amount = @deal.price %>
+
+  <article>
+     <%= label_tag 'amount', 'To Pay', class: 'amount' %>
+     <%= label_tag 'amount', "$#{@amount}.00", class: 'amount-figure' %>
+ </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-email=<%= current_consumer.email %>
+          data-name= "Wholesale"
+          data-key= "<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-amount= <%= @amount * 100 %>
+          data-description= "<%= @deal.description %>"
+          data-bitcoin= false
+          data-image="/128x128.png">></script>
+
+
+  <% puts "**********************************************************" %>
+  <% puts "This is the order form again #{@deal.price}" %>
+  <% puts "**********************************************************" %>
+
 <% end %>

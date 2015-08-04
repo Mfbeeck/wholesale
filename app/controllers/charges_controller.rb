@@ -1,11 +1,14 @@
 class ChargesController < ApplicationController
   def new
+  #  redirect_to new_order_path
   end
 
-  def create
+  def create_charge
     # Amount in cents
+
+
     p "***********************"
-    p "#{Deal.find(current_consumer.orders.last[:deal_id]).price * current_consumer.orders.last[:quantity]}"
+    p "This is Carges COntroller #{Deal.find(current_consumer.orders.last[:deal_id]).price}"
     p "***********************"
 
 
@@ -48,10 +51,14 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => (Deal.find(current_consumer.orders.last[:deal_id]).price * current_consumer.orders.last[:quantity]).to_i,
+      :amount      => Deal.find(current_consumer.orders.last[:deal_id]).price.to_i * 100,
       :description => 'Wholesale\'s Customer',
       :currency    => 'usd'
     )
+
+
+
+    #redirect_to consumer_orders_path(current_consumer)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
