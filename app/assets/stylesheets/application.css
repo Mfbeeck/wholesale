@@ -19,31 +19,34 @@ body {
 }
 
 .navbar {
-	background-color: #000080;
+	background-color: white;
+	border-bottom: solid black 1px;
 	padding: 10px;
-	width: 102%;
+	width: 97vw;
 	z-index: 9999;
-	margin-left: 0vw;
-	margin-top: 0vh;
+	margin-left: auto;
+	margin-right: auto;
 	height: 4vh;
 	/*position: fixed;*/
+
 }
 
 #body {
-	background-color: #E6E6DC;
+	background-color: white;
 	font-family: 'Hind', sans-serif;
 }
 
 
 .deals_list {
 	background-color: white;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
+	border: solid black 1px;
 	padding-left: 2vw;
 	margin-left: 0vw;
 	padding-top: .1vh;
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
-	width: 67.5vw;
+	width: 67vw;
 	margin-left: auto ;
   margin-right: 0.5vw;
 	float:right;
@@ -51,13 +54,14 @@ body {
 
 .consumer_column {
 	background-color: white;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
+	border: solid black 1px;
 	/*padding-left: 2vw;*/
 	margin-left: 0.5vw;
 	padding-top: .1vh;
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
-	width: 27.5vw;
+	width: 27vw;
 	/*margin-left: auto ;*/
   margin-right: auto ;
 	float:left;
@@ -73,7 +77,7 @@ a:visited {
 }
 
 .navbar a{
-	color: white;
+	color: black;
 }
 .navbar li {
 	color: white;
