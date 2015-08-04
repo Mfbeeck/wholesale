@@ -29,14 +29,14 @@
 
 
 <% if current_consumer %>
-<div class ="consumer_column">
-  <ul id="consumer_profile">
-  	<li><h1>Consumer: <%= current_consumer.username %></h1></li>
-    <li>Username: <%= current_consumer.username%></li>
-    <li>Email: <%= current_consumer.email%></li>
-  	<%= link_to "Edit", edit_consumer_path(current_consumer)%><br>
-  </ul>
-</div>
+  <div class="consumer_column">
+    <ul id="consumer_profile">
+    	<li><h1>Consumer: <%= current_consumer.username %></h1></li>
+      <li>Username: <%= current_consumer.username %></li>
+      <li>Email: <%= current_consumer.email %></li>
+    	<%= link_to "Edit", edit_consumer_path(current_consumer) %><br>
+    </ul>
+  </div>
 <%end%>
 
 <br>
