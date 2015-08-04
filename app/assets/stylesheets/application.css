@@ -62,8 +62,8 @@ body {
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
 	width: 27vw;
-	/*margin-left: auto ;*/
-  margin-right: auto ;
+	margin-left: auto ;
+  /*margin-right: auto ;*/
 	float:left;
 	position: fixed;
 }
