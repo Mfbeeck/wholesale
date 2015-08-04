@@ -1,9 +1,9 @@
 <h1>Orders</h1>
-
 <% @orders.each do |order| %>
+<% @deal = Deal.find(order.deal_id)%>
   <ul>
-  	<!-- <li><strong>Deal name:</strong> <%#= order.deal_id %></li>
- -->    <li><strong>Deal ordered from dealer with id:</strong> <%= order.deal_id %></li>
+  	<!-- <li><strong>Deal name:</strong> <%#= order.deal_id %></li>-->
+	  <li><strong>Deal Name:</strong> <%= @deal.name %></li>
       <%= link_to 'Order Details', order %>
     </li>
   </ul>
