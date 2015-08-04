@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Wholesale</title>
+  <link href='http://fonts.googleapis.com/css?family=Muli|Source+Code+Pro|Hind:400,600' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -16,17 +17,17 @@
 			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
 			&nbsp;&nbsp;
 			<%= link_to "Log out", logout_path, method: "delete" %>
-			<% else %> 
+			<% else %>
 			<%= link_to 'Supplier Dashboard', new_supplier_session_path %>
 			<% end %>
 			</li>
-			
+
 			<li><% if current_consumer %>
 			<%= link_to "Username: #{current_consumer.username}", consumer_path(current_consumer)%>
 			&nbsp;&nbsp;
 			<%= link_to "Log out", logout_path, method: "delete" %>
-			<% else %> 
-			<%= link_to 'Consumer Dashboard', new_consumer_session_path %> 
+			<% else %>
+			<%= link_to 'Consumer Dashboard', new_consumer_session_path %>
 			<% end %>
 			</li>
 	</nav>
@@ -38,4 +39,3 @@
 
 </body>
 </html>
-
