@@ -1,5 +1,9 @@
  <ul>
     <li><strong>Consumer that ordered:</strong> <%= @order.consumer_id %></li>
     <li><strong>Deal ordered from:</strong> <%= @order.deal_id %></li>
-    <li><strong>Quantity:</strong> <%= @order.quantity %></li>
-  </ul>
+    <li><strong>Shipping Address:</strong> <%= @order.address%></li>
+    <%= link_to 'Edit Shipping Address', edit_consumer_order_path(current_consumer, @order)%>
+ </ul>
+
+<%= link_to 'Back To Orders', orders_path(current_consumer)%>
+

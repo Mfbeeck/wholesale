@@ -1,5 +1,5 @@
 class AddAddressToOrders < ActiveRecord::Migration
   def change
-    add_column :orders, :Address, :string
+    add_column :orders, :address, :string
   end
 end

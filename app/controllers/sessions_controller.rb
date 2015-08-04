@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
     end
     if @consumer
       session[:consumer_id] = @consumer.id
-      redirect_to consumer_path(@consumer)
+      redirect_to deals_path
     else
       render action: 'new_consumer'
     end
