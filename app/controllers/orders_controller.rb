@@ -8,15 +8,46 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # if !threshold_met
     @order = Order.new(order_params)
-      if @order.save
-        redirect_to consumer_orders_path(@consumer), notice: "Order was successfully created"
-      else
-        flash[:notice] = 'You have already bid on this deal!'
-        redirect_to :back
-      end
-    # end
+    @order.consumer_id = current_consumer.id
+    @order.deal_id = params[:deal_id]
+    if @order.save
+      #session[:supplier_id] = @supplier.id
+      #redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
+      create_charge
+    else
+      flash[:notice] = 'You have already bid on this deal!'
+      redirect_to :back
+    end
+  end
+
+  def create_charge
+
+    if @order.nil?
+      create
+    else
+
+    p "***********************"
+    p "This is Charges Controller #{Deal.find(current_consumer.orders.last[:deal_id]).price}"
+    p "***********************"
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :card  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => Deal.find(current_consumer.orders.last[:deal_id]).price.to_i * 100,
+      :description => 'Wholesale\'s Customer',
+      :currency    => 'usd'
+    )
+
+    redirect_to consumer_orders_path(current_consumer)
+    end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to charges_path
   end
 
   def update
@@ -33,7 +64,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if session[:consumer_id] == @order.consumer_id
     else
-      redirect_to orders_path  
+      redirect_to orders_path
     end
   end
 
@@ -50,7 +81,7 @@ class OrdersController < ApplicationController
     @consumer = current_consumer
   end
   def order_params
-    params.require(:order).permit(:consumer_id, :deal_id, :quantity)
+    params.require(:order).permit(:consumer_id, :deal_id, :quantity, :address)
   end
   def check_threshold
     if @deal.orders.count >= @deal.threshold

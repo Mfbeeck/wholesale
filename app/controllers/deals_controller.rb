@@ -52,6 +52,10 @@ class DealsController < ApplicationController
     end
   end
 
+  def checkout
+    @deal = Deal.find(params[:id])
+  end
+
 
   private
 
