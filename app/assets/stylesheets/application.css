@@ -19,7 +19,8 @@
 	padding: 10px;
 	width: 102%;
 	margin-left: -1vw;
-	margin-top: -1.3vh;
+	margin-top: 0vh;
+	position: fixed;
 }
 
 #body {
@@ -34,9 +35,27 @@
 	padding-left: 2vw;
 	margin-left: 0vw;
 	padding-top: .1vh;
-	margin-top: 3vh;
+	margin-top: 5vh;
 	padding-bottom: 1vh;
-	opacity: 0.8;
+	width: 67.5vw;
+	margin-left: auto ;
+  margin-right: 0.5vw;
+	float:right;
+}
+
+.consumer_column {
+	background-color: white;
+	border-radius: 5px;
+	/*padding-left: 2vw;*/
+	margin-left: 0.5vw;
+	padding-top: .1vh;
+	margin-top: 5vh;
+	padding-bottom: 1vh;
+	width: 27.5vw;
+	/*margin-left: auto ;*/
+  margin-right: auto ;
+	float:left;
+	position: fixed;
 }
 
 a {
