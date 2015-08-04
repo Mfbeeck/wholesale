@@ -1,28 +1,32 @@
-<div class = "display_deal">
-  <h1><%= @deal.name %></h1>
-  <ul>
-    <li><%= image_tag @deal.url, size: "250x200" %></li>
-    <li><strong>Description:</strong> <%= @deal.description %></li>
-    <li><strong>Price:</strong> <%= @deal.price %> USD</li>
-    <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
-    <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
-  </ul>
+<div class = "deal_show_container">
 
-  <%if !@deal.is_threshold_reached%>
-    <% if current_consumer %>
-  		<% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
-        <%= render 'form_order' %>
-      <% else %>
-        <h3>You are already betting on this deal. Good luck!</h3>
-      <% end %>
-  	<% else %>
-  		<p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
-  	<% end %>
-  <% else %>
-  	<div class = "threshold_notice">
-  		<h3>This Deal Has Ended!</h3>
-  	</div>
-  <%end%>
+  <div class = "deal_image">
+      <li><%= image_tag @deal.url, size: "250x200" %></li>
+  </div>
+
+    <h1><%= @deal.name %></h1>
+    <ul>
+      <li><strong>Description:</strong> <%= @deal.description %></li>
+      <li><strong>Price:</strong> <%= @deal.price %> USD</li>
+      <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
+      <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
+    </ul>
+
+    <%if !@deal.is_threshold_reached%>
+      <% if current_consumer %>
+    		<% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
+          <%= render 'form_order' %>
+        <% else %>
+          <h3>You are already betting on this deal. Good luck!</h3>
+        <% end %>
+    	<% else %>
+    		<p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
+    	<% end %>
+    <% else %>
+    	<div class = "threshold_notice">
+    		<h3>This Deal Has Ended!</h3>
+    	</div>
+    <%end%>
 </div>
 
 <%= link_to 'Back', deals_path %>
