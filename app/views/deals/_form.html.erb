@@ -21,16 +21,13 @@
     <%= f.text_area :description, placeholder: "Description" %>
   </p>
   <p>
-    <%= f.number_field :price, placeholder: "Price", step: 1.0 %>
+    <%= f.number_field :price, placeholder: "Retail Price", step: 1.0 %>
   </p>
   <p>
     <%= f.number_field :threshold, placeholder: "Participant Number", step: 1 %>
   </p>
-  <p>
-    <%= f.date_field :start_date, placeholder: "Start Date" %>
-  </p>
-  <p>
-    <%= f.date_field :end_date, placeholder: "End Date" %>
+   <p>
+    <%= f.select :product_type, [ 'Electronics', 'Video Games'], :prompt => 'Product Type' %>
   </p>
   <p>
     <%= f.submit %>

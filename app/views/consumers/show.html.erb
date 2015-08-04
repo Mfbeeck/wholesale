@@ -2,12 +2,8 @@
 <ul id="Consumers">
 	<h1>Consumer: <%= @consumer.username %></h1>
 	<div>
+	<li>Username: <%= @consumer.username%></li>
 	<li>Email: <%= @consumer.email%></li>
-	<li>First Name: <%= @consumer.first_name%></li>
-	<li>Last Name: <%= @consumer.last_name%></li>
-	<li>Address: <%= @consumer.address%></li>
-
-
 	<%= link_to "Edit", edit_consumer_path(@consumer)%><br>
 	<%= link_to "Orders", consumer_orders_path(@consumer)%><br>
 

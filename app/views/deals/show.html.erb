@@ -1,13 +1,13 @@
 <div class = "display_deal">
+<p id="notice"><%= notice %></p>
 <h1><%= @deal.name %></h1>
 <ul>
   <li><%= image_tag @deal.url, size: "250x200" %></li>
   <li><strong>Description:</strong> <%= @deal.description %></li>
-  <li><strong>Price:</strong> <%= @deal.price %> USD</li>
+  <li><strong>Price:</strong> <%= number_to_currency(@deal.price) %></li>
   <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
   <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
-  <li><strong>Deal Starts:</strong> <%= @deal.start_date %></li>
-  <li><strong>Deal Ends:</strong> <%= @deal.end_date %></li>
+ 
 </ul>
 
     <%if !@deal.is_threshold_reached%>

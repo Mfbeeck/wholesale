@@ -4,9 +4,9 @@ class DealsController < ApplicationController
   before_action :set_supplier, only: [:create, :edit, :update, :destroy]
   # before_action :set_consumer, only: [:show]
 
-
   def index
     @deals = Deal.all
+    # @deals = Deal.where("product_type = 'Electronics'") + Deal.where("product_type = 'Video Games'")
   end
 
   def new
@@ -66,7 +66,7 @@ class DealsController < ApplicationController
   end
 
   def deal_params
-    params.require(:deal).permit(:name, :description, :price, :threshold, :start_date, :end_date, :suplier_id, :url)
+    params.require(:deal).permit(:name, :description, :price, :threshold, :start_date, :end_date, :suplier_id, :url, :product_type)
   end
 
 end
