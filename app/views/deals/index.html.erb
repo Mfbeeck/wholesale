@@ -27,6 +27,7 @@
 <% end %>
 </div>
 
+<% if current_consumer %>
 <div class ="consumer_column">
   <ul id="consumer_profile">
   	<li><h1>Consumer: <%= current_consumer.username %></h1></li>
@@ -35,6 +36,7 @@
   	<%= link_to "Edit", edit_consumer_path(current_consumer)%><br>
   </ul>
 </div>
+<%end%>
 
 <br>
 <% if current_supplier %>

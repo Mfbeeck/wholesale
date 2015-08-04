@@ -4,6 +4,7 @@
       <li><%= image_tag @deal.url, size: "250x200" %></li>
   </div>
 
+  <div class = "display_deal">
     <h1><%= @deal.name %></h1>
     <ul>
       <li><strong>Description:</strong> <%= @deal.description %></li>
@@ -27,6 +28,7 @@
     		<h3>This Deal Has Ended!</h3>
     	</div>
     <%end%>
-</div>
-
+    </div>
 <%= link_to 'Back', deals_path %>
+
+</div>
