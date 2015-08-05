@@ -7,35 +7,35 @@
 <% @deals.each do |deal| %>
   <ul class = "deal_block">
 
-      <li class="image_product" ><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%></li>
-      <li><strong>Product:</strong> <%= deal.name %></li>
-      <li><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li>
+      <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%></li>
+      <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li>
+      <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li>
   </ul>
 <% end %>
 </div>
 
   <div class="consumer_column">
     <% if current_consumer %>
-    <div class="consumer_column1">
-    <ul id="consumer_profile">
-    	<li><p><%= link_to "You are logged in as #{current_consumer.username}", consumer_path(current_consumer)%></p></li>
-    </ul>
-    </div>
+      <div class="consumer_column1">
+      <ul id="consumer_profile">
+      	<li><p><%= link_to "You are logged in as #{current_consumer.username}", consumer_path(current_consumer)%></p></li>
+      </ul>
+      </div>
     <%end%>
   <div class="filters">
-  <p><strong>What are you looking for?</strong></p>
-    <ul>
-      <li>
-        <%= check_box_tag(:product_type, "Electronics") %>
-        <%= label_tag(:product_type, "Electronics") %>
-      </li>
-      <li>
-        <%= check_box_tag(:product_type, "Video Games") %>
-        <%= label_tag(:product_type, "Video Games") %>
-      </li>
-    </ul>
+  <p class="filter_title"><strong>What are you looking for?</strong></p>
+  <ul>
+    <li class="filter_labels">
+      <%= check_box_tag(:product_type, "Electronics") %>
+      <%= label_tag(:product_type, "Electronics") %>
+    </li>
+    <li class="filter_labels">
+      <%= check_box_tag(:product_type, "Video Games") %>
+      <%= label_tag(:product_type, "Video Games") %>
+    </li>
+  </ul>
 
-    <p><strong>Filter by:</strong></p>
+    <p class="filter_type"><strong>Filter by:</strong></p>
       <ul>
         <li>
           <%= check_box_tag(:filter_type, "order_status") %>
@@ -50,5 +50,6 @@
       <% if current_supplier %>
       <p id = "new_deal_link"><%= link_to 'New Deal', new_deal_path %></p>
       <% end %>
+
   </div>
 </div>

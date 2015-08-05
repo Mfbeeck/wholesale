@@ -20,8 +20,12 @@ body {
 
 .deals_list hr {
 	width: 40%;
-	border: 1px solid black ;
-	opacity: 0.2;
+	border: 1px solid #2274A5;
+	/*opacity: 0.5;*/
+}
+
+.filter_labels {
+	font-size: 1vw;
 }
 
 .main_title {
@@ -37,15 +41,14 @@ body {
 
 #consumer_profile p {
 	font-size: 1.5vw;
-	color: black;
 }
 
 #consumer_profile p a:hover {
-	color: grey;
+	color: #FFBF00;
 }
 
 #consumer_profile p a {
-	color: black;
+	color: #2274A5;
 }
 
 
@@ -96,6 +99,8 @@ body {
 .filters p {
 	font-size: 1.3vw;
 	margin-left: 2vw;
+	border-bottom: 2px solid #2274A5;
+	width: 60%;
 	/*text-align: center;*/
 }
 
@@ -122,6 +127,11 @@ body {
 	position: fixed;
 }
 
+.image_product a:hover {
+	border-bottom: solid #FFBF00 3px;
+
+}
+
 a {
 	text-decoration: none;
 	font-size: 1.3vw;
@@ -142,7 +152,7 @@ a:visited {
 }
 
 .navbar a:hover {
-	color: grey;
+	color: #FFBF00;
 }
 
 .deal_block {
