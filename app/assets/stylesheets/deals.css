@@ -25,6 +25,19 @@ body {
 
 }
 
+#new_deal_link a{
+	color: black;
+	margin-left: .8vw;
+	padding-left: 1vw;
+}
+
+#new_deal_link a:hover{
+	color: white;
+	background-color: black;
+	border-radius: 2vw;
+	padding-right: 1vw;
+}
+
 .comments_box {
 	background-color: black;
 	clear: both;

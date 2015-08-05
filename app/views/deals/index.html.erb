@@ -46,10 +46,9 @@
           <%= label_tag(:filter_type, "Your Bids") %>
         </li>
       </ul>
+      <br>
+      <% if current_supplier %>
+      <p id = "new_deal_link"><%= link_to 'New Deal', new_deal_path %></p>
+      <% end %>
   </div>
 </div>
-
-<br>
-<% if current_supplier %>
-<%= link_to 'New Deal', new_deal_path %>
-<% end %>

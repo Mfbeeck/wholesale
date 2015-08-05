@@ -32,7 +32,7 @@ body {
 
 .filters {
 	float: left;
-	padding-bottom: 30vh;
+	padding-bottom: 25vh;
 }
 
 #consumer_profile p {
@@ -52,6 +52,7 @@ body {
 .deal_block {
 	margin-left: 3.5vw;
 	margin-right: 3.5vw;
+	width: 30%;
 }
 
 .navbar {

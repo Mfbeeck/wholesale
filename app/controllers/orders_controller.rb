@@ -19,6 +19,17 @@ class OrdersController < ApplicationController
       #session[:supplier_id] = @supplier.id
       #redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
       create_charge
+      @deal = Deal.find(@order.deal_id)
+      if @deal.orders.count >= @deal.threshold
+        @array_of_orders = @deal.orders(:select => :id).collect(&:id)
+        @winning_order_id = @array_of_orders.sample
+        @deal.winning_order_id = @winning_order_id
+
+        @winning_order = Order.find(@deal.winning_order_id)
+        @winning_consumer = Consumer.find(@winning_order.consumer_id).username
+        @deal.winning_consumer = @winning_consumer
+        @deal.save
+      end
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
