@@ -10,7 +10,9 @@
         <h1><%= @deal.name %></h1>
         <li><strong>Bid Price:</strong> <%= number_to_currency(@deal.price) %></li>
         <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
+        <% if @deal.orders.count < @deal.threshold %>
         <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
+        <% end %>
         <li><strong>Description:</strong> <%= @deal.description %></li>
 
         <%if !@deal.is_threshold_reached%>

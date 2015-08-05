@@ -1,9 +1,15 @@
  <ul>
-    <li><strong>Consumer that ordered:</strong> <%= @order.consumer_id %></li>
-    <li><strong>Deal ordered from:</strong> <%= @order.deal_id %></li>
-    <li><strong>Shipping Address:</strong> <%= @order.address%></li>
-    <%= link_to 'Edit Shipping Address', edit_consumer_order_path(current_consumer, @order)%>
- </ul>
+	<% if @deal.orders.count < @deal.threshold %>
+    <li><strong>Product: </strong><%= link_to "#{@deal.name}", @deal %></li>
+    <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
+    <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %> (<%= @deal.threshold - @deal.orders.count%> Remaining)</li>
+    <li><strong>Shipping Address:</strong> <%= @order.address%>
+    <%= link_to '(Edit)', edit_consumer_order_path(current_consumer, @order)%>
+    </li>
+    <%else%>
+    <li><strong>Sorry, the lottery for the <%=@deal.name%> has ended and the winner was: <%=@deal.winning_consumer%></li>
+    <%end%>
+    </ul>
 
 <%= link_to 'Back To Orders', orders_path(current_consumer)%>
 

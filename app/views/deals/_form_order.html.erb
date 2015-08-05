@@ -6,7 +6,6 @@
   <% @amount = @deal.price %>
   <% @name = @deal.name %>
 
-
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-email=<%= current_consumer.email %>
           data-name= "<%= @name%>"
