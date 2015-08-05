@@ -4,6 +4,10 @@
 	<div>
 	<li>Username: <%= @consumer.username%></li>
 	<li>Email: <%= @consumer.email%></li>
+	<% if @consumer.phone_number %>
+	<li>Phone Number: <%=number_to_phone(@consumer.phone_number)%></li>
+	<%end%>
+
 	<%= link_to "Edit", edit_consumer_path(@consumer)%><br>
 	<%= link_to "Orders", consumer_orders_path(@consumer)%><br>
 
