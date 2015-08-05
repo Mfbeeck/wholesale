@@ -27,8 +27,10 @@ body {
 
 .comments_box {
 	background-color: black;
-
 	clear: both;
+	width: 80%;
+	text-align: center;
+	margin: auto;
 }
 
 .comments_box p {
