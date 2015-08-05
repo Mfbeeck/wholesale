@@ -8,6 +8,7 @@
   <ul class = "deal_block">
 
       <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%></li>
+      <br>
       <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li>
       <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li>
   </ul>
