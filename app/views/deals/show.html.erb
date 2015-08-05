@@ -1,35 +1,38 @@
 <div class = "deal_show_container">
-
-  <div class = "deal_display">
-      <ul class = "deal_image_ul">
-      <li><%= image_tag @deal.url, size: "250x200" %></li>
-      </ul>
-
-      <ul class = "deal_description_display">
-      <h1><%= @deal.name %></h1>
-      <li><strong>Description:</strong> <%= @deal.description %></li>
-      <li><strong>Price:</strong> <%= @deal.price %> USD</li>
-      <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
-      <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
-
-      <%if !@deal.is_threshold_reached%>
-        <% if current_consumer %>
-      		<% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
-            <%= render 'form_order' %>
-          <% else %>
-            <h3>You are already betting on this deal. Good luck!</h3>
-          <% end %>
-      	<% else %>
-      		<p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
-      	<% end %>
-      <% else %>
-      
-    	<div class = "threshold_notice">
-    		<h3>This Deal Has Ended!</h3>
-    	</div>
-    <%end%>
-    </ul>
+    <div class = "deal_image_div">
+        <ul class = "deal_image_ul">
+        <li><%= image_tag @deal.url, size: "450x400" %></li>
+        </ul>
     </div>
-<%= link_to 'Back', deals_path %>
+
+    <div class = "deal_description_div">
+        <ul class = "deal_description_display">
+        <h1><%= @deal.name %></h1>
+        <li><strong>Bid Price:</strong> <%= number_to_currency(@deal.price) %></li>
+        <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
+        <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
+        <li><strong>Description:</strong> <%= @deal.description %></li>
+
+        <%if !@deal.is_threshold_reached%>
+          <% if current_consumer %>
+            <% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
+            <%= render 'form_order' %>
+            <% else %>
+            <h3>You are already betting on this deal. Good luck!</h3>
+            <% end %>
+          <% else %>
+            <p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
+          <% end %>
+        <% else %>
+          <div class = "threshold_notice">
+            <h3>This Deal Has Ended!</h3>
+          </div>
+        <%end%>
+        </ul>
+    </div> 
+
+    <div class = "comments_box">
+    </div> 
+<p id="link_to_back"><%= link_to 'Back', deals_path %></p>
 
 </div>

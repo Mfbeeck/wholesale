@@ -5,3 +5,26 @@
 body {
 	font-family: sans-serif, Muli;
 }
+
+.deal_show_container{
+
+}
+
+.deal_image_div{
+	float: left;
+	margin-left: 7vw;
+	margin-top: 2vw;
+}
+
+.deal_description_div{
+	float: left;
+	margin-left: 0vw;
+	margin-top: 13vw;
+	width: 40%;
+
+
+}
+
+#link_to_back {
+	clear: both;
+}
