@@ -18,6 +18,37 @@ body {
 	margin: 0;
 }
 
+.deals_list hr {
+	width: 40%;
+	border: 1px solid black ;
+	opacity: 0.2;
+}
+
+.main_title {
+	text-align: center;
+	font-size: 2vw;
+  margin: 0px;
+}
+
+.filters {
+	float: left;
+	padding-bottom: 30vh;
+}
+
+#consumer_profile p {
+	font-size: 1.5vw;
+	color: black;
+}
+
+#consumer_profile p a:hover {
+	color: grey;
+}
+
+#consumer_profile p a {
+	color: black;
+}
+
+
 .deal_block {
 	margin-left: 3.5vw;
 	margin-right: 3.5vw;
@@ -26,12 +57,12 @@ body {
 .navbar {
 	background-color: white;
 	border-bottom: solid black 1px;
-	padding: 10px;
+	/*padding: 10px;*/
 	width: 97vw;
 	z-index: 9999;
 	margin-left: auto;
 	margin-right: auto;
-	height: 4vh;
+	height: 6vh;
 	/*position: fixed;*/
 
 }
@@ -45,7 +76,7 @@ body {
 .deals_list {
 	background-color: white;
 	/*border-radius: 5px;*/
-	border: solid black 1px;
+	/*border: solid black 1px;*/
 	padding-left: 2vw;
 	margin-left: 0vw;
 	padding-top: .1vh;
@@ -53,19 +84,36 @@ body {
 	padding-bottom: 1vh;
 	width: 67vw;
 	margin-left: auto ;
-  margin-right: 0.5vw;
+  margin-right: 1.5vw;
 	float:right;
+}
+
+.consumer_column1 {
+	border-radius: 5px;
+	border: solid black 1px;
+}
+.filters p {
+	font-size: 1.3vw;
+	margin-left: 2vw;
+	/*text-align: center;*/
+}
+
+.filters {
+	border-radius: 5px;
+	border: solid black 1px;
+	width: 100%;
+	margin-top: 3vh;
 }
 
 .consumer_column {
 	background-color: white;
 	/*border-radius: 5px;*/
-	border: solid black 1px;
+	/*border: solid black 1px;*/
 	/*padding-left: 2vw;*/
-	margin-left: 0.5vw;
-	padding-top: .1vh;
+	margin-left: 1.5vw;
+	padding-top: 0vh;
 	margin-top: 0.5vh;
-	padding-bottom: 1vh;
+	padding-bottom: 0vh;
 	width: 27vw;
 	/*margin-left: auto ;*/
   margin-right: auto ;
@@ -75,6 +123,7 @@ body {
 
 a {
 	text-decoration: none;
+	font-size: 1.3vw;
 }
 
 a:visited {
@@ -102,5 +151,3 @@ a:visited {
 .display_deal {
 	text-align: center
 }
-
-
