@@ -18,6 +18,11 @@ body {
 	margin: 0;
 }
 
+.deal_block {
+	margin-left: 3.5vw;
+	margin-right: 3.5vw;
+}
+
 .navbar {
 	background-color: white;
 	border-bottom: solid black 1px;

@@ -18,8 +18,8 @@
 			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
 			&nbsp;&nbsp;
 			<%= link_to "Log out", logout_path, method: "delete" %>
-			<!-- <% else %> -->
-			<!-- <%= link_to 'Supplier Dashboard', new_supplier_session_path %> -->
+			<% else %>
+			<%= link_to 'Supplier Dashboard', new_supplier_session_path %>
 			<% end %>
 			</li>
 

@@ -1,28 +1,16 @@
 <div class = "deals_list">
-<%= check_box_tag(:product_type, "Electronics") %>
-<%= label_tag(:product_type, "Electronics") %>
-<%= check_box_tag(:product_type, "Video Games") %>
-<%= label_tag(:product_type, "Video Games") %>
+
 
 <h1>Deals</h1>
 <% @deals.each do |deal| %>
   <ul class = "deal_block">
     <% if current_consumer || current_supplier %>
-      <li><%= link_to(image_tag("#{deal.url}", :size => "250x200"), deal)%></li>
+      <li class="image_product" ><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%></li>
     <%else%>
-      <li><%= link_to(image_tag("#{deal.url}", :size => "250x200"), new_consumer_session_path)%></li>
+      <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), new_consumer_session_path)%></li>
     <%end%>
-      <li><strong>Deal Name:</strong> <%= deal.name %></li>
-      <li><strong>Deal Description:</strong> <%= deal.description %></li>
-      <li><strong>Deal Price:</strong> <%= number_to_currency(deal.price) %></li>
-      <li><strong>Supplier:</strong> <%= deal.supplier.company_name %></li>
-      <li>
-        <% if current_consumer || current_supplier %>
-          <%= link_to 'Order Now', deal %>
-        <% else %>
-          <%= link_to 'Order Now', new_consumer_session_path %>
-        <% end %>
-      </li>
+      <li><strong>Product:</strong> <%= deal.name %></li>
+      <li><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li>
   </ul>
 <% end %>
 </div>
@@ -31,13 +19,21 @@
 <% if current_consumer %>
   <div class="consumer_column">
     <ul id="consumer_profile">
-    	<li><h1>Consumer: <%= current_consumer.username %></h1></li>
-      <li>Username: <%= current_consumer.username %></li>
-      <li>Email: <%= current_consumer.email %></li>
-    	<%= link_to "Edit", edit_consumer_path(current_consumer) %><br>
+    	<li><h3>Username: <%= current_consumer.username %></h3></li>
     </ul>
   </div>
 <%end%>
+
+<ul>
+<li>
+<%= check_box_tag(:product_type, "Electronics") %>
+<%= label_tag(:product_type, "Electronics") %>
+</li>
+<li>
+<%= check_box_tag(:product_type, "Video Games") %>
+<%= label_tag(:product_type, "Video Games") %>
+</li>
+</ul>
 
 <br>
 <% if current_supplier %>
