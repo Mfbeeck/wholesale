@@ -10,6 +10,10 @@
     <%= f.text_field :username %>
   </p>
   <p>
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </p>
+  <p>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </p>
@@ -22,10 +26,9 @@
     <%= f.text_field :address %>
   </p>
   <p>
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%= f.label :phone_number %><br />
+    <%= f.telephone_field :phone_number %>
   </p>
-
   <p>
   <%= f.submit %>
   </p>
