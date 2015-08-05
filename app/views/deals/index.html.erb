@@ -7,22 +7,11 @@
 <h1>Deals</h1>
 <% @deals.each do |deal| %>
   <ul class = "deal_block">
-    <% if current_consumer || current_supplier %>
       <li><%= link_to(image_tag("#{deal.url}", :size => "250x200"), deal)%></li>
-    <%else%>
-      <li><%= link_to(image_tag("#{deal.url}", :size => "250x200"), new_consumer_session_path)%></li>
-    <%end%>
       <li><strong>Deal Name:</strong> <%= deal.name %></li>
       <li><strong>Deal Description:</strong> <%= deal.description %></li>
       <li><strong>Deal Price:</strong> <%= number_to_currency(deal.price) %></li>
       <li><strong>Supplier:</strong> <%= deal.supplier.company_name %></li>
-      <li>
-        <% if current_consumer || current_supplier %>
-          <%= link_to 'Order Now', deal %>
-        <% else %>
-          <%= link_to 'Order Now', new_consumer_session_path %>
-        <% end %>
-      </li>
   </ul>
 <% end %>
 </div>
