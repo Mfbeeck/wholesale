@@ -19,12 +19,18 @@ body {
 .deal_description_div{
 	float: left;
 	margin-left: 0vw;
-	margin-top: 13vw;
+	margin-top: 4.4vw;
 	width: 40%;
 
 
 }
 
-#link_to_back {
+.comments_box {
+	background-color: black;
+
 	clear: both;
+}
+
+.comments_box p {
+	color: white;
 }
