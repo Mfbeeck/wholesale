@@ -3,14 +3,8 @@
 
 <%= form_tag create_charge_path(@deal) do %>
 
-
-  <% puts "**********************************************************" %>
-  <% puts "This is the order form #{@deal.price}" %>
-  <% puts "**********************************************************" %>
-
   <% @amount = @deal.price %>
   <% @name = @deal.name %>
-
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-email=<%= current_consumer.email %>
@@ -20,10 +14,5 @@
           data-description= "<%= @deal.description %>"
           data-bitcoin= false
           data-image="<%=@deal.url%>"></script>
-
-
-  <% puts "**********************************************************" %>
-  <% puts "This is the order form again #{@deal.price}" %>
-  <% puts "**********************************************************" %>
 
 <% end %>

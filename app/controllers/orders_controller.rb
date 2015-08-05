@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_consumer, only: [:index, :create, :edit, :update, :destroy]
-  before_action :set_order, only: [:edit, :update]
-  before_action :set_deal, only: [:edit, :update]
+  before_action :set_order, only: [:edit, :update, :show]
+  before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
   # before_action :set_deal, only: [:create]
 
@@ -133,11 +133,11 @@ class OrdersController < ApplicationController
 
   private
 
-  def set_deal
-    @deal = Deal.find(@order.deal_id)
-  end
   def set_order
     @order = Order.find(params[:id])
+  end
+  def set_deal
+    @deal = Deal.find(@order.deal_id)
   end
   def set_consumer
     @consumer = current_consumer

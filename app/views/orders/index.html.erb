@@ -4,8 +4,9 @@
 <% @deal = Deal.find(order.deal_id)%>
   <ul>
   	<!-- <li><strong>Deal name:</strong> <%#= order.deal_id %></li>-->
-	  <li><strong>Deal Name:</strong> <%= @deal.name %></li>
-      <%= link_to 'Order Details', order %>
+	  <li><strong>Deal Name: </strong><%= link_to "#{@deal.name}", @deal %>
+</li>
+      <%= link_to 'Order/Shipping Details', order %>
     </li>
   </ul>
 <% end %>

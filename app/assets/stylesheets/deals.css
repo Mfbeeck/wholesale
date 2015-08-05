@@ -38,10 +38,16 @@ body {
 	height: 100%;
 }
 
+.stripe-button-el {
+	width: 10vw;
+
+}
+
+
 .deal_description_div{
 	float: left;
 	margin-left: 0vw;
-	margin-top: 80px;
+	margin-top: 2vh;
 	width: 40%;
 }
 
