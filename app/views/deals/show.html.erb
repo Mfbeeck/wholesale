@@ -1,7 +1,7 @@
 <div class = "deal_show_container">
     <div class = "deal_image_div">
         <ul class = "deal_image_ul">
-        <li><%= image_tag @deal.url, size: "450x400" %></li>
+        <li><%= image_tag @deal.url, :class => "deal_show_image_tag" %></li>
         </ul>
     </div>
 
@@ -16,7 +16,7 @@
         <%if !@deal.is_threshold_reached%>
           <% if current_consumer %>
             <% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
-            <%= render 'form_order' %>
+                <%= render 'form_order' %>
             <% else %>
             <h3>You are already betting on this deal. Good luck!</h3>
             <% end %>
@@ -25,7 +25,8 @@
           <% end %>
         <% else %>
           <div class = "threshold_notice">
-            <h3>This Deal Has Ended!</h3>
+            <h3>This deal has ended and the winner was: <%=@deal.winning_consumer%></h3>
+
           </div>
         <%end%>
         </ul>

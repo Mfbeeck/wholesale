@@ -12,17 +12,41 @@ body {
 
 .deal_image_div{
 	float: left;
-	margin-left: 7vw;
+	margin-left: 3vw;
 	margin-top: 2vw;
+	width: 45%;
+}
+
+.deal_description_display h1{
+	font-size: 2vw;
+}
+
+.deal_description_display li{
+	font-size: 1.2vw;
+}
+
+.deal_description_display h3{
+	font-size: 1.4vw;
+}
+
+.deal_description_display p{
+	font-size: 1.4vw;
+}
+
+.deal_show_image_tag {
+	width: 100%;
+	height: 100%;
 }
 
 .deal_description_div{
 	float: left;
 	margin-left: 0vw;
-	margin-top: 4.4vw;
+	margin-top: 80px;
 	width: 40%;
+}
 
-
+.deal_description_display form{
+	font-size: 1.4vw;
 }
 
 #new_deal_link a{
@@ -41,11 +65,13 @@ body {
 .comments_box {
 	background-color: black;
 	clear: both;
-	width: 80%;
+	width: 85%;
 	text-align: center;
 	margin: auto;
+	margin-left: 9vw;
 }
 
 .comments_box p {
 	color: white;
+	font-size: 1.4vw;
 }

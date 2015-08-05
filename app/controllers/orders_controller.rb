@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_consumer, only: [:index, :create, :edit, :update, :destroy]
   before_action :set_order, only: [:edit, :update]
   before_action :set_deal, only: [:edit, :update]
-  before_action :check_if_still_active, only: [:edit]
+  before_action :check_if_winner_assigned, only: [:edit]
   # before_action :set_deal, only: [:create]
 
   # before_action :check_threshold, only: [:create]
@@ -19,17 +19,6 @@ class OrdersController < ApplicationController
       #session[:supplier_id] = @supplier.id
       #redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
       create_charge
-      @deal = Deal.find(@order.deal_id)
-      if @deal.orders.count >= @deal.threshold
-        @array_of_orders = @deal.orders(:select => :id).collect(&:id)
-        @winning_order_id = @array_of_orders.sample
-        @deal.winning_order_id = @winning_order_id
-
-        @winning_order = Order.find(@deal.winning_order_id)
-        @winning_consumer = Consumer.find(@winning_order.consumer_id).username
-        @deal.winning_consumer = @winning_consumer
-        @deal.save
-      end
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
@@ -66,17 +55,61 @@ class OrdersController < ApplicationController
   end
 
   def update
+    @deal = Deal.find(@order.deal_id)
+    if !@deal.winning_consumer 
       respond_to do |format|
         if @order.update(order_params)
-          format.html { redirect_to order_path(@order)}
-          format.json { render :show, status: :ok, location: current_consumer }
-          flash[:notice] = 'Your bid and shipping address have been confirmed!'
+          if @deal.orders.count >= @deal.threshold
+            @array_of_orders = @deal.orders(:select => :id).collect(&:id)
+                  
+            @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
+            @deal.winning_order_id = @winning_order_id
+
+            @winning_order = Order.find(@deal.winning_order_id)
+            @winning_consumer = Consumer.find(@winning_order.consumer_id).username
+            @deal.winning_consumer = @winning_consumer
+            @deal.save
+            format.html { redirect_to order_path(@order)}
+            format.json { render :show, status: :ok, location: current_consumer }
+            flash[:notice] = 'Your bid and shipping address have been confirmed and a winner has been announced!'
+          else
+            format.html { redirect_to order_path(@order)}
+            format.json { render :show, status: :ok, location: current_consumer }
+            flash[:notice] = 'Your bid and shipping address have been confirmed!' 
+          end
         else
           format.html { render :edit }
           format.json { render json: @deal.errors, status: :unprocessable_entity }
         end
       end
+    end
   end
+
+  #     respond_to do |format|
+  #       if @order.update(order_params)
+  #         @deal = Deal.find(@order.deal_id)
+  #         format.html { redirect_to order_path(@order)}
+  #         format.json { render :show, status: :ok, location: current_consumer }
+  #         if @deal.orders.count >= @deal.threshold
+  #           if !@deal.winning_consumer
+  #               @array_of_orders = @deal.orders(:select => :id).collect(&:id)
+  #               @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
+  #               @deal.winning_order_id = @winning_order_id
+
+  #               @winning_order = Order.find(@deal.winning_order_id)
+  #               @winning_consumer = Consumer.find(@winning_order.consumer_id).username
+  #               @deal.winning_consumer = @winning_consumer
+  #               @deal.save
+  #             end
+  #         else
+  #           flash[:notice] = 'Your bid and shipping address have been confirmed!'
+
+  #       else
+  #         format.html { render :edit }
+  #         format.json { render json: @deal.errors, status: :unprocessable_entity }
+  #       end
+  #     end
+  # end
 
   def index
     @orders = @consumer.orders.all
@@ -119,10 +152,10 @@ class OrdersController < ApplicationController
       threshold_met = false
     end
   end
-  def check_if_still_active
-    if @deal.orders.count >= @deal.threshold
-      flash[:notice] = 'You can no longer update the shipping address for this item. It has already been shipped to the winner.'
-      redirect_to :back
+  def check_if_winner_assigned
+    if @deal.winning_consumer
+      flash[:notice] = "You can no longer update the shipping address for this item. It has already been shipped to the winner. \n If you are the winner and want to change your address please contact customer service at CarlosHasCheapDeals@gmail.com"
+      redirect_to order_path(@order)
     else
     end
   end

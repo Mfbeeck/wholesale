@@ -12,11 +12,6 @@
   <% @name = @deal.name %>
 
 
-  <article>
-     <%= label_tag 'amount', 'To Pay', class: 'amount' %>
-     <%= label_tag 'amount', "$#{@amount}.00", class: 'amount-figure' %>
- </article>
-
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-email=<%= current_consumer.email %>
           data-name= "<%= @name%>"
@@ -24,7 +19,7 @@
           data-amount= <%= @amount * 100 %>
           data-description= "<%= @deal.description %>"
           data-bitcoin= false
-          data-image="/128x128.png">></script>
+          data-image="<%=@deal.url%>"></script>
 
 
   <% puts "**********************************************************" %>
