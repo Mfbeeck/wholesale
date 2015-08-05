@@ -35,13 +35,13 @@
     </li>
   </ul>
 
-    <p class="filter_type"><strong>Filter by:</strong></p>
+    <p class="filter_title"><strong>Filter by:</strong></p>
       <ul>
-        <li>
+        <li class = "filter_labels">
           <%= check_box_tag(:filter_type, "order_status") %>
           <%= label_tag(:filter_type, "Almost Complete") %>
         </li>
-        <li>
+        <li class = "filter_labels">
           <%= check_box_tag(:filter_type, "your_orders") %>
           <%= label_tag(:filter_type, "Your Bids") %>
         </li>
