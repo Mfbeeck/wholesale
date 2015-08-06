@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20150805220804) do
     t.integer  "quantity"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "Address"
     t.string   "address"
   end
 
