@@ -24,8 +24,8 @@
 			</li>
 
 			<li><% if current_consumer %>
-			<!-- <%= link_to "Username: #{current_consumer.username}", consumer_path(current_consumer)%> -->
-			&nbsp;&nbsp;
+			<span class= "points_link"><%= link_to "Points: #{current_consumer.total_points}", consumer_path(current_consumer)%></span>
+			&nbsp;
 			<%= link_to "Log out", logout_path, method: "delete" %>
 			<% else %>
 			<%= link_to 'Consumer Dashboard', new_consumer_session_path %>

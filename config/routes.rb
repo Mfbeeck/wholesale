@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   post 'orders/send_message' => 'orders#send_message'
 
+  post '/deals/:deal_id/create_points_order' => 'orders#create_points_order', as: :create_points_order
+
 
   resources :charges
 

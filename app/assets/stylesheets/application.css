@@ -162,3 +162,20 @@ a:visited {
 .display_deal {
 	text-align: center
 }
+
+.points_link{
+	border-right: solid black 1px;
+	padding-right: 1vw;
+}
+
+.navbar li{
+	height: 80%;
+}
+
+.pay_with_points{
+	display:inline-block;
+}
+
+.checkout_options{
+	margin-left: -2vw;
+}

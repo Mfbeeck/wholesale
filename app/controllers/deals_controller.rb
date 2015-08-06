@@ -8,7 +8,10 @@ class DealsController < ApplicationController
 
   def index
     @deals = Deal.all
-    # @deals = Deal.where("product_type = 'Electronics'") + Deal.where("product_type = 'Video Games'")
+    # @deals = Deal.filter_by(params)
+
+
+    # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
   end
 
   def new
