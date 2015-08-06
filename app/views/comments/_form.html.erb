@@ -1,5 +1,5 @@
 <%= form_for [ @deal, @comment ] do |f| %>
   <p class = "comment_input_box">
-    <%= f.text_area :body, :size => "40x2", :placeholder => "Join the conversation . . ." %>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.submit 'Comment Now' %>
+    <%= f.text_area :body, :size => "40x2", :maxlength => "78", :placeholder => "Join the conversation . . ." %>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.submit 'Comment Now' %>
   </p>
 <% end %>
