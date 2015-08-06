@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     resources :deals
   end
 
+  resources :deals do
+    resources :comments
+  end
+
 
   delete 'logout' => 'sessions#destroy'
 

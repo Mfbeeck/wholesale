@@ -2,6 +2,8 @@ class DealsController < ApplicationController
 
   before_action :set_deal, only: [:show, :destroy, :edit, :update]
   before_action :set_supplier, only: [:create, :edit, :update, :destroy]
+  before_action :set_array_of_current_consumer_orders_deal_ids, only: [:show]
+
   # before_action :set_consumer, only: [:show]
 
   def index
@@ -15,6 +17,8 @@ class DealsController < ApplicationController
 
   def show
     @order = Order.new
+    @comment = Comment.new
+    @comment.deal_id = @deal.id
     # @consumer = current_consumer
   end
 

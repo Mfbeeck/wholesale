@@ -40,5 +40,12 @@ class ApplicationController < ActionController::Base
     return false
   end
 
+  def set_array_of_current_consumer_orders_deal_ids
+    if current_consumer
+      @current_consumer_orders_deal_ids = current_consumer.orders(:select => :deal_id).collect(&:deal_id)
+    else
+    end
+  end
+
 
 end
