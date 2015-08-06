@@ -41,12 +41,22 @@
         <div class = "comments_box">
             <p>Buy a ticket and join the conversation below!</p>
         </div>
-            <%if @current_consumer_orders_deal_ids.include? @deal.id%> 
-                <ul class = "comments_list_if_not_on">
-                    <li class = "comments_title"><h3>Comments:</h3></li>
-                    <%= render partial: 'deals/comment', collection: @deal.comments %>
-                    <li class = "comment"><%= render 'comments/form' %></li>
-                </ul>
+            <% if current_consumer%>
+                <%if @current_consumer_orders_deal_ids.include? @deal.id%> 
+                    <ul class = "comments_list_if_not_on">
+                        <li class = "comments_title"><h3>Comments:</h3></li>
+                        <%= render partial: 'deals/comment', collection: @deal.comments %>
+                        <li class = "comment"><%= render 'comments/form' %></li>
+                    </ul>
+                <% else%>
+                    <ul class = "comments_list_if_not_on">
+                        <li class = "comments_title"><h3>Comments:</h3></li>
+                            <%= render partial: 'deals/comment', collection: @deal.comments %>
+                        <%if @deal.comments.exists?%>    
+                        <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
+                        <%end%>
+                    </ul>   
+                <%end%>
             <% else%>
                 <ul class = "comments_list_if_not_on">
                     <li class = "comments_title"><h3>Comments:</h3></li>

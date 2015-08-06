@@ -1,4 +1,4 @@
-<%if current_consumer.username == comment.author_name%>
+<% if current_consumer && current_consumer.username == comment.author_name%>
 	<li class = "comment_yours"><%= link_to image_tag("https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/delete.png", :size => "12x12"), [@deal,comment], method: :delete, :id => 'delete_comment_link' %>&nbsp;<strong><%= comment.author_name %>:</strong> <%= comment.body %><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class = "time"><%=time_ago_in_words(comment.created_at)%> ago</span>
 	</li>
