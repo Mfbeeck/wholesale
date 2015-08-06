@@ -1,9 +1,11 @@
+require 'twilio-ruby'
+
 class OrdersController < ApplicationController
   before_action :set_consumer, only: [:index, :create, :edit, :update, :destroy]
   before_action :set_order, only: [:edit, :update, :show]
   before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
-  # before_action :check_threshold, only: [:create]
+  skip_before_filter :verify_authenticity_token, only: [:send_message] #protect_from_forgery method disabled to allow Twilio to send text messages
 
   def new
   end
@@ -32,8 +34,6 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      #session[:supplier_id] = @supplier.id
-      #redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
       create_charge
       @current_consumer.total_points = (@current_consumer.total_points + 1)
       @current_consumer.save
@@ -43,11 +43,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  def create_charge
 
-    if @order.nil?
-      create
-    else
+
+  def create_charge
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -61,8 +59,6 @@ class OrdersController < ApplicationController
       :currency    => 'usd'
     )
     redirect_to edit_consumer_order_path(current_consumer, @order)
-
-    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -81,38 +77,12 @@ class OrdersController < ApplicationController
   #   puts message.to
   # end
 
+  #Method to send messages using Twilio
   def send_message
-
-    #skip_before_action :verify_authenticity_token
-
     @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-    message = @client.messages.create from: '+19283795466', to: '+17864839772', body: 'Learning to send SMS you are.'
+    message = @client.messages.create from: '+19283795466', to: '+17864839772', body: 'Decile a Andres que se ponga a trabajar, ois.'
     render plain: message.status
   end
-
-  # require 'rubygems'
-  # require 'twilio-ruby'
-  #
-  # account_sid = "ACxxxxxxxxxxxxxxxxxxxxxxxx"
-  # auth_token = "yyyyyyyyyyyyyyyyyyyyyyyyy"
-  # client = Twilio::REST::Client.new account_sid, auth_token
-  #
-  # from = "+14159998888" # Your Twilio number
-  #
-  # friends = {
-  # "+14153334444" => "Curious George",
-  # "+14155557775" => "Boots",
-  # "+14155551234" => "Virgil"
-  # }
-  # friends.each do |key, value|
-  #   client.account.messages.create(
-  #     :from => from,
-  #     :to => key,
-  #     :body => "Hey #{value}, Monkey party at 6PM. Bring Bananas!"
-  #   )
-  #   puts "Sent message to #{value}"
-  # end
-
 
   def update
     @deal = Deal.find(@order.deal_id)
@@ -188,10 +158,10 @@ class OrdersController < ApplicationController
   end
 
   def check_if_consumer_has_enough_points
-    if current_consumer.total_points >= @deal.price.to_i  
+    if current_consumer.total_points >= @deal.price.to_i
     else
-    raise  
-    end    
+    raise
+    end
   end
 
   def check_if_winner_assigned
