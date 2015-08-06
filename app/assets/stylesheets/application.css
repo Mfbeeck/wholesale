@@ -176,6 +176,16 @@ a:visited {
 	display:inline-block;
 }
 
+.points-order-button{
+	width: 10vw;
+	height: 5.5vh;
+	padding-top: .7vh;
+	color: white;
+	background-color: blue;
+	border: solid blue 1px;
+	border-radius: 5px;
+}
+
 .checkout_options{
 	margin-left: -2vw;
 }

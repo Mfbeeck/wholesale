@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create_points_order
+    @deal = Deal.find(params[:deal_id])
     @order = Order.new
     @order.consumer_id = current_consumer.id
     @order.deal_id = params[:deal_id]

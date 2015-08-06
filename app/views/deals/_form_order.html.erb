@@ -16,10 +16,13 @@
           data-image="<%=@deal.url%>"></script>
 <% end %>
 </li>
-
+&nbsp;&nbsp;
 <% if current_consumer.total_points >= @deal.price.to_i%>
-<link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css"></link>
 <li class = "pay_with_points">
-<%= button_to "Pay with Points", create_points_order_path(@deal), class: "stripe-button-el"%>
+<%= button_to "Pay with Points", create_points_order_path(@deal), class: "points-order-button"%>
 </li>
+<!-- 
+<form method = "post">
+<a href="/deals/<%#=@deal.id%>/create_points_order" class="stripe-connect"><span>Pay with Points</span></a>
+</form> -->
 <%end%>
