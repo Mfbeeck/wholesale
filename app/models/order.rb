@@ -45,6 +45,8 @@ class Order < ActiveRecord::Base
     puts "Sent message to #{value}"
   end
 
+  end
+
 
 
 
