@@ -31,10 +31,6 @@ class OrdersController < ApplicationController
       create
     else
 
-    p "***********************"
-    p "This is Charges Controller #{Deal.find(current_consumer.orders.last[:deal_id]).price}"
-    p "***********************"
-
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :card  => params[:stripeToken]
@@ -56,12 +52,12 @@ class OrdersController < ApplicationController
 
   def update
     @deal = Deal.find(@order.deal_id)
-    if !@deal.winning_consumer 
+    if !@deal.winning_consumer
       respond_to do |format|
         if @order.update(order_params)
           if @deal.orders.count >= @deal.threshold
             @array_of_orders = @deal.orders(:select => :id).collect(&:id)
-                  
+
             @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
             @deal.winning_order_id = @winning_order_id
 
@@ -75,7 +71,7 @@ class OrdersController < ApplicationController
           else
             format.html { redirect_to order_path(@order)}
             format.json { render :show, status: :ok, location: current_consumer }
-            flash[:notice] = 'Your bid and shipping address have been confirmed!' 
+            flash[:notice] = 'Your bid and shipping address have been confirmed!'
           end
         else
           format.html { render :edit }
@@ -85,31 +81,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  #     respond_to do |format|
-  #       if @order.update(order_params)
-  #         @deal = Deal.find(@order.deal_id)
-  #         format.html { redirect_to order_path(@order)}
-  #         format.json { render :show, status: :ok, location: current_consumer }
-  #         if @deal.orders.count >= @deal.threshold
-  #           if !@deal.winning_consumer
-  #               @array_of_orders = @deal.orders(:select => :id).collect(&:id)
-  #               @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
-  #               @deal.winning_order_id = @winning_order_id
-
-  #               @winning_order = Order.find(@deal.winning_order_id)
-  #               @winning_consumer = Consumer.find(@winning_order.consumer_id).username
-  #               @deal.winning_consumer = @winning_consumer
-  #               @deal.save
-  #             end
-  #         else
-  #           flash[:notice] = 'Your bid and shipping address have been confirmed!'
-
-  #       else
-  #         format.html { render :edit }
-  #         format.json { render json: @deal.errors, status: :unprocessable_entity }
-  #       end
-  #     end
-  # end
 
   def index
     @orders = @consumer.orders.all
