@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   post '/login_consumer' => 'sessions#login_consumer'
 
+  post 'orders/send_message' => 'orders#send_message'
+
+
   resources :charges
 
   resource :sessions
