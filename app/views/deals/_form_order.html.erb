@@ -1,9 +1,9 @@
-
 <h3>Click below to bid on a brand new <%= "#{@deal.name}" %> </h3>
 
-<%# form_tag create_charge_path(@deal) do %>
-<%= form_tag create_path(@deal) do %>
+<ul class = "checkout_options">
+<li class = "pay_with_points">
 
+<%= form_tag create_path(@deal) do %>
   <% @amount = @deal.price %>
   <% @name = @deal.name %>
 
@@ -16,3 +16,11 @@
           data-bitcoin= false
           data-image="<%=@deal.url%>"></script>
 <% end %>
+</li>
+
+<% if current_consumer.total_points >= @deal.price.to_i%>
+<link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css"></link>
+<li class = "pay_with_points">
+<%= button_to "Pay with Points", create_points_order_path(@deal), class: "stripe-button-el"%>
+</li>
+<%end%>

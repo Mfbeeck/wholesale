@@ -13,6 +13,7 @@ class ConsumersController < ApplicationController
 
 	def create
 		@consumer = Consumer.new(consumer_params)
+		@consumer.total_points = 0
 		if @consumer.save
 			session[:consumer_id] = @consumer.id
 			redirect_to consumer_path(@consumer), notice: "#{@consumer.username} was successfully created"

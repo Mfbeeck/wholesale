@@ -5,9 +5,30 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:edit, :update, :show]
   before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
+<<<<<<< HEAD
   skip_before_filter :verify_authenticity_token, only: [:send_message] #protect_from_forgery method disabled to allow Twilio to send text messages
+=======
+  # before_action :check_threshold, only: [:create]
+>>>>>>> 7f62e0c0f6d4bc67c60e5053d50e7b6476d0a7fd
 
   def new
+  end
+
+  def create_points_order
+    @order = Order.new
+    @order.consumer_id = current_consumer.id
+    @order.deal_id = params[:deal_id]
+    @order.address = current_consumer.address
+    if @order.save
+      #session[:supplier_id] = @supplier.id
+      #redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
+      @current_consumer.total_points = (@current_consumer.total_points - @deal.price.to_i)
+      @current_consumer.save
+      redirect_to edit_consumer_order_path(current_consumer, @order)
+    else
+      flash[:notice] = 'You have already bid on this deal!'
+      redirect_to :back
+    end
   end
 
   def create
@@ -16,7 +37,15 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
+<<<<<<< HEAD
         create_charge
+=======
+      #session[:supplier_id] = @supplier.id
+      #redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
+      create_charge
+      @current_consumer.total_points = (@current_consumer.total_points + 1)
+      @current_consumer.save
+>>>>>>> 7f62e0c0f6d4bc67c60e5053d50e7b6476d0a7fd
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
@@ -136,6 +165,14 @@ class OrdersController < ApplicationController
       threshold_met = false
     end
   end
+
+  def check_if_consumer_has_enough_points
+    if current_consumer.total_points >= @deal.price.to_i
+    else
+    raise
+    end
+  end
+
   def check_if_winner_assigned
     if @deal.winning_consumer
       flash[:notice] = "You can no longer update the shipping address for this item. It has already been shipped to the winner. \n If you are the winner and want to change your address please contact customer service at CarlosHasCheapDeals@gmail.com"
