@@ -1,7 +1,8 @@
 
 <h3>Click below to bid on a brand new <%= "#{@deal.name}" %> </h3>
 
-<%= form_tag create_charge_path(@deal) do %>
+<%# form_tag create_charge_path(@deal) do %>
+<%= form_tag create_path(@deal) do %>
 
   <% @amount = @deal.price %>
   <% @name = @deal.name %>
