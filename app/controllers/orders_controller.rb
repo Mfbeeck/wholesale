@@ -113,7 +113,6 @@ class OrdersController < ApplicationController
 
   def index
     @orders = @consumer.orders.all
-    # SPECIFY THE DEAL AS SUCH SO THAT WE CAN REFER TO EACH DEAL BY NAME @deal = Deal.find(order.deal_id)
   end
 
   def edit

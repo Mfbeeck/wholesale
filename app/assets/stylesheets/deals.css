@@ -6,10 +6,6 @@ body {
 	font-family: sans-serif, Muli;
 }
 
-.deal_show_container{
-
-}
-
 .deal_image_div{
 	float: left;
 	margin-left: 3vw;
@@ -66,18 +62,4 @@ body {
 	background-color: black;
 	border-radius: 2vw;
 	padding-right: 1vw;
-}
-
-.comments_box {
-	background-color: black;
-	clear: both;
-	width: 85%;
-	text-align: center;
-	margin: auto;
-	margin-left: 9vw;
-}
-
-.comments_box p {
-	color: white;
-	font-size: 1.4vw;
 }
