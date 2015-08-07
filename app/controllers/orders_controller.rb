@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
         @deal.threshold_reached = true
         @deal.save
       end
-      redirectsss_to edit_consumer_order_path(current_consumer, @order)
+      redirect_to edit_consumer_order_path(current_consumer, @order)
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
