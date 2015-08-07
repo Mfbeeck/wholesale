@@ -97,8 +97,10 @@ class OrdersController < ApplicationController
 
             @winning_order = Order.find(@deal.winning_order_id)
             @winning_consumer = Consumer.find(@winning_order.consumer_id).username
+            @deal.winners_shipping_address = @winning_order.address
             @deal.winning_consumer = @winning_consumer
             @deal.save
+            
             format.html { redirect_to order_path(@order)}
             format.json { render :show, status: :ok, location: current_consumer }
             flash[:notice] = 'Your bid and shipping address have been confirmed and a winner has been announced!'

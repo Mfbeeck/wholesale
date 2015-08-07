@@ -7,7 +7,7 @@
     <%= link_to '(Edit)', edit_consumer_order_path(current_consumer, @order)%>
     </li>
     <%else%>
-    <li><strong>Sorry, the lottery for the <%=@deal.name%> has ended and the winner was: <%=@deal.winning_consumer%></li>
+    <li><strong>The lottery for the <%=@deal.name%> has ended and the winner was: <%=@deal.winning_consumer%></li>
     <%end%>
     </ul>
 
