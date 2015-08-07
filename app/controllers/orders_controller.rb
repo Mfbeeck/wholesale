@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
   end
 
   #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
-  def send_message(message, consumer)
+  def send_message(consumer, message)
     @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     message = @client.messages.create(
       from: '+19283795466',
@@ -80,16 +80,16 @@ class OrdersController < ApplicationController
         if @order.update(order_params)
           if @deal.orders.count >= @deal.threshold
             @array_of_orders = @deal.orders(:select => :id).collect(&:id)
-
             @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
             @deal.winning_order_id = @winning_order_id
-
             @winning_order = Order.find(@deal.winning_order_id)
-            @winning_consumer = Consumer.find(@winning_order.consumer_id).username
+            @winning_consumer = Consumer.find(@winning_order.consumer_id)
+            @winning_username = @winning_consumer.username
             @deal.winners_shipping_address = @winning_order.address
-            @deal.winning_consumer = @winning_consumer
+            @deal.winning_consumer = @winning_username
             @deal.save
-            
+            send_message(@winning_consumer, "Parlayvous! You have just won this item: #{@deal.name}.")
+
             format.html { redirect_to order_path(@order)}
             format.json { render :show, status: :ok, location: current_consumer }
             flash[:notice] = 'Your bid and shipping address have been confirmed and a winner has been announced!'
