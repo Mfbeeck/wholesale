@@ -1,33 +1,32 @@
-<div class= "consumer_form">
-<%= form_for(@consumer) do |f| %>
-  <ul>
-  <% @consumer.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+<div class="consumer_form">
+  <%= form_for(@consumer) do |f| %>
+    <ul>
+      <% @consumer.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+    <p>
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
+    </p>
+    <p>
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :address %><br />
+      <%= f.text_field :address %>
+    </p>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.email_field :email %>
+    </p>
+    <p>
+    <%= f.submit %>
+    </p>
   <% end %>
-  </ul>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </p>
-
-  <p>
-  <%= f.submit %>
-  </p>
-<% end %> 
 </div>
