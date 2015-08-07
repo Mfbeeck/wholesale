@@ -17,13 +17,13 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      if @deal.orders.count >= @deal.threshold
+      @consumer.total_points = (@consumer.total_points - @deal.price.to_i)
+      @consumer.save #this just returns false, how do i get it to actually save
+      if @deal.has_exceeded_threshold?
         @deal.threshold_reached = true
         @deal.save
       end
-      @consumerss.total_points = (@consumer.total_points - @deal.price.to_i)
-      @consumer.save
-      redirect_to edit_consumer_order_path(current_consumer, @order)
+      redirectsss_to edit_consumer_order_path(current_consumer, @order)
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
@@ -38,12 +38,12 @@ class OrdersController < ApplicationController
     @order.address = current_consumer.address
     if @order.save
       create_charge
-      if @deal.orders.count >= @deal.threshold
+      @consumer.total_points = (@consumer.total_points + 1)
+      @consumer.save
+      if @deal.has_exceeded_threshold?
         @deal.threshold_reached = true
         @deal.save
       end
-      @consumer.total_points = (@consumer.total_points + 1)
-      @consumer.save
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
@@ -72,7 +72,7 @@ class OrdersController < ApplicationController
   end
 
   #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
-  def send_message(message, consumer)
+  def send_message(consumer, message)
     @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     message = @client.messages.create(
       from: '+19283795466',
@@ -89,15 +89,15 @@ class OrdersController < ApplicationController
         if @order.update(order_params)
           if @deal.orders.count >= @deal.threshold
             @array_of_orders = @deal.orders(:select => :id).collect(&:id)
-
             @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
             @deal.winning_order_id = @winning_order_id
-
             @winning_order = Order.find(@deal.winning_order_id)
-            @winning_consumer = Consumer.find(@winning_order.consumer_id).username
+            @winning_consumer = Consumer.find(@winning_order.consumer_id)
+            @winning_username = @winning_consumer.username
             @deal.winners_shipping_address = @winning_order.address
-            @deal.winning_consumer = @winning_consumer
+            @deal.winning_consumer = @winning_username
             @deal.save
+            send_message(@winning_consumer, "Parlayvous! You have just won this item: #{@deal.name}.")
 
             format.html { redirect_to order_path(@order)}
             format.json { render :show, status: :ok, location: current_consumer }

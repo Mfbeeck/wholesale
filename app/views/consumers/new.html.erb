@@ -1,45 +1,4 @@
-<h1>Create a New Consumer/Signup Page</h1>
-<div class= "consumer_form">
-<%= form_for(@consumer) do |f| %>
-  <ul>
-  <% @consumer.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username, placeholder: "Username" %>
-  </p>
-  <p>
-     <%= f.label :password %><br />
-     <%= f.password_field :password, placeholder: "Password" %>
-  </p>
-  <p>
-     <%= f.label "Confirm Password" %><br />
-     <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, placeholder: "Email Address" %>
-  </p>
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, placeholder: "First Name" %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address, placeholder: "Address" %>
-  </p>
-  <p>
-     <%= f.label "Phone Number" %><br />
-     <%= f.telephone_field :phone_number, placeholder: "Phone Number" %>
-  </p>
-  <p>
-  <%= f.submit %>
-  </p>
-<% end %> 
+<div class= "login-registration-form">
+<h1>Signup for ParlayVous</h1>
+<%= render 'consumers/form' %>
 </div>

@@ -5,3 +5,72 @@ li {
 body {
 	font-family: sans-serif, Muli;
 }
+
+.about-section{
+	background-image: linear-gradient(top, #2274A5 0%, white 200%);
+  	background-image: -webkit-linear-gradient(top, #2274A5 0%, white 200%);
+	background-image: -moz-linear-gradient(top, white 0%, #2274A5 200%);
+ 	background-image: linear-gradient(top, #2274A5 0%, white 200%);
+ 	width: 90%;
+ 	margin: auto;
+ 	border-radius: 5px;
+ 	padding-bottom: 20px;
+
+}
+
+.about-section h1{
+	color: white;
+	width: 90%;
+	font-size: 3vw;
+	padding-top: .4vw;
+	border-bottom: dashed #2274A5 2px;
+	color: white;
+	margin-left: 1.6vw;
+}
+.about-section li{
+	color: white;
+	margin-left: 2vw;	
+	padding-left: 2vw;
+	padding-top: -10vw;	
+}
+
+#description-title{
+	font-size: 3vw;
+	font-weight: bold;
+}
+
+#description-end{
+	margin-left: 3.3vw;
+	width: 82%;
+	font-size: 3vw;
+	font-weight: bold;
+	border-bottom: dashed #5092BA 2px;
+	padding-top: 2vw;
+}
+
+#description-contact-title{
+	font-size: 3vw;
+	font-weight: bold;
+	text-align: center;
+	margin-left: -11vw;
+}
+
+.about-section h1{
+	text-align: center
+}
+
+#description{
+	width: 80%;
+	text-align: justify;
+	padding-left: 4vw;
+	margin-top: 0px;
+	font-size: 1vw;
+}
+
+#description-contact{
+	width: 80%;
+	text-align: justify;
+	padding-left: 2.7vw;
+	font-size: 1vw;	
+
+}

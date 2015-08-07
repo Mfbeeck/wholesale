@@ -66,7 +66,7 @@ body {
 	z-index: 9999;
 	margin-left: auto;
 	margin-right: auto;
-	height: 6vh;
+	height: 35px;
 	/*position: fixed;*/
 
 }
@@ -75,6 +75,13 @@ body {
 	background-color: white;
 	font-family: 'Hind', sans-serif;
 }
+
+/*#root_body{
+	background-image: linear-gradient(top, white 30%, #2274A5 400%);
+  	background-image: -webkit-linear-gradient(top, white 30%, #2274A5 600%);
+	background-image: -moz-linear-gradient(top, white 30%, #2274A5 400%);
+ 	background-image: linear-gradient(top, white 30%, #2274A5 400%);
+}*/
 
 
 .deals_list {
@@ -88,8 +95,13 @@ body {
 	padding-bottom: 1vh;
 	width: 67vw;
 	margin-left: auto ;
-  margin-right: 1.5vw;
+  	margin-right: 1.5vw;
 	float:right;
+	background-image: linear-gradient(top, white 30%, #2274A5 400%);
+  	background-image: -webkit-linear-gradient(top, white 30%, #2274A5 600%);
+	background-image: -moz-linear-gradient(top, white 30%, #2274A5 400%);
+ 	background-image: linear-gradient(top, white 30%, #2274A5 400%);
+ 	border-radius: 10px;
 }
 
 .consumer_column1 {
@@ -128,7 +140,8 @@ body {
 }
 
 .image_product a:hover {
-	border-bottom: solid #FFBF00 3px;
+	border-bottom: solid #FFBF00 2px;
+	opacity: .8;
 
 }
 
@@ -148,7 +161,9 @@ a:visited {
 	color: white;
 	display: inline;
 	margin-right: 23vw;
-	margin-left: 3vw;
+	margin-left: 2vw;
+	height: 80%;
+
 }
 
 .navbar a:hover {
@@ -166,10 +181,6 @@ a:visited {
 .points_link{
 	border-right: solid black 1px;
 	padding-right: 1vw;
-}
-
-.navbar li{
-	height: 80%;
 }
 
 .pay_with_points{
