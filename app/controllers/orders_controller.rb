@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class OrdersController < ApplicationController
-  before_action :set_consumer, only: [:index, :create, :edit, :update, :destroy]
+  before_action :set_consumer, only: [:index, :create, :create_points_order, :edit, :update, :destroy]
   before_action :set_order, only: [:edit, :update, :show]
   before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
@@ -18,9 +18,13 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      @current_consumer.total_points = (@current_consumer.total_points - @deal.price.to_i)
-      @current_consumer.save
-      redirect_to edit_consumer_order_path(current_consumer, @order)
+      @consumer.total_points = (@consumer.total_points - @deal.price.to_i)
+      @consumer.save #this just returns false, how do i get it to actually save
+      if @deal.has_exceeded_threshold?
+        @deal.threshold_reached = true
+        @deal.save
+      end
+      redirectsss_to edit_consumer_order_path(current_consumer, @order)
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
@@ -29,14 +33,19 @@ class OrdersController < ApplicationController
 
   #This method creates an order after a logged in consumer enters his/her credit card and clicks on the Stripe "Pay" button.
   def create
+    @deal = Deal.find(params[:deal_id])
     @order = Order.new
     @order.consumer_id = current_consumer.id
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      create_charge #This line calls the create_charge method if the order is created succesfully.
-      @current_consumer.total_points = (@current_consumer.total_points + 1) #Every consumer is given a point every time they buy a lottery ticket with their card.
-      @current_consumer.save
+      create_charge
+      @consumer.total_points = (@consumer.total_points + 1)
+      @consumer.save
+      if @deal.has_exceeded_threshold?
+        @deal.threshold_reached = true
+        @deal.save
+      end
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back

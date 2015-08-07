@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   get '/new_consumer_session' => 'sessions#new_consumer'
 
+  get '/suppliers/about' => 'suppliers#about'
+
+
   get '/deals/:id/checkout' => 'deals#checkout', as: :checkout
 
   post '/deals/:deal_id/orders/new' => 'orders#create', as: :create

@@ -12,5 +12,9 @@ class Deal < ActiveRecord::Base
     end
   end
 
+  def has_exceeded_threshold?
+    orders.count >= threshold
+  end
+
   private
 end

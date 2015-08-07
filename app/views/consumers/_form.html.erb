@@ -1,32 +1,43 @@
-<div class="consumer_form">
-  <%= form_for(@consumer) do |f| %>
-    <ul>
-      <% @consumer.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-    <p>
-      <%= f.label :username %><br />
-      <%= f.text_field :username %>
-    </p>
-    <p>
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name %>
-    </p>
-    <p>
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name %>
-    </p>
-    <p>
-      <%= f.label :address %><br />
-      <%= f.text_field :address %>
-    </p>
-    <p>
-      <%= f.label :email %><br />
-      <%= f.email_field :email %>
-    </p>
-    <p>
-    <%= f.submit %>
-    </p>
+<<<<<<< HEAD
+<%= form_for(@consumer) do |f| %>
+  <ul>
+  <% @consumer.errors.full_messages.each do |error| %>
+    <li style="color:red"><%= error %></li>
   <% end %>
-</div>
+  <p>
+    <%= f.label :username, class: 'required'%><br />
+    <%= f.text_field :username %>
+  </p>
+  <li>
+     <%= f.label :password, class: 'required'%><br />
+     <%= f.password_field :password %>
+  </li>
+  <li>
+     <%= f.label "Confirm Password", class: 'required'%><br />
+     <%= f.password_field :password_confirmation %>
+  </li>
+  <li>
+    <%= f.label :email, class: 'required'%><br />
+    <%= f.email_field :email%>
+  </li>
+  <li>
+    <%= f.label :first_name, class: 'required'%><br />
+    <%= f.text_field :first_name%>
+  </li>
+  <li>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name%>
+  </li>
+  <li>
+    <%= f.label :address, class: 'required'%><br />
+    <%= f.text_field :address%>
+  </li>
+  <li>
+     <%= f.label "Phone Number", class: 'required'%><br />
+     <%= f.telephone_field :phone_number%>
+  </li>
+  <p>
+  <%= f.submit %>
+  </p>
+    </ul>
+<% end %> 

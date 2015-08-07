@@ -7,7 +7,7 @@ class DealsController < ApplicationController
   # before_action :set_consumer, only: [:show]
 
   def index
-    @deals = Deal.all
+    @deals = Deal.where(threshold_reached: false)
     # @deals = Deal.filter_by(params)
 
 
@@ -42,6 +42,7 @@ class DealsController < ApplicationController
 
   def create
     @deal = @supplier.deals.new(deal_params)
+    @deal.threshold_reached = false
 
     if @deal.save
       #session[:supplier_id] = @supplier.id
@@ -77,7 +78,7 @@ class DealsController < ApplicationController
   end
 
   def deal_params
-    params.require(:deal).permit(:name, :description, :price, :threshold, :start_date, :end_date, :suplier_id, :url, :product_type, :winning_order_id, :winners_shipping_address)
+    params.require(:deal).permit(:name, :description, :price, :threshold, :start_date, :end_date, :suplier_id, :url, :product_type, :winning_order_id, :winners_shipping_address, :winners_shipping_address, :threshold_reached)
   end
 
 end
