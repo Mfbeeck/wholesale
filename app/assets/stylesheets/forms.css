@@ -1,0 +1,46 @@
+.login-registration-form{
+	text-align: center;
+	background-image: linear-gradient(top, #2274A5 0%, white 200%);
+  	background-image: -webkit-linear-gradient(top, #2274A5 0%, white 200%);
+	background-image: -moz-linear-gradient(top, white 0%, #2274A5 200%);
+ 	background-image: linear-gradient(top, #2274A5 0%, white 200%);
+/*	background: rgba(34, 116, 165, 1);
+*/	width: 30%;
+	margin: auto;
+/*	border: solid #0047B2 1px;
+*/	border-radius: 6px;
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+
+.login-registration-form h1{
+	font-size: 2vw;
+	color: white;
+	margin-top: 2vh;
+	margin-bottom: 1vh;
+
+}
+
+.login-registration-form form{
+	margin-left: -3vw;
+	color: white;
+}
+
+.login-registration-form p{
+	margin-top: 4vh;
+	margin-bottom: .5vh;
+}
+
+.login-registration-form label{
+	font-size: 1.2vw;
+}
+
+label.required{
+	margin-left: .5vw;
+}
+
+label.required:after {
+    content: " *";
+    color: white;
+    font-size: 1vw;
+}

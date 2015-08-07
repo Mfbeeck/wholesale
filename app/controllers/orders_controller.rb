@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class OrdersController < ApplicationController
-  before_action :set_consumer, only: [:index, :create, :edit, :update, :destroy]
+  before_action :set_consumer, only: [:index, :create, :create_points_order, :edit, :update, :destroy]
   before_action :set_order, only: [:edit, :update, :show]
   before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def new
   end
 
-  #This method creates an order after a logged in consumer on the "Pay With Points" button.
+  #This method creates an order after a logged in consumer clicks on the "Pay With Points" button.
   def create_points_order
     @deal = Deal.find(params[:deal_id])
     @order = Order.new
@@ -18,8 +18,12 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      @current_consumer.total_points = (@current_consumer.total_points - @deal.price.to_i)
-      @current_consumer.save
+      @consumer.total_points = (@consumer.total_points - @deal.price.to_i)
+      @consumer.save #this just returns false, how do i get it to actually save
+      if @deal.has_exceeded_threshold?
+        @deal.threshold_reached = true
+        @deal.save
+      end
       redirect_to edit_consumer_order_path(current_consumer, @order)
     else
       flash[:notice] = 'You have already bid on this deal!'
@@ -29,14 +33,19 @@ class OrdersController < ApplicationController
 
   #This method creates an order after a logged in consumer enters his/her credit card and clicks on the Stripe "Pay" button.
   def create
+    @deal = Deal.find(params[:deal_id])
     @order = Order.new
     @order.consumer_id = current_consumer.id
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      create_charge #This method creates a Stripe charge if the order is created succesfully.
-      @current_consumer.total_points = (@current_consumer.total_points + 1)
-      @current_consumer.save
+      create_charge
+      @consumer.total_points = (@consumer.total_points + 1)
+      @consumer.save
+      if @deal.has_exceeded_threshold?
+        @deal.threshold_reached = true
+        @deal.save
+      end
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
@@ -76,7 +85,6 @@ class OrdersController < ApplicationController
     puts "****************************************************************************"
     puts message.status
     puts "****************************************************************************"
-    #render plain: message.status
   end
 
   def update
@@ -100,11 +108,11 @@ class OrdersController < ApplicationController
             consumer_identification = Order.find(order_num).consumer_id
             consumer = Consumer.find(consumer_identification)
             if consumer.phone_number.length == 10
-            if consumer_identification == @winner.id
-              message = "Parlayvous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}."
-            else
-              message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
-            end
+              if consumer_identification == @winner.id
+                message = "Parlayvous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}."
+              else
+                message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
+              end
             send_message(consumer, message)
             end
           end
@@ -136,8 +144,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if session[:consumer_id] == @order.consumer_id
-    else
+    unless session[:consumer_id] == @order.consumer_id
       redirect_to orders_path
     end
   end
@@ -172,9 +179,8 @@ class OrdersController < ApplicationController
   end
 
   def check_if_consumer_has_enough_points
-    if current_consumer.total_points >= @deal.price.to_i
-    else
-    raise
+    unless current_consumer.total_points >= @deal.price.to_i
+      raise
     end
   end
 
@@ -182,7 +188,6 @@ class OrdersController < ApplicationController
     if @deal.winning_consumer
       flash[:notice] = "You can no longer update the shipping address for this item. It has already been shipped to the winner. \n If you are the winner and want to change your address please contact customer service at CarlosHasCheapDeals@gmail.com"
       redirect_to order_path(@order)
-    else
     end
   end
 

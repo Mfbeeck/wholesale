@@ -12,7 +12,7 @@
 <div id="navbar_container">
 	<nav class="navbar">
 		<ul>
-      <li><%= link_to 'Deals Page (Home)', deals_path %></li>
+      <li><%= link_to 'Home', deals_path %>&nbsp;&nbsp;<%= link_to 'About', suppliers_about_path %></li>
 
 			<li><% if current_supplier %>
 			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
@@ -34,14 +34,11 @@
     </ul>
 	</nav>
 </div>
-
 <div>
 <p id="notice"><%= notice %></p>
 </div>
 
 <%= yield %>
-
-
 
 
 </body>
