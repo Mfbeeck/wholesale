@@ -17,8 +17,6 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      #session[:supplier_id] = @supplier.id
-      #redirect_to checkout_path(Deal.find(@order[:deal_id]))#, notice: "Order was successfully created"
       @current_consumer.total_points = (@current_consumer.total_points - @deal.price.to_i)
       @current_consumer.save
       redirect_to edit_consumer_order_path(current_consumer, @order)
@@ -44,9 +42,8 @@ class OrdersController < ApplicationController
   end
 
 
-
+  #Method to create Stripe charge immediatly after an order has been created using the "create" method.
   def create_charge
-
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :card  => params[:stripeToken]
@@ -65,22 +62,14 @@ class OrdersController < ApplicationController
     redirect_to charges_path
   end
 
-  # def send_message(message)
-  #   @profile = current_user.profile
-  #   twilio_number = ENV["TWILIO_NUMBER"]
-  #   @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-  #   message = @client.account.messages.create(
-  #     :from => twilio_number,
-  #     :to => @profile.country_code+@profile.phone,
-  #     :body => message
-  #   )
-  #   puts message.to
-  # end
-
-  #Method to send messages using Twilio
-  def send_message
+  #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
+  def send_message(message, consumer)
     @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-    message = @client.messages.create from: '+19283795466', to: '+17864839772', body: 'Decile a Andres que se ponga a trabajar, ois.'
+    message = @client.messages.create(
+      from: '+19283795466',
+      to: consumer.phone_number,
+      body: message
+      )
     render plain: message.status
   end
 
@@ -123,11 +112,9 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
   end
 
   def show
-    @order = Order.find(params[:id])
     if session[:consumer_id] == @order.consumer_id
     else
       redirect_to orders_path
@@ -142,15 +129,19 @@ class OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   end
+
   def set_deal
     @deal = Deal.find(@order.deal_id)
   end
+
   def set_consumer
     @consumer = current_consumer
   end
+
   def order_params
     params.require(:order).permit(:consumer_id, :deal_id, :quantity, :address)
   end
+
   def check_threshold
     if @deal.orders.count >= @deal.threshold
       threshold_met = true
