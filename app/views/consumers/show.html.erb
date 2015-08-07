@@ -1,4 +1,6 @@
 <div class="consumers_list">
+	<div id="consumer_info"
+
 	<ul id="Consumers">
 		<h2>Hi, <%= @consumer.first_name %></h2>
 		<li>You are logged in as: <strong><%= @consumer.username%></strong></li>
@@ -12,6 +14,7 @@
 	<div id="links_consumer">
 		<%= link_to "Update Your Information", edit_consumer_path(@consumer)%> |
 		<%= link_to "Check Your Orders", consumer_orders_path(@consumer)%><br>
+	</div>
 	</div>
 	<%#= link_to "Delete User", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete the user \"#{@user.email}?\""} %>
 	<br>
