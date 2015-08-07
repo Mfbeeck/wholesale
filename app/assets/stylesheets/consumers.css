@@ -1,0 +1,51 @@
+.consumer_edit_form {
+  background-image: linear-gradient(top, #E83F6F 0%, white 200%);
+  background-image: -webkit-linear-gradient(top, #E83F6F 0%, white 200%);
+  background-image: -moz-linear-gradient(top, white 0%, #E83F6F 200%);
+  background-image: linear-gradient(top, #E83F6F 0%, white 200%);
+  width: 25vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2px;
+  border-radius: 5px;
+  color: white;
+  /*background-color: #E83F6F;*/
+  text-align: center;
+}
+
+#update_title {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2vw;
+}
+
+.consumer_edit_form a {
+  color: white;
+  text-decoration: underline;
+}
+
+.consumer_edit_form a:visited {
+  color: white;
+  text-decoration: underline;
+}
+
+.consumer_edit_form a:hover {
+  color: #2274A5;
+  text-decoration: underline;
+}
+
+#links_consumer {
+  padding-left: 40px;
+}
+
+#links_consumer a {
+  font-size: 1vw;
+}
+
+#links_consumer a:hover {
+  color: #FFBF00;
+}
+
+#links_consumer a:visited {
+  color: #2274A5;
+}

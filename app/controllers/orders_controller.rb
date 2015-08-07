@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   def new
   end
 
+  #This method creates an order after a logged in consumer clicks on the "Pay With Points" button.
   def create_points_order
     @deal = Deal.find(params[:deal_id])
     @order = Order.new
@@ -30,6 +31,7 @@ class OrdersController < ApplicationController
     end
   end
 
+  #This method creates an order after a logged in consumer enters his/her credit card and clicks on the Stripe "Pay" button.
   def create
     @deal = Deal.find(params[:deal_id])
     @order = Order.new
@@ -61,7 +63,7 @@ class OrdersController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => Deal.find(current_consumer.orders.last[:deal_id]).price.to_i * 100,
-      :description => 'Wholesale\'s Customer',
+      :description => 'Prlayvous Ticket',
       :currency    => 'usd'
     )
     redirect_to edit_consumer_order_path(current_consumer, @order)
@@ -75,43 +77,61 @@ class OrdersController < ApplicationController
   def send_message(consumer, message)
     @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     message = @client.messages.create(
+      #twilio_number = ENV["TWILIO_NUMBER"]
       from: '+19283795466',
-      to: consumer.phone_number,
+      to: '+1' + consumer.phone_number,
       body: message
       )
-    render plain: message.status
+    puts "****************************************************************************"
+    puts message.status
+    puts "****************************************************************************"
   end
 
   def update
     @deal = Deal.find(@order.deal_id)
     if !@deal.winning_consumer
-      respond_to do |format|
-        if @order.update(order_params)
-          if @deal.orders.count >= @deal.threshold
-            @array_of_orders = @deal.orders(:select => :id).collect(&:id)
-            @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
-            @deal.winning_order_id = @winning_order_id
-            @winning_order = Order.find(@deal.winning_order_id)
-            @winning_consumer = Consumer.find(@winning_order.consumer_id)
-            @winning_username = @winning_consumer.username
-            @deal.winners_shipping_address = @winning_order.address
-            @deal.winning_consumer = @winning_username
-            @deal.save
-            send_message(@winning_consumer, "Parlayvous! You have just won this item: #{@deal.name}.")
+      #respond_to do |format|
+      if @order.update(order_params)
+        if @deal.orders.count >= @deal.threshold
+          @array_of_orders = @deal.orders(:select => :id).collect(&:id)
+          @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
+          @deal.winning_order_id = @winning_order_id
+          @winning_order = Order.find(@deal.winning_order_id)
+          @winner = Consumer.find(@winning_order.consumer_id)
+          @winning_username = @winner.username
+          @deal.winners_shipping_address = @winning_order.address
+          @deal.winning_consumer = @winning_username
+          @deal.save
 
-            format.html { redirect_to order_path(@order)}
-            format.json { render :show, status: :ok, location: current_consumer }
-            flash[:notice] = 'Your bid and shipping address have been confirmed and a winner has been announced!'
-          else
-            format.html { redirect_to order_path(@order)}
-            format.json { render :show, status: :ok, location: current_consumer }
-            flash[:notice] = 'Your bid and shipping address have been confirmed!'
+          #This part of the code sends different text messages to the winner and the others.
+          @array_of_orders.each do |order_num|
+            consumer_identification = Order.find(order_num).consumer_id
+            consumer = Consumer.find(consumer_identification)
+            if consumer.phone_number.length == 10
+              if consumer_identification == @winner.id
+                message = "Parlayvous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}."
+              else
+                message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
+              end
+            send_message(consumer, message)
+            end
           end
+          redirect_to order_path(@order)
+          #format.html { redirect_to order_path(@order)}
+          #format.json { render :show, status: :ok, location: current_consumer }
+          flash[:notice] = 'Your bid and shipping address have been confirmed and a winner has been announced!'
         else
-          format.html { render :edit }
-          format.json { render json: @deal.errors, status: :unprocessable_entity }
+          redirect_to order_path(@order)
+          #format.html { redirect_to order_path(@order)}
+          #format.json { render :show, status: :ok, location: current_consumer }
+          flash[:notice] = 'Your bid and shipping address have been confirmed!'
         end
+      else
+        render :edit
+        # format.html { render :edit }
+        # format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
+      #end
     end
   end
 
@@ -124,8 +144,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if session[:consumer_id] == @order.consumer_id
-    else
+    unless session[:consumer_id] == @order.consumer_id
       redirect_to orders_path
     end
   end
@@ -160,9 +179,8 @@ class OrdersController < ApplicationController
   end
 
   def check_if_consumer_has_enough_points
-    if current_consumer.total_points >= @deal.price.to_i
-    else
-    raise
+    unless current_consumer.total_points >= @deal.price.to_i
+      raise
     end
   end
 
@@ -170,7 +188,6 @@ class OrdersController < ApplicationController
     if @deal.winning_consumer
       flash[:notice] = "You can no longer update the shipping address for this item. It has already been shipped to the winner. \n If you are the winner and want to change your address please contact customer service at CarlosHasCheapDeals@gmail.com"
       redirect_to order_path(@order)
-    else
     end
   end
 
