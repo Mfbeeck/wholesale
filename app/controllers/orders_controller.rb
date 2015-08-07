@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 
 class OrdersController < ApplicationController
-  before_action :set_consumer, only: [:index, :create, :edit, :update, :destroy]
+  before_action :set_consumer, only: [:index, :create, :create_points_order, :edit, :update, :destroy]
   before_action :set_order, only: [:edit, :update, :show]
   before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
@@ -17,8 +17,12 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      @current_consumer.total_points = (@current_consumer.total_points - @deal.price.to_i)
-      @current_consumer.save
+      if @deal.orders.count >= @deal.threshold
+        @deal.threshold_reached = true
+        @deal.save
+      end
+      @consumerss.total_points = (@consumer.total_points - @deal.price.to_i)
+      @consumer.save
       redirect_to edit_consumer_order_path(current_consumer, @order)
     else
       flash[:notice] = 'You have already bid on this deal!'
@@ -27,14 +31,19 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @deal = Deal.find(params[:deal_id])
     @order = Order.new
     @order.consumer_id = current_consumer.id
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
       create_charge
-      @current_consumer.total_points = (@current_consumer.total_points + 1)
-      @current_consumer.save
+      if @deal.orders.count >= @deal.threshold
+        @deal.threshold_reached = true
+        @deal.save
+      end
+      @consumer.total_points = (@consumer.total_points + 1)
+      @consumer.save
     else
       flash[:notice] = 'You have already bid on this deal!'
       redirect_to :back
@@ -89,7 +98,7 @@ class OrdersController < ApplicationController
             @deal.winners_shipping_address = @winning_order.address
             @deal.winning_consumer = @winning_consumer
             @deal.save
-            
+
             format.html { redirect_to order_path(@order)}
             format.json { render :show, status: :ok, location: current_consumer }
             flash[:notice] = 'Your bid and shipping address have been confirmed and a winner has been announced!'
