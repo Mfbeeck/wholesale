@@ -31,8 +31,8 @@
       <%= f.text_field :address %>
     </p>
     <p>
-      <%= f.label :phone_number, class: 'required', id: 'phone_us' %><br />
-      <%= f.telephone_field :phone_number %>
+      <%= f.label :phone_number, class: 'required'%><br />
+      <%= f.telephone_field :phone_number, id: 'phone_us'  %>
     </p>
     <p>
       <%= f.submit %>
