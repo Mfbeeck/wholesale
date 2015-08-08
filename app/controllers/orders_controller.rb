@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      create_charge
+      create_charge #This method must be called ONLY if an order has already been created, otherwise it will break.
       @consumer.total_points = (@consumer.total_points + 1)
       @consumer.save
       if @deal.has_exceeded_threshold?
@@ -78,6 +78,7 @@ class OrdersController < ApplicationController
     if !@deal.winning_consumer
       #respond_to do |format|
       if @order.update(order_params)
+
         if @deal.orders.count >= @deal.threshold
           @array_of_orders = @deal.orders(:select => :id).collect(&:id)
           @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people

@@ -4,6 +4,6 @@ class Consumer < ActiveRecord::Base
 	has_many :comments
 	validates :username, :email, :first_name, :address, :phone_number, presence: true
 	validates :username, :email, uniqueness: true
-	validates :password, length: { minimum: 7 }
+	validates :password, presence: true, on: :create
 	validates :phone_number, length: { is: 10 }
 end

@@ -8,13 +8,19 @@
     <li><strong>Shipping Address:</strong> <%= @order.address%>
       <span id="updateaddress"><%= link_to 'Update your address', edit_consumer_order_path(current_consumer, @order)%></span>
     </li>
-    <br>
-    <li><%= link_to 'Back to Orders', orders_path(current_consumer) %></li>
-  <% else %>
-    <li id="order_info_won"><strong>The lottery for the <%= @deal.name %> has ended. The winner was: <%= @deal.winning_consumer %></li>
-    <li class="order_info" id="order_info_won"><%= link_to 'Back to Orders', orders_path(current_consumer) %></li>
-  <% end %>
-  </ul>
-  <br><br>
-  </div>
+    <%elsif @deal.winning_consumer.nil?%>
+    <li><strong>Product: </strong><%= link_to "#{@deal.name}", @deal %></li>
+    <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
+    <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %> (<%= @deal.threshold - @deal.orders.count%> Remaining)</li>
+    <li><strong>Shipping Address:</strong> <%= @order.address%>
+    <%= link_to '(Edit)', edit_consumer_order_path(current_consumer, @order)%>
+    </li>
+    <%else%>
+    <li><strong>The lottery for the <%=@deal.name%> has ended and the winner was: <%=@deal.winning_consumer%></li>
+    <%end%>
+    </ul>
+
+<%= link_to 'Back To Orders', orders_path(current_consumer)%>
+
+</div>
 </div>
