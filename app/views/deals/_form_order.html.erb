@@ -1,30 +1,29 @@
 <h3>Click below to bid on a brand new <%= "#{@deal.name}" %> </h3>
 
 <ul class = "checkout_options">
-<li class = "pay_with_points">
+  <li class = "pay_with_points">
+    <%= form_tag create_path(@deal) do %>
+      <% @amount = @deal.price %>
+      <% @name = @deal.name %>
 
-<%= form_tag create_path(@deal) do %>
-  <% @amount = @deal.price %>
-  <% @name = @deal.name %>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-email=<%= current_consumer.email %>
-          data-name= "<%= @name%>"
-          data-key= "<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount= <%= @amount * 100 %>
-          data-description= "<%= @deal.description %>"
-          data-bitcoin= false
-          data-image="<%=@deal.url%>"></script>
-<% end %>
-</li>
-&nbsp;&nbsp;
-<% if current_consumer.total_points >= @deal.price.to_i%>
-<li class = "pay_with_points">
-<%= button_to "Pay with Points", create_points_order_path(@deal), class: "points-order-button"%>
-</li>
-<!-- 
-<form method = "post">
-<a href="/deals/<%#=@deal.id%>/create_points_order" class="stripe-connect"><span>Pay with Points</span></a>
-</form> -->
-<%end%>
-
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-email=<%= current_consumer.email %>
+              data-name= "<%= @name%>"
+              data-key= "<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-amount= <%= @amount * 100 %>
+              data-description= "<%= @deal.description %>"
+              data-bitcoin= false
+              data-image="<%=@deal.url%>"></script>
+    <% end %>
+  </li>
+  &nbsp;&nbsp;
+  <% if current_consumer.total_points >= @deal.price.to_i%>
+    <li class = "pay_with_points">
+      <%= button_to "Pay with Points", create_points_order_path(@deal), class: "points-order-button"%>
+    </li>
+  <!--
+  <form method = "post">
+  <a href="/deals/<%#=@deal.id%>/create_points_order" class="stripe-connect"><span>Pay with Points</span></a>
+  </form> -->
+  <%end%>
+</ul>

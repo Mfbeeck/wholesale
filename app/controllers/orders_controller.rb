@@ -73,20 +73,6 @@ class OrdersController < ApplicationController
     redirect_to charges_path
   end
 
-  #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
-  def send_message(consumer, message)
-    @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-    twilio_number = ENV["TWILIO_NUMBER"]
-    message = @client.messages.create(
-      from: twilio_number,
-      to: '+1' + consumer.phone_number,
-      body: message
-      )
-    puts "****************************************************************************"
-    puts message.status
-    puts "****************************************************************************"
-  end
-
   def update
     @deal = Deal.find(@order.deal_id)
     if !@deal.winning_consumer
@@ -109,7 +95,7 @@ class OrdersController < ApplicationController
             consumer = Consumer.find(consumer_identification)
             if consumer.phone_number.length == 10
               if consumer_identification == @winner.id
-                message = "Parlayvous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}."
+                message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}."
               else
                 message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
               end
@@ -134,7 +120,6 @@ class OrdersController < ApplicationController
       #end
     end
   end
-
 
   def index
     @orders = @consumer.orders.all

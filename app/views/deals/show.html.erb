@@ -1,68 +1,68 @@
-    <div class = "deal_details_div">
+<div class = "deal_details_div">
+  <br>
+  <div class = "deal_image_div">
+    <ul class = "deal_image_ul">
+      <li><%= image_tag @deal.url, :class => "deal_show_image_tag" %></li>
+    </ul>
+  </div>
+  <div class = "deal_description_div">
+    <ul class = "deal_description_display">
+      <h1><%= @deal.name %></h1>
+      <li><strong>Bid Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <span class = "points_price"><%=@deal.price.to_i%> Points</span></li>
+      <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
+      <% if @deal.orders.count < @deal.threshold %>
+        <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
+      <% end %>
+      <li><strong>Description:</strong> <%= @deal.description %></li>
+
+      <% if !@deal.is_threshold_reached %>
+        <% if current_consumer %>
+          <% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
+            <%= render 'form_order' %>
+          <% else %>
+            <h3>You are already betting on this deal. Good luck!</h3>
+          <% end %>
+        <% else %>
+          <p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
+        <% end %>
+      <% else %>
+        <div class = "threshold_notice">
+          <h3>This deal has ended and the winner was: <%=@deal.winning_consumer%></h3>
+        </div>
+      <%end%>
+    </ul>
         <br>
-        <div class = "deal_image_div">
-            <ul class = "deal_image_ul">
-            <li><%= image_tag @deal.url, :class => "deal_show_image_tag" %></li>
-            </ul>
-        </div>
+        <br>
+        <br>
+  </div>
+</div>
 
-        <div class = "deal_description_div">
-            <ul class = "deal_description_display">
-                <h1><%= @deal.name %></h1>
-                <li><strong>Bid Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <span class = "points_price"><%=@deal.price.to_i%> Points</span></li>
-                <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
-                <% if @deal.orders.count < @deal.threshold %>
-                <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
-                <% end %>
-                <li><strong>Description:</strong> <%= @deal.description %></li>
+<div class = "comments_box">
+  <p>Buy a ticket and join the conversation below!</p>
+</div>
 
-                <%if !@deal.is_threshold_reached%>
-                  <% if current_consumer %>
-                    <% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
-                        <%= render 'form_order' %>
-                    <% else %>
-                    <h3>You are already betting on this deal. Good luck!</h3>
-                    <% end %>
-                  <% else %>
-                    <p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
-                  <% end %>
-                <% else %>
-                  <div class = "threshold_notice">
-                    <h3>This deal has ended and the winner was: <%=@deal.winning_consumer%></h3>
-
-                  </div>
-                <%end%>
-            </ul>
-            <br>
-            <br>
-            <br>
-        </div> 
-    </div>
-        <div class = "comments_box">
-            <p>Buy a ticket and join the conversation below!</p>
-        </div>
-            <% if current_consumer%>
-                <%if @current_consumer_orders_deal_ids.include? @deal.id%> 
-                    <ul class = "comments_list_if_not_on">
-                        <li class = "comments_title"><h3>Comments:</h3></li>
-                        <%= render partial: 'deals/comment', collection: @deal.comments %>
-                        <li class = "comment"><%= render 'comments/form' %></li>
-                    </ul>
-                <% else%>
-                    <ul class = "comments_list_if_not_on">
-                        <li class = "comments_title"><h3>Comments:</h3></li>
-                            <%= render partial: 'deals/comment', collection: @deal.comments %>
-                        <%if @deal.comments.exists?%>    
-                        <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
-                        <%end%>
-                    </ul>   
-                <%end%>
-            <% else%>
-                <ul class = "comments_list_if_not_on">
-                    <li class = "comments_title"><h3>Comments:</h3></li>
-                        <%= render partial: 'deals/comment', collection: @deal.comments %>
-                    <%if @deal.comments.exists?%>    
-                    <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
-                    <%end%>
-                </ul>
-            <%end%>
+<% if current_consumer%>
+  <%if @current_consumer_orders_deal_ids.include? @deal.id%>
+    <ul class = "comments_list_if_not_on">
+      <li class = "comments_title"><h3>Comments:</h3></li>
+      <%= render partial: 'deals/comment', collection: @deal.comments %>
+      <li class = "comment"><%= render 'comments/form' %></li>
+    </ul>
+  <% else%>
+    <ul class = "comments_list_if_not_on">
+      <li class = "comments_title"><h3>Comments:</h3></li>
+      <%= render partial: 'deals/comment', collection: @deal.comments %>
+      <%if @deal.comments.exists?%>
+        <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
+      <%end%>
+    </ul>
+  <%end%>
+<% else%>
+  <ul class = "comments_list_if_not_on">
+    <li class = "comments_title"><h3>Comments:</h3></li>
+    <%= render partial: 'deals/comment', collection: @deal.comments %>
+    <%if @deal.comments.exists?%>
+      <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
+    <%end%>
+  </ul>
+<%end%>
