@@ -6,7 +6,7 @@ function ready() {
 
   $('#new_comment').on("ajax:success", function(evt, data) {
     console.log("ajax");
-  //   // window.location.reload();
+    window.location.reload();
   //   $('#task_name').val('');
   //   $('body').append(data);
   // }).on('ajax:error', function() {

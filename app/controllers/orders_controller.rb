@@ -77,8 +77,8 @@ class OrdersController < ApplicationController
   def send_message(consumer, message)
     @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     message = @client.messages.create(
-      #twilio_number = ENV["TWILIO_NUMBER"]
-      from: '+19283795466',
+    twilio_number = ENV["TWILIO_NUMBER"]
+      from: twilio_number,
       to: '+1' + consumer.phone_number,
       body: message
       )
