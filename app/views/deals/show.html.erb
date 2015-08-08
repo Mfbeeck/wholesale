@@ -9,7 +9,7 @@
         <div class = "deal_description_div">
             <ul class = "deal_description_display">
                 <h1><%= @deal.name %></h1>
-                <li><strong>Bid Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <span class = "points_price"><%=@deal.price.to_i%> Points</span></li>
+                <li><strong>Bid Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <span class = "points_price"><%=pluralize(@deal.price.to_i, 'Point')%></span></li>
                 <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
                 <% if @deal.orders.count < @deal.threshold %>
                 <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
@@ -45,13 +45,13 @@
                 <%if @current_consumer_orders_deal_ids.include? @deal.id%> 
                     <ul class = "comments_list_if_not_on">
                         <li class = "comments_title"><h3>Comments:</h3></li>
-                        <%= render partial: 'deals/comment', collection: @deal.comments %>
+                        <span class = "ajax-comment"><%= render partial: 'deals/comment', collection: @deal.comments %></span>
                         <li class = "comment"><%= render 'comments/form' %></li>
                     </ul>
                 <% else%>
                     <ul class = "comments_list_if_not_on">
                         <li class = "comments_title"><h3>Comments:</h3></li>
-                            <%= render partial: 'deals/comment', collection: @deal.comments %>
+                           <span class = "ajax-comment"><%= render partial: 'deals/comment', collection: @deal.comments %></span>
                         <%if @deal.comments.exists?%>    
                         <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
                         <%end%>
@@ -60,7 +60,7 @@
             <% else%>
                 <ul class = "comments_list_if_not_on">
                     <li class = "comments_title"><h3>Comments:</h3></li>
-                        <%= render partial: 'deals/comment', collection: @deal.comments %>
+                        <span class = "ajax-comment"><%= render partial: 'deals/comment', collection: @deal.comments %></span>
                     <%if @deal.comments.exists?%>    
                     <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
                     <%end%>

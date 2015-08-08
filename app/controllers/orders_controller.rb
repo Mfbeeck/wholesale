@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @order.address = current_consumer.address
     if @order.save
       @consumer.total_points = (@consumer.total_points - @deal.price.to_i)
-      @consumer.save #this just returns false, how do i get it to actually save
+      @consumer.save!
       if @deal.has_exceeded_threshold?
         @deal.threshold_reached = true
         @deal.save
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     if @order.save
       create_charge
       @consumer.total_points = (@consumer.total_points + 1)
-      @consumer.save
+      @consumer.save!
       if @deal.has_exceeded_threshold?
         @deal.threshold_reached = true
         @deal.save
@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => Deal.find(current_consumer.orders.last[:deal_id]).price.to_i * 100,
-      :description => 'Prlayvous Ticket',
+      :description => 'Parlayvous Ticket',
       :currency    => 'usd'
     )
     redirect_to edit_consumer_order_path(current_consumer, @order)
