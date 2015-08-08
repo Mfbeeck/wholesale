@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   resources :deals do
     resources :orders
+    resources :comments
   end
 
   resources :consumers do
@@ -39,11 +40,6 @@ Rails.application.routes.draw do
   resources :suppliers do
     resources :deals
   end
-
-  resources :deals do
-    resources :comments
-  end
-
 
   delete 'logout' => 'sessions#destroy'
 
