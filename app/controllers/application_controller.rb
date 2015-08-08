@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
+  #This method will be called in the orders_controllers update.
   def send_message(consumer, message)
     @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     twilio_number = ENV["TWILIO_NUMBER"]
