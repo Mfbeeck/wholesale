@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  	before_action :set_array_of_current_consumer_orders_deal_ids, only: [:create]
+	before_action :set_array_of_current_consumer_orders_deal_ids, only: [:create]
 
 
 	def create

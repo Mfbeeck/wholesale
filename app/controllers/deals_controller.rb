@@ -9,8 +9,6 @@ class DealsController < ApplicationController
   def index
     @deals = Deal.where(threshold_reached: false)
     # @deals = Deal.filter_by(params)
-
-
     # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
   end
 

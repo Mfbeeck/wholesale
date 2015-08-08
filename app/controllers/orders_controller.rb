@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @order.address = current_consumer.address
     if @order.save
       @consumer.total_points = (@consumer.total_points - @deal.price.to_i)
-      @consumer.save!
+      @consumer.save #this just returns false, how do i get it to actually save
       if @deal.has_exceeded_threshold?
         @deal.threshold_reached = true
         @deal.save
@@ -39,9 +39,9 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      create_charge
+      create_charge #This method must be called ONLY if an order has already been created, otherwise it will break.
       @consumer.total_points = (@consumer.total_points + 1)
-      @consumer.save!
+      @consumer.save
       if @deal.has_exceeded_threshold?
         @deal.threshold_reached = true
         @deal.save
@@ -63,9 +63,11 @@ class OrdersController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => Deal.find(current_consumer.orders.last[:deal_id]).price.to_i * 100,
-      :description => 'Parlayvous Ticket',
+      :description => 'Prlayvous Ticket',
       :currency    => 'usd'
     )
+
+    #After paying with Stripe, consumers are prompt to confirm their shipping address.
     redirect_to edit_consumer_order_path(current_consumer, @order)
 
   rescue Stripe::CardError => e
@@ -73,25 +75,15 @@ class OrdersController < ApplicationController
     redirect_to charges_path
   end
 
-  #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
-  def send_message(consumer, message)
-    @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-    message = @client.messages.create(
-    twilio_number = ENV["TWILIO_NUMBER"]
-      from: twilio_number,
-      to: '+1' + consumer.phone_number,
-      body: message
-      )
-    puts "****************************************************************************"
-    puts message.status
-    puts "****************************************************************************"
-  end
-
   def update
     @deal = Deal.find(@order.deal_id)
     if !@deal.winning_consumer
       #respond_to do |format|
       if @order.update(order_params)
+        #A text message is sent to consumers to confirm they are now participating in a lottery.
+        #The send_message method is defined in the application_controller send_message(consumer, message).
+        new_participant = Consumer.find(@order.consumer_id)
+        send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
         if @deal.orders.count >= @deal.threshold
           @array_of_orders = @deal.orders(:select => :id).collect(&:id)
           @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
@@ -109,7 +101,7 @@ class OrdersController < ApplicationController
             consumer = Consumer.find(consumer_identification)
             if consumer.phone_number.length == 10
               if consumer_identification == @winner.id
-                message = "Parlayvous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}."
+                message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
               else
                 message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
               end
@@ -134,7 +126,6 @@ class OrdersController < ApplicationController
       #end
     end
   end
-
 
   def index
     @orders = @consumer.orders.all
