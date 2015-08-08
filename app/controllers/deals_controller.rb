@@ -22,6 +22,11 @@ class DealsController < ApplicationController
     @order = Order.new
     @comment = Comment.new
     @comment.deal_id = @deal.id
+    @xhr_comment = Comment.find(params[:comment]) if (params[:comment]).present?
+
+    if request.xhr?
+        render 'comments/_comment', layout: false, locals: { comment: @xhr_comment }
+    end
     # @consumer = current_consumer
   end
 
