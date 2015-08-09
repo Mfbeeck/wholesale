@@ -17,6 +17,7 @@
 /tmp
 
 
+.env
 */.DS_Store
 app/controllers/.DS_Store
 app/views/consumers/.DS_Store
