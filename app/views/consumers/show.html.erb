@@ -9,11 +9,12 @@
 		<% end %>
 		<li>You are logged in as: <strong><%= @consumer.username%></strong></li>
 		<li>Email: <%= @consumer.email %></li>
+		<% if !@consumer.phone_number.blank? %>
 		<li>
-			<% if @consumer.phone_number %>
-				Phone Number: <%= number_to_phone(@consumer.phone_number) %>
-			<%end%>
+			Phone Number: <%= number_to_phone(@consumer.phone_number) %>
 		</li>
+		<%end%>
+
 		<li>
 			Shipping Address: <%= @consumer.address %>
 		</li>
