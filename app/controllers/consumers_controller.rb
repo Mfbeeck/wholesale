@@ -13,6 +13,7 @@ class ConsumersController < ApplicationController
 
 	def create
 		@consumer = Consumer.new(consumer_params)
+	    @consumer.texts = false
 		@consumer.total_points = 0
 		@consumer.phone_number = @consumer.phone_number.split('').select{|x| x.to_i.to_s == x.to_s}.join
 		# Sends email to user when user is created.
@@ -45,7 +46,7 @@ class ConsumersController < ApplicationController
 
 	private
 	def consumer_params
-		params.require(:consumer).permit(:username, :email, :password, :password_confirmation, :address, :first_name, :last_name, :created_at, :updated_at, :phone_number)
+		params.require(:consumer).permit(:username, :email, :password, :password_confirmation, :address, :first_name, :last_name, :created_at, :updated_at, :phone_number, :texts)
 	end
 
 end

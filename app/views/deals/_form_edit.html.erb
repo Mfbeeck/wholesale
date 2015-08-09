@@ -1,4 +1,15 @@
 <%= form_for [@supplier, @deal] do |f| %>
+  <% if @deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deal.errors.count, "error") %> prevented this item from being updated:</h2>
+
+      <ul>
+      <% @deal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p><%= f.label :name %></p>
   <p><%= f.text_field :name, placeholder: "Deal Name" %></p>
   
@@ -9,6 +20,6 @@
   <p><%= f.text_area :description, placeholder: "Description" %></p>
   
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Update', :class => 'edit_deal' %>
   </p>
 <% end %>

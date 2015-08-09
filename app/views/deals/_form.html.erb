@@ -1,7 +1,7 @@
 <%= form_for [@supplier, @deal] do |f| %>
   <% if @deal.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this department from being saved:</h2>
+      <h2><%= pluralize(@deal.errors.count, "error") %> prevented the creation of this item:</h2>
 
       <ul>
       <% @deal.errors.full_messages.each do |message| %>
@@ -12,24 +12,30 @@
   <% end %>
 
   <p>
+    <%= f.label :name, class: 'required'%>
     <%= f.text_field :name, placeholder: "Deal Name" %>
   </p>
   <p>
+    <%= f.label "Image Url", class: 'required'%>
     <%= f.text_field :url, placeholder: "Image Url" %>
   </p>
   <p>
+    <%= f.label :description, class: 'required'%>
     <%= f.text_area :description, placeholder: "Description" %>
   </p>
   <p>
+    <%= f.label "Price per Ticket", class: 'required'%>
     <%= f.number_field :price, placeholder: "Ticket Price", step: 1.0 %>
   </p>
   <p>
+    <%= f.label "Participant Limit", class: 'required'%>
     <%= f.number_field :threshold, placeholder: "Participant Number", step: 1 %>
   </p>
-   <p>
+  <p>
+    <%= f.label :product_type, class: 'required'%>
     <%= f.select :product_type, [ 'Electronics', 'Video Games'], :prompt => 'Product Type' %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Create Lottery', :class => 'submit_deal' %>
   </p>
 <% end %>

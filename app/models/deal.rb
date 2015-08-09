@@ -3,6 +3,8 @@ class Deal < ActiveRecord::Base
   has_many :orders
   has_many :comments
 
+  validates :name, :url, :description, :price, :threshold, :product_type, presence: true
+
 
    def is_threshold_reached
     if orders.count >= threshold
