@@ -14,11 +14,12 @@ class ConsumersController < ApplicationController
 	def create
 		@consumer = Consumer.new(consumer_params)
 		@consumer.total_points = 0
+		@consumer.phone_number = @consumer.phone_number.split('').select{|x| x.to_i.to_s == x.to_s}.join
 		# Sends email to user when user is created.
-    CompanyMailer.welcome_email(@consumer).deliver
+    # CompanyMailer.welcome_email(@consumer).deliver
 		if @consumer.save
 			session[:consumer_id] = @consumer.id
-			UserMailer.welcome_email(@consumer).deliver_later
+			# UserMailer.welcome_email(@consumer).deliver_later
 			redirect_to consumer_path(@consumer), notice: "#{@consumer.username} was successfully created"
 		else
 			render action: "new"
