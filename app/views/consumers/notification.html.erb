@@ -11,7 +11,7 @@
       <li id = "info-image-for-texts"><%= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
         Text Updates?
         <%= f.check_box :texts %>
-        <span id="popup">This allows us to message you the results of lotteries you have entered in real time.</span>
+        <span id="popup">This allows us to notify you when you enter a lottery and send you the results of lotteries you have entered upon completion.</span>
       </li>
     </p>
     <p><%= f.label :email%>:&nbsp;&nbsp;<%= f.email_field :email, id: 'email'  %><br />
