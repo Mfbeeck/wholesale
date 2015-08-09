@@ -22,6 +22,7 @@
 	<div id="links_consumer">
 		<%= link_to "Update Your Information", edit_consumer_path(@consumer) %> |
 		<%= link_to "Check Your Orders", consumer_orders_path(@consumer) %><br>
+		<%= link_to "Notification Settings", consumers_notification_path %><br>
 	</div>
 	</div>
 	<%#= link_to "Delete User", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete the user \"#{@user.email}?\""} %>

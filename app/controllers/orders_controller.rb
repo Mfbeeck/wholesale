@@ -1,4 +1,4 @@
-require 'twilio-ruby'
+ require 'twilio-ruby'
 
 class OrdersController < ApplicationController
   before_action :set_consumer, only: [:index, :create, :create_points_order, :edit, :update, :destroy]

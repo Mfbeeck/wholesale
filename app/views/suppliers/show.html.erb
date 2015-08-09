@@ -2,7 +2,8 @@
 <ul>
   <li><strong>Username:</strong> <%= @supplier.username %></li>
   <li><strong>E-mail:</strong> <%= @supplier.email %></li>
-  <li><%= link_to 'Edit Supplier', edit_supplier_path(@supplier) %></li>
+  <li><strong>HQ Address:</strong> <%= @supplier.address %></li>
+  <li><%= link_to 'Edit Supplier Info', edit_supplier_path(@supplier) %></li>
 
 </ul>
 

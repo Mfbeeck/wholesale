@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'consumers/notification'
+
   root 'deals#index'
 
   get '/new_supplier_session' => 'sessions#new_supplier'
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
   get '/new_consumer_session' => 'sessions#new_consumer'
 
   get '/suppliers/about' => 'suppliers#about'
-
 
   get '/deals/:id/checkout' => 'deals#checkout', as: :checkout
 

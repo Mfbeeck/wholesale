@@ -1,11 +1,11 @@
 <%= form_for @supplier do |f| %>
-
-  <p><%= f.label :username %></p>
-  <p><%= f.text_field :username, placeholder: "Username" %></p>
+  <% @supplier.errors.full_messages.each do |error| %>
+    <li style="color:red"><%= error %></li>
+  <% end %>
   <p><%= f.label :email %></p>
   <p><%= f.text_field :email, placeholder: "E-mail" %></p>
-  <p><%= f.label "Shipping Address" %></p>
+  <p><%= f.label "HQ Address" %></p>
   <p><%= f.text_field :address, placeholder: "Shipping Address" %></p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit 'Update' %></p>
 
 <% end %>

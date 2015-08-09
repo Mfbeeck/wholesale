@@ -33,13 +33,7 @@
     <p>
       <%= f.label :phone_number%><br />
       <%= f.telephone_field :phone_number, id: 'phone'  %>
-      <li id = "info-image-for-texts"><%= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
-        Text Updates?
-        <%= f.check_box :texts %>
-        <span id="popup">This allows us to send you text notifications in real time with the results of the lotteries you have entered.</span>
-      </li>
     </p>
-
     <p>
       <%= f.submit %>
     </p>
