@@ -1,4 +1,4 @@
-<%= form_for [ @deal, @comment ] do |f| %>
+<%= form_for [@deal, @comment], remote: true do |f| %>
   <p class = "comment_input_box">
     <%= f.text_area :body, :size => "40x2", :maxlength => "78", :placeholder => "Join the conversation . . ." %>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.submit 'Comment Now' %>
   </p>

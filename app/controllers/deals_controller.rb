@@ -9,8 +9,6 @@ class DealsController < ApplicationController
   def index
     @deals = Deal.where(threshold_reached: false)
     # @deals = Deal.filter_by(params)
-
-
     # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
   end
 
@@ -22,6 +20,11 @@ class DealsController < ApplicationController
     @order = Order.new
     @comment = Comment.new
     @comment.deal_id = @deal.id
+    @xhr_comment = Comment.find(params[:comment]) if (params[:comment]).present?
+
+    if request.xhr?
+        render 'comments/_comment', layout: false, locals: { comment: @xhr_comment }
+    end
     # @consumer = current_consumer
   end
 

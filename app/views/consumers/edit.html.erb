@@ -7,15 +7,19 @@
       <% end %>
     </ul>
     <p>
-      <%= f.label :username %><br />
-      <%= f.text_field :username %>
-    </p>
-    <p>
-      <%= f.label :email %><br />
+      <%= f.label :email, class: 'required' %><br />
       <%= f.email_field :email %>
     </p>
     <p>
-      <%= f.label :first_name %><br />
+     <%= f.label :password, class: 'required'%><br />
+     <%= f.password_field :password %>
+    </p
+    <p>
+     <%= f.label "Confirm Password", class: 'required'%><br />
+     <%= f.password_field :password_confirmation %>
+    </p>
+    <p>
+      <%= f.label :first_name, class: 'required' %><br />
       <%= f.text_field :first_name %>
     </p>
     <p>
@@ -23,12 +27,12 @@
       <%= f.text_field :last_name %>
     </p>
     <p>
-      <%= f.label :address %><br />
+      <%= f.label :address, class: 'required' %><br />
       <%= f.text_field :address %>
     </p>
     <p>
-      <%= f.label :phone_number %><br />
-      <%= f.telephone_field :phone_number %>
+      <%= f.label :phone_number, class: 'required'%><br />
+      <%= f.telephone_field :phone_number, id: 'phone_us'  %>
     </p>
     <p>
       <%= f.submit %>
