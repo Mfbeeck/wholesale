@@ -15,7 +15,7 @@ class ConsumersController < ApplicationController
 		@consumer = Consumer.new(consumer_params)
 		@consumer.total_points = 0
 		# Sends email to user when user is created.
-    ExampleMailer.welcome_email(@consumer).deliver
+    CompanyMailer.welcome_email(@consumer).deliver
 		if @consumer.save
 			session[:consumer_id] = @consumer.id
 			UserMailer.welcome_email(@consumer).deliver_later
