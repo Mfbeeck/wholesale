@@ -16,13 +16,14 @@ function ready() {
 
 }
 
-$(document).on('ready page:load', ready);
-
 $(document).ready(function(){
 
 	$('.delete_comment_link').click(function(){
 		var parent = $(this).parent();
 		parent.remove();
+    // THIS ISNT WORKING WITHOUT A REFRESH WHEN YOU CREATE AN ITEM, I BELIEVE BECAUSE OF THE DELETE ERROR
 	})
 
 });
+
+$(document).on('ready page:load', ready);

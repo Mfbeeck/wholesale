@@ -15,7 +15,7 @@
       <% end %>
       <li><strong>Description:</strong> <%= @deal.description %></li>
       <div class="fb-like" 
-        data-href="http://powerful-reef-4780.herokuapp.com/deals/<%=@deal.id%>" 
+        data-href="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>" 
         data-layout="standard" 
         data-action="like" 
         data-show-faces="true">
@@ -75,7 +75,9 @@
     <%end%>
 </div>
 
-<meta property="og:url"                content="http://powerful-reef-4780.herokuapp.com/deals/<%=@deal.id%>" />
+<meta property="og:url"                content="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>" />
 <meta property="og:title"              content="ParlayVous:" />
 <meta property="og:description"        content="Feeling Lucky? Check out ParlayVous to enter a lottery for an <%=@deal.name%>" />
 <meta property="og:image"              content="<%=@deal.url%>" />
+
+
