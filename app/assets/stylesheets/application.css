@@ -37,6 +37,10 @@ body {
 .filters {
 	float: left;
 	padding-bottom: 25vh;
+	border-radius: 5px;
+	border: solid black 1px;
+	width: 100%;
+	margin-top: 0vh;
 }
 
 .deal_block {
@@ -95,13 +99,6 @@ body {
 	border-bottom: 2px solid #2274A5;
 	width: 60%;
 	/*text-align: center;*/
-}
-
-.filters {
-	border-radius: 5px;
-	border: solid black 1px;
-	width: 100%;
-	margin-top: 3vh;
 }
 
 .image_product a:hover {
@@ -166,4 +163,62 @@ a {
 }
 
 .pluginButtonContainer{
+}
+
+#info-image{
+	width: .7vw;
+}
+
+.info-image-for-texts:hover {
+/*	cursor: pointer;
+*/}
+
+
+#info-image-for-texts {
+    position:relative;
+    cursor:help;
+    font-size: 1.2vw;
+}
+    #info-image-for-texts #popup {
+        position:absolute;
+        width:16vw;
+/*        margin-right:-22vw;  width + left/right padding 
+*/        margin-top: -1.9vw;
+        padding:1.2vw;
+        color:#fff;
+        font-size: .8vw;
+        background:gray;
+        -webkit-box-shadow:2px 2px 5px #aaa;
+           -moz-box-shadow:2px 2px 5px #aaa;
+                box-shadow:2px 2px 5px #aaa;
+        opacity:0;
+        -webkit-transition:opacity 250ms ease-out;
+           -moz-transition:opacity 250ms ease-out;
+            -ms-transition:opacity 250ms ease-out;
+             -o-transition:opacity 250ms ease-out;
+                transition:opacity 250ms ease-out;
+    }
+        /* <http://css-tricks.com/snippets/css/css-triangle/> */
+        #info-image-for-texts #popup:before {
+            content:' '; /* Must have content to display */
+            position:absolute;
+			  -webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
+			  -moz-transform: rotate(180deg);        /* FF */
+			  -o-transform: rotate(180deg);          /* Opera */
+			  -ms-transform: rotate(180deg);         /* IE9 */
+			  transform: rotate(180deg);             /* W3C compliant browsers */
+
+            top:50%;
+            right:-1.7vw; /* 2 x border width */
+            margin-top:-1vw; /* - border width */
+            border:.65vw solid transparent;
+            border-right-color:#333;
+        }
+        #info-image-for-texts:hover #popup {
+            left:-13.3vw;
+            opacity:1;
+        }
+
+.consumer_edit_form p {
+	font-size: 1.3vw;
 }

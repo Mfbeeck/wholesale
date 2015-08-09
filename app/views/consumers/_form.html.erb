@@ -5,31 +5,31 @@
   <% end %>
   <p>
     <%= f.label :username, class: 'required'%><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username, placeholder: "Username" %>
   </p>
   <li>
      <%= f.label :password, class: 'required'%><br />
-     <%= f.password_field :password %>
+     <%= f.password_field :password, placeholder: "Password" %>
   </li>
   <li>
      <%= f.label "Confirm Password", class: 'required'%><br />
-     <%= f.password_field :password_confirmation %>
+     <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
   </li>
   <li>
     <%= f.label :email, class: 'required'%><br />
-    <%= f.email_field :email%>
+    <%= f.email_field :email, placeholder: "E-mail"%>
   </li>
   <li>
     <%= f.label :first_name, class: 'required'%><br />
-    <%= f.text_field :first_name%>
+    <%= f.text_field :first_name, placeholder: "First Name"%>
   </li>
   <li>
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name%>
+    <%= f.text_field :last_name, placeholder: "Last Name"%>
   </li>
   <li>
     <%= f.label :address, class: 'required'%><br />
-    <%= f.text_field :address%>
+    <%= f.text_field :address, placeholder: "Address"%>
   </li>
   <li>
      <%= f.label "Phone Number", class: 'required'%><br />

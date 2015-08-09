@@ -65,20 +65,21 @@
 }
 
 .consumer_column {
-	background-color: white;
-	margin-left: 1.5vw;
-	padding-top: 0vh;
-	margin-top: 0.5vh;
-	padding-bottom: 0vh;
-	width: 27vw;
+  background-color: white;
+  float:left;
+  margin-left: 1.5vw;
   margin-right: auto ;
-	float:left;
-	position: fixed;
+  margin-top: 1vh;
+  padding-top: 0vh;
+  position: fixed;
+  width: 27vw;
+
 }
 
 .consumer_column1 {
 	border-radius: 5px;
 	border: solid black 1px;
+  margin-bottom: 2vh;
 }
 
 #consumer_profile p {
