@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body {
+        font-family: sans-serif;
+        font-size: 1.5vw;
+        color: #4E4E56;
+      }
+
+      span {
+        color: #2274A5;
+      }
+
+      a {
+        color: #E83F6F;
+      }
+
+      a:hover {
+        color: #FFBF00;
+      }
+
+      #parlayvous {
+        color: #32936F;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2><span id="parlayvous">ParlayVous!</span> You just won this item: <%= @deal.name %>.</h2>
+    <p>
+      Your prize will be shipped to the following address: <%= @deal.winners_shipping_address %>.
+      <br>
+    </p>
+    <p>
+      If you would like to have this item shipped to a different address, contact consumer service at parlay.vous@gmail.com
+    </p>
+    <p>Thanks for participating. Keep winning!</p>
+    <p>The <span id="parlayvous">ParleyVous</span> Team</p>
+  </body>
+</html>
