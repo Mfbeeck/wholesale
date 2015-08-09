@@ -13,7 +13,7 @@ class ConsumersController < ApplicationController
 
 	def create
 		@consumer = Consumer.new(consumer_params)
-	  @consumer.texts = false
+	  	@consumer.texts = false
 		@consumer.total_points = 0
 		@consumer.phone_number = @consumer.phone_number.split('').select{|x| x.to_i.to_s == x.to_s}.join
 		# Sends email to user when user is created.
@@ -36,8 +36,11 @@ class ConsumersController < ApplicationController
 	def update
 		@consumer = Consumer.find(params[:id])
 		@consumer.update(consumer_params)
-		redirect_to consumer_path(@consumer)
-		flash.notice = "The consumer \"#{@consumer.username}\" was successfully updated."
+		if @consumer.save
+			redirect_to consumer_path(@consumer), notice: "#{@consumer.username} was successfully created"
+		else
+			render action: "edit"
+		end
 	end
 
 	def show
