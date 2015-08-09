@@ -18,7 +18,7 @@ class ConsumersController < ApplicationController
     # CompanyMailer.welcome_email(@consumer).deliver
 		if @consumer.save
 			session[:consumer_id] = @consumer.id
-			CompanyMailer.welcome_email(@consumer).deliver_later
+			CompanyMailer.welcome_email(@consumer).deliver
 			redirect_to consumer_path(@consumer), notice: "#{@consumer.username} was successfully created"
 		else
 			render action: "new"
