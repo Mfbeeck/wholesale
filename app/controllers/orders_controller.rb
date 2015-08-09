@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
         #A text message is sent to consumers to confirm they are now participating in a lottery.
         #The send_message method is defined in the application_controller send_message(consumer, message).
         new_participant = Consumer.find(@order.consumer_id)
-        if consumer.phone_number.length == 10 && consumer.texts
+        if new_participant.phone_number.length == 10 && new_participant.texts
           send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
         end
         if @deal.orders.count >= @deal.threshold
