@@ -10,13 +10,13 @@
       </ul>
     </div>
   <% end %>
-  <p><%= f.label :name %></p>
+  <p><%= f.label :name, class: 'required' %></p>
   <p><%= f.text_field :name, placeholder: "Deal Name" %></p>
   
-  <p><%= f.label "Image Url" %></p>
+  <p><%= f.label "Image Url", class: 'required' %></p>
   <p><%= f.text_field :url, placeholder: "Image Url" %></p>
 
-  <p><%= f.label :description %></p>
+  <p><%= f.label :description, class: 'required' %></p>
   <p><%= f.text_area :description, placeholder: "Description" %></p>
   
   <p>

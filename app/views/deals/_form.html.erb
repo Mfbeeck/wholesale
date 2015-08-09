@@ -12,27 +12,27 @@
   <% end %>
 
   <p>
-    <%= f.label :name, class: 'required'%>
+    <%= f.label :name, class: 'required'%><br/>
     <%= f.text_field :name, placeholder: "Deal Name" %>
   </p>
   <p>
-    <%= f.label "Image Url", class: 'required'%>
+    <%= f.label "Image Url", class: 'required'%><br/>
     <%= f.text_field :url, placeholder: "Image Url" %>
   </p>
   <p>
-    <%= f.label :description, class: 'required'%>
+    <%= f.label :description, class: 'required'%><br/>
     <%= f.text_area :description, placeholder: "Description" %>
   </p>
   <p>
-    <%= f.label "Price per Ticket", class: 'required'%>
+    <%= f.label "Price per Ticket", class: 'required'%><br/>
     <%= f.number_field :price, placeholder: "Ticket Price", step: 1.0 %>
   </p>
   <p>
-    <%= f.label "Participant Limit", class: 'required'%>
+    <%= f.label "Participant Limit", class: 'required'%><br/>
     <%= f.number_field :threshold, placeholder: "Participant Number", step: 1 %>
   </p>
   <p>
-    <%= f.label :product_type, class: 'required'%>
+    <%= f.label :product_type, class: 'required'%><br/>
     <%= f.select :product_type, [ 'Electronics', 'Video Games'], :prompt => 'Product Type' %>
   </p>
   <p>
