@@ -102,7 +102,7 @@ class OrdersController < ApplicationController
             if consumer.phone_number.length == 10 #add a !consumer.phone_number.nil? && when we have the text update issues
               if consumer_identification == @winner.id
                 message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
-                
+                CompanyMailer.winner_email(@consumer, @deal).deliver
               else
                 message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
               end
