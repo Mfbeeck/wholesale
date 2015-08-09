@@ -83,7 +83,9 @@ class OrdersController < ApplicationController
         #A text message is sent to consumers to confirm they are now participating in a lottery.
         #The send_message method is defined in the application_controller send_message(consumer, message).
         new_participant = Consumer.find(@order.consumer_id)
-        send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
+        if consumer.phone_number.length == 10 && consumer.texts
+          send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
+        end
         if @deal.orders.count >= @deal.threshold
           @array_of_orders = @deal.orders(:select => :id).collect(&:id)
           @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
@@ -97,16 +99,19 @@ class OrdersController < ApplicationController
 
           #This part of the code sends different text messages to the winner and the others.
           @array_of_orders.each do |order_num|
+            #THis line gets the consumer id of the consumer that is participating in the deal form the order he/she placed.
             consumer_identification = Order.find(order_num).consumer_id
+            #This line uses the consumer id acquired in the previous line to set the variable "consumer"
             consumer = Consumer.find(consumer_identification)
-            if consumer.phone_number.length == 10 #add a !consumer.phone_number.nil? && when we have the text update issues
-              if consumer_identification == @winner.id
-                message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
-                CompanyMailer.winner_email(@consumer, @deal).deliver
-              else
-                message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
-              end
-            send_message(consumer, message)
+            if consumer_identification == @winner.id
+              message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
+              CompanyMailer.winner_email(@consumer, @deal ).deliver
+            else
+              message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
+            end
+            # If he consumer has a phone number and added a valid number he/she will get txt messages.
+            if consumer.phone_number.length == 10 && consumer.texts
+              send_message(consumer, message)
             end
           end
           redirect_to order_path(@order)
