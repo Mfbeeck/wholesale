@@ -99,7 +99,7 @@ class OrdersController < ApplicationController
           @array_of_orders.each do |order_num|
             consumer_identification = Order.find(order_num).consumer_id
             consumer = Consumer.find(consumer_identification)
-            if consumer.phone_number.length == 10
+            if consumer.phone_number.length == 10 #add a !consumer.phone_number.nil? && when we have the text update issues
               if consumer_identification == @winner.id
                 message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
                 
@@ -125,6 +125,7 @@ class OrdersController < ApplicationController
         # format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
       #end
+    #else This would only be if someone places an order on a deal that already has a winner which should never happen
     end
   end
 
