@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body {
+        font-family: sans-serif;
+        font-size: 1.5vw;
+        color: #4E4E56;
+      }
+
+      span {
+        color: #2274A5;
+      }
+
+      a {
+        color: #E83F6F;
+      }
+
+      a:hover {
+        color: #FFBF00;
+      }
+
+      #parlayvous {
+        color: #32936F;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Welcome to <span id="parlayvous">ParlayVous</span>, <%= @user.first_name %>!</h2>
+    <p>
+      You have successfully created an account at <span id="parlayvous">ParlayVous</span> with the
+      username: <span><%= @user.username %></span>.<br>
+    </p>
+    <p>
+      To login to the site, just follow this link: <a href="<%= @url %>"><%= @url %></a>.
+    </p>
+    <p>Thanks for joining. Have fun and good luck!</p>
+    <p>The <span id="parlayvous">ParleyVous</span> Team</p>
+  </body>
+</html>
