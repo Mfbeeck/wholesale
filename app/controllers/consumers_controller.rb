@@ -1,7 +1,7 @@
 class ConsumersController < ApplicationController
     before_action :set_consumer, only: [:notification]
     before_action :redirect_to_consumer_home, only: [:index, :destroy]
-    before_action :require_consumer_login, only: [:edit]
+    before_action :check_if_consumer_logged_in, only: [:edit]
 
 
 	def index

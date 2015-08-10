@@ -13,6 +13,14 @@ class DealsController < ApplicationController
     # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
   end
 
+  def index_electronics
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Electronics")
+  end
+
+  def index_videogames
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Video Games")
+  end
+
   def new
     @deal = Deal.new
   end
