@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get 'suppliers/deals'
 
+  get '/deals/index_electronics' => 'deals#index_electronics' #To index just electronics
+
+  get '/deals/index_videogames' => 'deals#index_videogames' #To index just videogames
+
   # get 'deals/:deal_id/winner'
 
   get '/new_supplier_session' => 'sessions#new_supplier'

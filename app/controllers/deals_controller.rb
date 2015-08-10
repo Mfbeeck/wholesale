@@ -2,6 +2,7 @@ class DealsController < ApplicationController
 
   before_action :set_deal, only: [:show, :destroy, :edit, :update]
   before_action :set_supplier, only: [:create, :edit, :update, :destroy]
+  before_action :check_if_supplier_logged_in, only: [:create, :update, :destroy, :edit, :new]
   before_action :set_array_of_current_consumer_orders_deal_ids, only: [:show]
 
   # before_action :set_consumer, only: [:show]
@@ -10,6 +11,14 @@ class DealsController < ApplicationController
     @deals = Deal.where(threshold_reached: false)
     # @deals = Deal.filter_by(params)
     # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
+  end
+
+  def index_electronics
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Electronics")
+  end
+
+  def index_videogames
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Video Games")
   end
 
   def new

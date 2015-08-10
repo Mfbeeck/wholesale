@@ -10,7 +10,7 @@
   	  <% elsif @deal.winning_consumer %>
 	  <li><strong>Status:</strong> Complete <span style = "color: red">(You Lost)</span></li>
 	  <%else%>
-  	  <li><strong>Status:</strong> Incomplete (<%=pluralize(@deal.threshold - @deal.orders.count, "Participant")%> Remaining)</li>
+  	  <li><strong>Status: </strong><span style = "color:red"><%=pluralize(@deal.threshold - @deal.orders.count, "Participant")%> Remaining</span></li>
   	  <%end%>
 
 

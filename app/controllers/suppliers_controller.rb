@@ -1,5 +1,6 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_to_supplier_home, only: [:index, :destroy]
   # before_action :require_logged_in
 
   def index

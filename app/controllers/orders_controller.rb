@@ -1,10 +1,11 @@
- require 'twilio-ruby'
+require 'twilio-ruby'
 
 class OrdersController < ApplicationController
   before_action :set_consumer, only: [:index, :create, :create_points_order, :edit, :update, :destroy]
   before_action :set_order, only: [:edit, :update, :show]
   before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
+  before_action :check_if_consumer_logged_in, only: [:create_points_order, :create]
   skip_before_filter :verify_authenticity_token, only: [:send_message] #protect_from_forgery method disabled to allow Twilio to send text messages
 
   def new
@@ -82,14 +83,13 @@ class OrdersController < ApplicationController
       #respond_to do |format|
       if @order.update(order_params)
         #A text message is sent to consumers to confirm they are now participating in a lottery.
-        #The send_message method is defined in the application_controller send_message(consumer, message).
+        #The send_message method is defined in the application_controller as send_message(consumer, message).
         new_participant = Consumer.find(@order.consumer_id)
         if new_participant.phone_number.length == 10 && new_participant.texts
           send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
         end
 
         #Below is the logic for picking a winner!!!
-        
         if @deal.orders.count >= @deal.threshold
           @array_of_orders = @deal.orders(:select => :id).collect(&:id)
           #The variable below captures the sum of the last three digits of the current time
@@ -117,9 +117,10 @@ class OrdersController < ApplicationController
             consumer = Consumer.find(consumer_identification)
             if consumer_identification == @winner.id
               message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
-              CompanyMailer.winner_email(@consumer, @deal ).deliver
+              CompanyMailer.winner_email(@consumer, @deal ).deliver if consumer.result_email #Send winner email if result_email box is checked
             else
               message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username.capitalize} won this item: #{@deal.name}."
+              CompanyMailer.looser_email(@consumer, @deal ).deliver if consumer.result_email #Send looser email if result_email box is checked
             end
             # If he consumer has a phone number and added a valid number he/she will get txt messages.
             if consumer.phone_number.length == 10 && consumer.texts
@@ -160,6 +161,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    raise
   end
 
   private
