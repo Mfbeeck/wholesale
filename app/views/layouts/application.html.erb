@@ -2,9 +2,18 @@
 <html>
 <head>
   <title>ParlayVous</title>
+  <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Muli|Source+Code+Pro|Hind:400,600' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      
+      //our code will go here
+
+  });
+  </script>
   <%= csrf_meta_tags %>
   <!-- <script language="JavaScript">
   window.onbeforeunload = confirmExit;
@@ -31,20 +40,32 @@
        };
 </script>
 
-
-
+<script type="text/javascript">
+  $(document).ready(function() {    
+    $('#dropdown').click(function() {
+        $('#dropdown > ul').toggleClass('ul_show');
+        $('#dropdown > ul').toggleClass('ul_hide');
+    });
+           
+  });
+</script>
   <nav class="navbar">
-	  <ul>
-      <li id="home_link"><strong><%= link_to 'ParlayVous', deals_path %></strong></li>
-
-        <li id="dropdown-image"><%= image_tag("http://cdn.flaticon.com/png/256/23182.png", :size => "18x18")%>
-
-        <li id="electronics_labels">
-            <%= link_to 'Electronics', deals_index_electronics_path %>
+    <ul class="myMenu">
+        <li id = "dropdown"><%= image_tag("http://cdn.flaticon.com/png/256/23182.png", :size => "18x18", :id => "dropdown-image")%>
+            &nbsp;&nbsp;
+            <span class = "product_type", style = "color: #2274A5; font-weight: bold">Product Type</span></a>
+          <ul class = "ul_hide">
+                <li id="dropdown-links"><%= link_to 'All Products', deals_path %></li>
+                <li id="dropdown-links">
+                  <%= link_to 'Electronics', deals_index_electronics_path %>
+                </li>                  
+                <li id="dropdown-links">
+                  <%= link_to 'Video Games', deals_index_videogames_path %>
+                </li>               
+          </ul>
         </li>
-        <li id="video_game_labels">
-            <%= link_to 'Video Games', deals_index_videogames_path %>
-        </li>
+    </ul>
+<li id="logo"><%= link_to 'ParlayVous', deals_path%></li>
 
 			<% if current_supplier || current_consumer %>
         <% if current_supplier %>
@@ -78,12 +99,12 @@
 <footer>
   <div class="footer">
 	<ul id="socialmedia">
-		  <li id="ft-fb"><a href="https://www.facebook.com"><img src="http://cdn.mysitemyway.com/icons-watermarks/simple-black/social-media/social-media_facebook-square/social-media_facebook-square_simple-black_512x512.png" width=50px hieght:50px></a></li>
-		  <li id="ft-twr"><a href="https://twitter.com"><img src="https://cdn1.iconfinder.com/data/icons/capsocial/500/twitter-512.png" width=50px hieght:50px></a></li>
-		  <li id="ft-mail"><a href="mailto:parlay.vous@gmail.com"><img src="http://freeiconbox.com/icon/256/27958.png" width=50px hieght:50px></a></li>
+		  <li id="ft-fb"><a href="https://www.facebook.com"><img src="http://cdn.mysitemyway.com/icons-watermarks/simple-black/social-media/social-media_facebook-square/social-media_facebook-square_simple-black_512x512.png" width=35px hieght:35px></a></li>
+		  <li id="ft-twr"><a href="https://twitter.com"><img src="https://cdn1.iconfinder.com/data/icons/capsocial/500/twitter-512.png" width=35px hieght:35px></a></li>
+		  <li id="ft-mail"><a href="mailto:parlay.vous@gmail.com"><img src="http://freeiconbox.com/icon/256/27958.png" width=35px hieght:35px></a></li>
 		</ul>
 	<span class="footercopy">
-			<li><%= link_to 'About', suppliers_about_path %> &copy; 2015 Powered by ParlayVous.</li>
+			<li><%= link_to 'About us', suppliers_about_path %> | &copy; 2015 Powered by ParlayVous.</li>
 	</span>
   </div>
 </footer>

@@ -13,7 +13,7 @@
 	/*border-radius: 5px;*/
 	/*border: solid black 1px;*/
 	padding-left: 1.5vw;
-	padding-top: 5vh;
+	padding-top: 8vh;
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
 	/*width: 67vw;*/
@@ -25,7 +25,7 @@
 }
 .deals_list hr {
 	width: 40%;
-	border: 1px solid #2274A5;
+	border: 1px solid #e83f6f;
 	/*opacity: 0.5;*/
 }
 
