@@ -18,6 +18,11 @@
 
   <p><%= f.label :description, class: 'required' %></p>
   <p><%= f.text_area :description, placeholder: "Description" %></p>
+
+  <p>
+    <%= f.label :product_type, class: 'required'%><br/>
+    <%= f.select :product_type, [ 'Electronics', 'Video Games'], :prompt => 'Product Type' %>
+  </p>
   
   <p>
     <%= f.submit 'Update', :class => 'edit_deal' %>

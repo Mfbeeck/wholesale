@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id="body">
+<body>
 <div id="fb-root"></div>
 <script>
    (function(d, s, id) {
@@ -24,37 +24,57 @@
        };
 </script>
 
-<div id="navbar_container">
-	<nav class="navbar">
-		<ul>
-      <li><%= link_to 'Home', deals_path %>&nbsp;&nbsp;<%= link_to 'About', suppliers_about_path %></li>
 
-			<li><% if current_supplier %>
+  <nav class="navbar">
+	  <ul>
+        <li id="home_link"><strong><%= link_to 'ParlayVous', deals_path %></strong></li>
+
+        <li id="electronics_labels">
+            <%= link_to(:Electronics, "Electronics") %>
+        </li>
+        <li id="video_game_labels">
+          <%= link_to(:"Video Games", "Video Games") %>
+        </li>
+        
+  
+
+			<!-- <li><% if current_supplier %>
 			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
 			&nbsp;&nbsp;
 			<%= link_to "Log out", logout_path, method: "delete" %>
 			<% else %>
 			<%= link_to 'Supplier Dashboard', new_supplier_session_path %>
 			<% end %>
-			</li>
+			</li>  -->
 
-			<li><% if current_consumer %>
-			<span class= "points_link"><%= link_to "Points: #{current_consumer.total_points}", consumer_path(current_consumer)%></span>
-			&nbsp;
-			<%= link_to "Log out", logout_path, method: "delete" %>
-			<% else %>
-			<%= link_to 'Consumer Dashboard', new_consumer_session_path %>
-			<% end %>
-			</li>
+		  <li class="login_link"><% if current_consumer %>
+			  <%= link_to "#{current_consumer.username}", consumer_path(current_consumer)%>
+			    &nbsp;
+	   	  <span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
+			    &nbsp;
+			  <%= link_to "Log out", logout_path, method: "delete" %>
+		  <% else %>
+			   <%= link_to 'Sign in', new_consumer_session_path %>
+			   &nbsp;
+			   <%= link_to 'Sign up', new_consumer_path %>
+		  <% end %>
+	  </li>
     </ul>
-	</nav>
-</div>
+  </nav>
 <div>
 <p id="notice"><%= notice %></p>
 </div>
 
 <%= yield %>
 
-
+<footer>
+  <div class="footer">
+	<li><%= link_to 'About', suppliers_about_path %></li>
+	&nbsp;
+	<p class="footercopy">
+		 	&copy; 2015 Powered by ParlayVous.
+	</p>
+  </div>
+</footer>
 </body>
 </html>
