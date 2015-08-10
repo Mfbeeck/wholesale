@@ -64,7 +64,7 @@ body {
 
 
 .navbar {
-	margin-top: -5px;
+	margin-top: 0px;
 	position: fixed;
 	background-color: white;
 	border-bottom: solid black 1px;
@@ -215,9 +215,13 @@ a {
 	font-size: 1.3vw;
 }
 
-#dropdown-image img{
-	margin-top: 1vw;
+#dropdown-links{ 
+	margin-left: .3vw;
+	border-bottom: dashed black 1px;
+}
 
+#dropdown-links a{
+	font-size: 1.3vw;
 }
 
 
