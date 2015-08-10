@@ -19,7 +19,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'better_errors'
 
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 
 gem 'twilio-ruby'
 

@@ -2,6 +2,7 @@ class DealsController < ApplicationController
 
   before_action :set_deal, only: [:show, :destroy, :edit, :update]
   before_action :set_supplier, only: [:create, :edit, :update, :destroy]
+  before_action :check_if_supplier_logged_in, only: [:create, :update, :destroy, :edit, :new]
   before_action :set_array_of_current_consumer_orders_deal_ids, only: [:show]
 
   # before_action :set_consumer, only: [:show]

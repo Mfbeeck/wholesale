@@ -14,8 +14,30 @@
  *= require_self
  */
 
+ html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*font: inherit;*/
+    vertical-align: baseline;
+} 
+
 body {
-	margin: 0;
+	background-color: white;
+	font-family: 'Hind', sans-serif;
 }
 
 .deals_list hr {
@@ -39,10 +61,12 @@ body {
 	padding-bottom: 25vh;
 	border-radius: 5px;
 	border: solid black 1px;
-	width: 100%;
+	width: auto;
 	margin-top: 0vh;
 }
-
+#home_link a {
+	font: #2274a5;
+}
 .deal_block {
 	margin-left: 3.5vw;
 	margin-right: 3.5vw;
@@ -50,21 +74,18 @@ body {
 }
 
 .navbar {
+	margin-top: -5px;
+	position: fixed;
 	background-color: white;
 	border-bottom: solid black 1px;
-	/*padding: 10px;*/
-	width: 97vw;
+	width: 100vw;
 	z-index: 9999;
-	margin-left: auto;
-	margin-right: auto;
-	height: 35px;
+	height: auto;
+	padding: 2.5px;
 }
-
-#body {
-	background-color: white;
-	font-family: 'Hind', sans-serif;
+.login_link {
+	float: right;
 }
-
 /*#root_body{
 	background-image: linear-gradient(top, white 30%, #2274A5 400%);
   	background-image: -webkit-linear-gradient(top, white 30%, #2274A5 600%);
@@ -79,13 +100,10 @@ body {
 	/*border: solid black 1px;*/
 	padding-left: 2vw;
 	margin-left: 0vw;
-	padding-top: .1vh;
+	padding-top: 5vh;
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
-	width: 67vw;
-	margin-left: auto ;
-  	margin-right: 1.5vw;
-	float:right;
+	/*width: 67vw;*/
 /*	background-image: linear-gradient(top, white 30%, #2274A5 400%);
   	background-image: -webkit-linear-gradient(top, white 30%, #2274A5 600%);
 	background-image: -moz-linear-gradient(top, white 30%, #2274A5 400%);
@@ -118,17 +136,20 @@ a {
 .navbar a{
 	color: black;
 }
+.navbar #home_link a{
+	color: #2274A5;
+}
 .navbar li {
 	color: white;
 	display: inline;
-	margin-right: 23vw;
+	margin-right: 2vw;
 	margin-left: 2vw;
 	height: 80%;
 
 }
 
 .navbar a:hover {
-	color: #2274A5;
+	color: #e83f6f;
 }
 
 .deal_block {
@@ -140,10 +161,14 @@ a {
 }
 
 .points_link{
+	color: black;
+	padding-right: 1vw;
+}
+.points {
+	color: #e83f6f;
 	border-right: solid black 1px;
 	padding-right: 1vw;
 }
-
 .pay_with_points{
 	display:inline-block;
 }
@@ -221,4 +246,11 @@ a {
 
 .consumer_edit_form p {
 	font-size: 1.3vw;
+}
+.footer {
+	text-align: center;
+	
+	background-color: #2274A5;
+	box-shadow: 5px -15px -5px #2274A5;
+	opacity: 0.8;
 }

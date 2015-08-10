@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_consumer
 #  helper_method :send_message
 
+#START SECURITY METHODS ****
   def current_supplier
     @current_supplier ||= Supplier.find(session[:supplier_id]) if session[:supplier_id]
   end
@@ -39,10 +40,26 @@ class ApplicationController < ActionController::Base
     redirect_to new_supplier_session
   end
 
-  def check_if_logged_in
-    if current_consumer || current_supplier
+  def check_if_consumer_logged_in
+    if current_consumer
     else
+       redirect_to new_consumer_session_path
     end
+  end
+
+  def check_if_supplier_logged_in
+    if current_supplier
+    else
+       redirect_to new_supplier_session_path
+    end
+  end
+
+  def redirect_to_supplier_home
+    redirect_to current_supplier
+  end
+
+  def redirect_to_consumer_home
+    redirect_to current_consumer
   end
 
   def require_logged_in
@@ -52,12 +69,29 @@ class ApplicationController < ActionController::Base
     return false
   end
 
+#END SECURITY METHODS *****
+
+  #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
+  #This method will be called in the orders_controllers update.
+  def send_message(consumer, message)
+    @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
+    twilio_number = ENV["TWILIO_NUMBER"]
+    message = @client.messages.create(
+      from: twilio_number,
+      to: '+1' + consumer.phone_number,
+      body: message
+      )
+
+  end
+
   def set_array_of_current_consumer_orders_deal_ids
     if current_consumer
       @current_consumer_orders_deal_ids = current_consumer.orders(:select => :deal_id).collect(&:deal_id)
     else
     end
   end
+
+
 
 
 end
