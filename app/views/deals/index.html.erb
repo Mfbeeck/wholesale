@@ -20,7 +20,7 @@
     <% if current_consumer %>
       <div class="consumer_column1">
       <ul id="consumer_profile">
-      	<li><p><%= link_to "You are logged in as #{current_consumer.username}", consumer_path(current_consumer)%></p></li>
+      	<li><p><%= link_to "You are logged in as #{current_consumer.username.capitalize}", consumer_path(current_consumer)%></p></li>
       </ul>
       </div>
     <%end%>

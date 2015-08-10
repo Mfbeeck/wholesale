@@ -30,7 +30,7 @@
       <li><%= link_to 'Home', deals_path %>&nbsp;&nbsp;<%= link_to 'About', suppliers_about_path %></li>
 
 			<li><% if current_supplier %>
-			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
+			<%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
 			&nbsp;&nbsp;
 			<%= link_to "Log out", logout_path, method: "delete" %>
 			<% else %>

@@ -7,17 +7,16 @@
     <% if !deal.url.empty? %>
     <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "200x150"), deal)%></li>
     <%end%>
-    <li><strong>Description:</strong> <%= deal.description %></li>
+    <li><strong>Item: </strong><%= link_to "#{deal.name}", deal %></li>
     <li><strong>Bid Price:</strong> <%= number_to_currency(deal.price) %></li>
-    <li><strong>Participant Limit:</strong> <%= deal.threshold %></li>
     <%if deal.winning_consumer%>
     <li><strong>Status: </strong><span style = "color: green">Winner Chosen</span></li>
     <%else%>
+    <li><strong>Participant Limit:</strong> <%= deal.threshold %></li>
     <li><strong>Status: </strong><span style = "color:red">Awaiting <%=pluralize(deal.threshold - deal.orders.count, "Participant")%></span></li>
     <%end%>
     <% if deal.winning_consumer %>
-    <li style = "color: green"><strong>Winner's Username: </strong><%=deal.winning_consumer%>
-    <li style = "color: green"><strong>Winner's Shipping Info: </strong><%=deal.winners_shipping_address%></li>
+    <li style = "color: green"><strong>Winner's Username: </strong><%=deal.winning_consumer.capitalize%>
     <%end%>
     <li><%= link_to 'Edit Deal', edit_supplier_deal_path(@supplier, deal) %></li>
 

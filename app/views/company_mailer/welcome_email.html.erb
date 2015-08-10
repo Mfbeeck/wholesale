@@ -31,7 +31,7 @@
     <h2>Welcome to <span id="parlayvous">ParlayVous</span>, <%= @user.first_name %>!</h2>
     <p>
       You have successfully created an account at <span id="parlayvous">ParlayVous</span> with the
-      username: <span><%= @user.username %></span>.<br>
+      username: <span><%= @user.username.capitalize %></span>.<br>
     </p>
     <p>
       To login to the site, just follow this link: <a href="<%= @url %>"><%= @url %></a>.

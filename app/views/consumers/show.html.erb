@@ -7,7 +7,7 @@
 		<% else %>
 			<h2>Hi, <%= @consumer.first_name %></h2>
 		<% end %>
-		<li>You are logged in as: <strong><%= @consumer.username%></strong></li>
+		<li>You are logged in as: <strong><%= @consumer.username.capitalize%></strong></li>
 		<li>Email: <%= @consumer.email %></li>
 		<% if !@consumer.phone_number.blank? %>
 		<li>
