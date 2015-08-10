@@ -8,4 +8,7 @@ class CompanyMailerPreview < ActionMailer::Preview
     CompanyMailer.winner_email(Consumer.find(2), Deal.find(14))
   end
 
+  def looser_email_preview
+    CompanyMailer.looser_email(Consumer.find(1), Deal.find(12))
+  end
 end

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def current_consumer
     if current_supplier.nil?
-    @current_consumer ||= Consumer.find(session[:consumer_id]) if session[:consumer_id]
+      @current_consumer ||= Consumer.find(session[:consumer_id]) if session[:consumer_id]
     end
   end
 

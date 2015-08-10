@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   # get 'deals/:deal_id/winner'
 
-
   get '/new_supplier_session' => 'sessions#new_supplier'
 
   get '/new_consumer_session' => 'sessions#new_consumer'

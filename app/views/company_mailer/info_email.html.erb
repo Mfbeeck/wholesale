@@ -10,7 +10,7 @@
       }
 
       span {
-        color: #2274A5;
+        color: #E83F6F;
       }
 
       a {
@@ -25,18 +25,24 @@
         color: #32936F;
         font-weight: bold;
       }
+
+      #email_option {
+        font-size: 0.8vw;
+        text-decoration: underline;
+        color: #2274A5;
+      }
     </style>
+
   </head>
   <body>
-    <h2>Welcome to <span id="parlayvous">ParlayVous</span>, <%= @user.first_name.capitalize %>!</h2>
+    <h2><span id="parlayvous">ParlayVous!</span> You just won this item: <%= @deal.name %>.</h2>
     <p>
-      You have successfully created an account at <span id="parlayvous">ParlayVous</span> with the
-      username: <span><%= @user.username.capitalize %></span>.<br>
+      Your prize will be shipped to the following address: <%= @deal.winners_shipping_address %>.
     </p>
     <p>
-      To login to the site, just follow this link: <a href="<%= @url %>"><%= @url %></a>.
+      If you would like to have this item shipped to a different address, contact costumer service at <span>parlay.vous@gmail.com</span>.
     </p>
-    <p>Thanks for joining. Have fun and good luck!</p>
+    <p>Thanks for participating. Keep winning!</p>
     <p>The <span id="parlayvous">ParleyVous</span> Team</p>
     <br>
     <p id="email_option">* If you would like to stop receiving emails from ParleyVous, please uncheck the "Receive Emails" box in your account's Notification Settings.</p>
