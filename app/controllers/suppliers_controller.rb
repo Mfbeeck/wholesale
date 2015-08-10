@@ -10,6 +10,10 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new
   end
 
+  def deals
+    @supplier = current_supplier
+  end
+  
   def create
     @supplier = Supplier.new(supplier_params)
 
@@ -32,8 +36,13 @@ class SuppliersController < ApplicationController
   def update
     respond_to do |format|
       if @supplier.update(supplier_params)
-        format.html { redirect_to @supplier, notice: 'Supplier was successfully updated.' }
-        format.json { render :show, status: :ok, location: @supplier }
+        if @supplier.save
+          format.html { redirect_to @supplier, notice: 'Supplier was successfully updated.' }
+          format.json { render :show, status: :ok, location: @supplier }
+        else
+          format.html { render :edit }
+          format.json { render json: @supplier.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :edit }
         format.json { render json: @supplier.errors, status: :unprocessable_entity }

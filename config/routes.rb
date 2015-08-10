@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
+
   root 'deals#index'
+
+  get 'consumers/notification'
+
+  get 'suppliers/deals'
+
+  # get 'deals/:deal_id/winner'
 
   get '/new_supplier_session' => 'sessions#new_supplier'
 
   get '/new_consumer_session' => 'sessions#new_consumer'
 
   get '/suppliers/about' => 'suppliers#about'
-
 
   get '/deals/:id/checkout' => 'deals#checkout', as: :checkout
 
@@ -31,6 +37,7 @@ Rails.application.routes.draw do
   resources :deals do
     resources :orders
     resources :comments
+    resources :winners
   end
 
   resources :consumers do

@@ -63,3 +63,7 @@ body {
 	border-radius: 2vw;
 	padding-right: 1vw;
 }
+
+.supplier-deals-list{
+	display: inline-block;
+}

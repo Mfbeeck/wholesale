@@ -1,4 +1,4 @@
-require 'twilio-ruby'
+ require 'twilio-ruby'
 
 class OrdersController < ApplicationController
   before_action :set_consumer, only: [:index, :create, :create_points_order, :edit, :update, :destroy]
@@ -75,6 +75,7 @@ class OrdersController < ApplicationController
     redirect_to charges_path
   end
 
+  #This method is where we do all of the randomization for the lottery once it has reached capacity
   def update
     @deal = Deal.find(@order.deal_id)
     if !@deal.winning_consumer
@@ -83,10 +84,23 @@ class OrdersController < ApplicationController
         #A text message is sent to consumers to confirm they are now participating in a lottery.
         #The send_message method is defined in the application_controller send_message(consumer, message).
         new_participant = Consumer.find(@order.consumer_id)
-        send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
+        if new_participant.phone_number.length == 10 && new_participant.texts
+          send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
+        end
+
+        #Below is the logic for picking a winner!!!
+        
         if @deal.orders.count >= @deal.threshold
           @array_of_orders = @deal.orders(:select => :id).collect(&:id)
+          #The variable below captures the sum of the last three digits of the current time
+          @last_three_digits_of_current_time = (Time.now.to_i.to_s.split('')[-3].to_i + Time.now.to_i.to_s.split('')[-2].to_i + Time.now.to_i.to_s.split('')[-1].to_i)
+          #The block below then shuffles the array of winning orders "@last_three_digits_of_current_time" times
+          @last_three_digits_of_current_time.times do
+            @array_of_orders = @array_of_orders.shuffle
+          end
+          #Below we now sample a random order from the newly shuffled array of orders
           @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
+          #Below we set the deal's winner info into its columns
           @deal.winning_order_id = @winning_order_id
           @winning_order = Order.find(@deal.winning_order_id)
           @winner = Consumer.find(@winning_order.consumer_id)
@@ -97,15 +111,19 @@ class OrdersController < ApplicationController
 
           #This part of the code sends different text messages to the winner and the others.
           @array_of_orders.each do |order_num|
+            #THis line gets the consumer id of the consumer that is participating in the deal form the order he/she placed.
             consumer_identification = Order.find(order_num).consumer_id
+            #This line uses the consumer id acquired in the previous line to set the variable "consumer"
             consumer = Consumer.find(consumer_identification)
-            if consumer.phone_number.length == 10
-              if consumer_identification == @winner.id
-                message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
-              else
-                message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
-              end
-            send_message(consumer, message)
+            if consumer_identification == @winner.id
+              message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
+              CompanyMailer.winner_email(@consumer, @deal ).deliver
+            else
+              message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username.capitalize} won this item: #{@deal.name}."
+            end
+            # If he consumer has a phone number and added a valid number he/she will get txt messages.
+            if consumer.phone_number.length == 10 && consumer.texts
+              send_message(consumer, message)
             end
           end
           redirect_to order_path(@order)
@@ -124,6 +142,7 @@ class OrdersController < ApplicationController
         # format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
       #end
+    #else This would only be if someone places an order on a deal that already has a winner which should never happen
     end
   end
 

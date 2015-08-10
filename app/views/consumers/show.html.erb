@@ -1,26 +1,28 @@
 <div class="consumers_list">
-	<div id="consumer_info"
+	<div id="consumer_info">
 
-	<ul id="Consumers">
+	<ul id="consumers">
 		<% if @consumer.last_name %>
-			<h2>Hi, <%= @consumer.first_name + " " + @consumer.last_name %></h2>
+			<h2>Hi, <%= @consumer.first_name.capitalize + " " + @consumer.last_name.capitalize %></h2>
 		<% else %>
-			<h2>Hi, <%= @consumer.first_name %></h2>
+			<h2>Hi, <%= @consumer.first_name.capitalize %></h2>
 		<% end %>
-		<li>You are logged in as: <strong><%= @consumer.username%></strong></li>
-		<li>Email: <%= @consumer.email %></li>
+		<li>You are logged in as: <strong><%= @consumer.username.capitalize%></strong></li>
+		<li><strong>Email: </strong><%= @consumer.email %></li>
+		<% if !@consumer.phone_number.blank? %>
 		<li>
-			<% if @consumer.phone_number %>
-				Phone Number: <%= number_to_phone(@consumer.phone_number) %>
-			<%end%>
+			<strong>Phone Number: </strong><%= number_to_phone(@consumer.phone_number) %>
 		</li>
+		<%end%>
+
 		<li>
-			Default Shipping Address: <%= @consumer.address %>
+			<strong>Shipping Address: </strong><%= @consumer.address %>
 		</li>
 	</ul>
 	<div id="links_consumer">
 		<%= link_to "Update Your Information", edit_consumer_path(@consumer) %> |
 		<%= link_to "Check Your Orders", consumer_orders_path(@consumer) %><br>
+		<%= link_to "Notification Settings", consumers_notification_path %><br>
 	</div>
 	</div>
 	<%#= link_to "Delete User", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete the user \"#{@user.email}?\""} %>

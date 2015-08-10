@@ -1,10 +1,13 @@
-Welcome to ParlayVous, <%= @user.first_name %>
+Welcome to ParlayVous, <%= @user.first_name.capitalize %>
 ===============================================
 
-You have successfully created an account at ParlayVous with the username: <%= @user.username %>.
+You have successfully created an account at ParlayVous with the username: <%= @user.username.capitalize %>.
 
 To login to the site, just follow this link: <%= @url %>.
 
 Thanks for joining. Have fun and good luck!
 
 The ParleyVous Team
+
+
+* If you would like to stop receiving emails from ParleyVous, please uncheck the "Receive Emails" box in your account's Notification Settings.

@@ -3,7 +3,7 @@
 <ul id="articles">
   <% @consumers.each do |consumer| %>
     <li>
-      <%= link_to consumer.username, consumer_path(consumer) %>
+      <%= link_to consumer.username.capitalize, consumer_path(consumer) %>
     </li>
   <% end %>
 </ul>

@@ -25,6 +25,7 @@
 </script>
 
 
+
   <nav class="navbar">
 	  <ul>
         <li id="home_link"><strong><%= link_to 'ParlayVous', deals_path %></strong></li>
@@ -37,9 +38,11 @@
         </li>
         
   
+<!-- 
+			
+			<li><% if current_supplier %>
+			<%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
 
-			<!-- <li><% if current_supplier %>
-			<%= link_to "Username: #{current_supplier.username}", supplier_path(current_supplier)%>
 			&nbsp;&nbsp;
 			<%= link_to "Log out", logout_path, method: "delete" %>
 			<% else %>

@@ -50,3 +50,8 @@
 #product_link a {
   text-decoration: underline;
 }
+
+.orders-index{
+  display: inline-block;
+}
+

@@ -1,0 +1,29 @@
+<div class="consumer_edit_form">
+  <h1 id="update_title">Notification Settings</h1>
+  <%= form_for(@consumer) do |f| %>
+    <ul>
+      <% @consumer.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+    <p>
+      <%= f.label :phone_number%>:&nbsp;&nbsp;<%= f.telephone_field :phone_number, id: 'phone'  %>
+      <li id = "info-image-for-texts"><%= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
+        Text Updates?
+        <%= f.check_box :texts %>
+        <span id="popup">This allows us to notify you when you enter a lottery and send you the results of lotteries you have entered upon completion.</span>
+      </li>
+    </p>
+    <p><%= f.label :email%>:&nbsp;&nbsp;<%= f.email_field :email, id: 'email'  %><br />
+      <li id = "info-image-for-texts"><%= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
+        Result Email?
+        <%= f.check_box :result_email %>
+        <span id="popup">This allows us to email you the results of the lotteries you have entered in real time.</span>
+      </li>
+    </p>
+    <p>
+      <%= f.submit 'Update Settings'%>
+    </p>
+  <% end %>
+  <%= link_to 'Back to Profile', consumer_path(@consumer) %><br><br>
+</div>
