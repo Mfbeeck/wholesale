@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'consumers/notification'
 
   root 'deals#index'
+
+  get 'consumers/notification'
+
+  get 'suppliers/deals'
+
 
   get '/new_supplier_session' => 'sessions#new_supplier'
 

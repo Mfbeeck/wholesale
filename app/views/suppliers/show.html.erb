@@ -1,42 +1,13 @@
-<h1><%= @supplier.username %> Homepage</h1>
-<ul>
-  <li><strong>Username:</strong> <%= @supplier.username %></li>
-  <li><strong>E-mail:</strong> <%= @supplier.email %></li>
-  <li><strong>HQ Address:</strong> <%= @supplier.address %></li>
-  <li><%= link_to 'Edit Supplier Info', edit_supplier_path(@supplier) %></li>
+<div class="consumers_list">
+	<div id="consumer_info">
 
-</ul>
+	<h2><%= @supplier.username.capitalize %> Homepage</h2>
+	<ul id="consumers">
+	  <li><strong>Username:</strong> <%= @supplier.username %></li>
+	  <li><strong>E-mail:</strong> <%= @supplier.email %></li>
+	  <li><strong>HQ Address:</strong> <%= @supplier.address %></li>
+	  <li><%= link_to 'Update Info', edit_supplier_path(@supplier) %> |
+	  <%= link_to 'View Lotteries', suppliers_deals_path %></li>
+	</ul>
 
 <hr>
-
-
-<h3>Manage your deals here</h3>
-
-<% @supplier.deals.each do |deal| %>
-  <ul>
-    <% if !deal.url.empty? %>
-    <li><%= image_tag "#{deal.url}", size: "250x200" %></li>
-    <%end%>
-    <li><strong>Description:</strong> <%= deal.description %></li>
-    <li><strong>Bid Price:</strong> <%= number_to_currency(deal.price) %></li>
-    <li><strong>Participant Limit:</strong> <%= deal.threshold %></li>
-    <%if deal.is_threshold_reached%>
-    <li style = "color: green"><strong>Current Participants: </strong><%= deal.orders.count %> (Lottery Complete)</li>
-    <%else%>
-    <li style = "color: red"><strong>Current Participants: </strong><%= deal.orders.count %> (Awaiting <%= deal.threshold - deal.orders.count%> Participants)</li>
-    <%end%>
-    <% if deal.winning_consumer %>
-    <li style = "color: green"><strong>Winner: </strong><%=deal.winning_consumer%>
-    <li style = "color: green"><strong>Winner's Shipping Info: </strong><%=deal.winners_shipping_address%></li>
-    <%end%>
-  </ul>
-  <%= link_to 'Edit Deal', edit_supplier_deal_path(@supplier, deal) %> |
-  <%= link_to 'Delete Deal', supplier_deal_path(@supplier, deal), method: :delete %>
-<% end %>
-<%#= @orders.each do |order| %>
-<%#=order.quantity%>
-<%#end%>
-<hr>
-
-<%= link_to 'Create New Deal', new_deal_path %>
-<br>
