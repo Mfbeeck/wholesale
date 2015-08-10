@@ -68,11 +68,12 @@ body {
 	margin-top: -5px;
 	position: fixed;
 	background-color: white;
-	border-bottom: solid black 1px;
+	border-bottom: solid #E6E6E6 1px;
 	width: 100vw;
 	z-index: 9999;
 	height: auto;
 	padding: 2.5px;
+	box-shadow: 0px 0 10px  #E6E6E6;
 }
 .login_link {
 	float: right;
