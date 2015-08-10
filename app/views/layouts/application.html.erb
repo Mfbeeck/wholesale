@@ -30,6 +30,8 @@
 	  <ul>
         <li id="home_link"><strong><%= link_to 'ParlayVous', deals_path %></strong></li>
 
+        <li id="dropdown-image"><%= image_tag("http://cdn.flaticon.com/png/256/23182.png", :size => "18x18")%>
+
         <li id="electronics_labels">
             <%= link_to 'Electronics', deals_index_electronics_path %>
         </li>
@@ -38,30 +40,28 @@
         </li>
         
   
-<!-- 
-			
-			<li><% if current_supplier %>
-			<%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
 
-			&nbsp;&nbsp;
-			<%= link_to "Log out", logout_path, method: "delete" %>
-			<% else %>
-			<%= link_to 'Supplier Dashboard', new_supplier_session_path %>
-			<% end %>
-			</li>  -->
-
-		  <li class="login_link"><% if current_consumer %>
-			  <%= link_to "#{current_consumer.username.capitalize}", consumer_path(current_consumer)%>
-			    &nbsp;
-	   	  <span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
-			    &nbsp;
-			  <%= link_to "Log out", logout_path, method: "delete" %>
-		  <% else %>
-			   <%= link_to 'Sign in', new_consumer_session_path %>
-		  <% end %>
-		  &nbsp;
-			   <span class='login'><%= link_to 'Sign up', new_consumer_path %>
-	  </li>
+			<% if current_supplier || current_consumer %>
+        <% if current_supplier %>
+          <li class="login_link">
+            <%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
+            <%= link_to "Log out", logout_path, method: "delete" %>
+          </li>
+        <% else %>
+          <li class="login_link">
+            <%= link_to "#{current_consumer.username.capitalize}", consumer_path(current_consumer)%>
+            &nbsp;
+            <span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
+            &nbsp;
+            <%= link_to "Log out", logout_path, method: "delete" %>
+          </li>
+        <% end %>
+      <% else %>
+        <li class="login_link"><%= link_to 'Sign in', new_consumer_session_path %>
+          &nbsp;
+          <span class='login'><%= link_to 'Sign up', new_consumer_path %>
+        </li>
+      <%end%>
     </ul>
   </nav>
 <div>

@@ -214,6 +214,13 @@ a {
 .consumer_edit_form p {
 	font-size: 1.3vw;
 }
+
+#dropdown-image img{
+	margin-top: 1vw;
+
+}
+
+
 .footer {
 	text-align: center;
 	background-color: #2274A5;
