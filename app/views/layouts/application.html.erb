@@ -28,7 +28,7 @@
 
   <nav class="navbar">
 	  <ul>
-        <li id="home_link"><strong><%= link_to 'ParlayVous', deals_path %></strong></li>
+      <li id="home_link"><strong><%= link_to 'ParlayVous', deals_path %></strong></li>
 
         <li id="electronics_labels">
             <%= link_to 'Electronics', deals_index_electronics_path %>
@@ -36,10 +36,10 @@
         <li id="video_game_labels">
             <%= link_to 'Video Games', deals_index_videogames_path %>
         </li>
-        
-  
-<!-- 
-			
+
+
+
+
 			<li><% if current_supplier %>
 			<%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
 
@@ -48,10 +48,11 @@
 			<% else %>
 			<%= link_to 'Supplier Dashboard', new_supplier_session_path %>
 			<% end %>
-			</li>  -->
+			</li>
 
-		  <li class="login_link"><% if current_consumer %>
-			  <%= link_to "#{current_consumer.username}", consumer_path(current_consumer)%>
+		  <li class="login_link">
+      <% if current_consumer %>
+			  <%= link_to "#{current_consumer.username}", consumer_path(current_consumer) %>
 			    &nbsp;
 	   	  <span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
 			    &nbsp;
