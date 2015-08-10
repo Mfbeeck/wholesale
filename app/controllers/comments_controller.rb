@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 	before_action :set_array_of_current_consumer_orders_deal_ids, only: [:create]
+	before_action :check_if_consumer_logged_in, only: [:create, :destroy]
 
 
 	def create

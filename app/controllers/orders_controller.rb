@@ -1,10 +1,11 @@
- require 'twilio-ruby'
+require 'twilio-ruby'
 
 class OrdersController < ApplicationController
   before_action :set_consumer, only: [:index, :create, :create_points_order, :edit, :update, :destroy]
   before_action :set_order, only: [:edit, :update, :show]
   before_action :set_deal, only: [:edit, :update, :show]
   before_action :check_if_winner_assigned, only: [:edit]
+  before_action :check_if_consumer_logged_in, only: [:create_points_order, :create]
   skip_before_filter :verify_authenticity_token, only: [:send_message] #protect_from_forgery method disabled to allow Twilio to send text messages
 
   def new
@@ -160,6 +161,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    raise
   end
 
   private
