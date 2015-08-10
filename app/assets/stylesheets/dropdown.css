@@ -1,0 +1,50 @@
+.myMenu {
+	margin:0;
+	padding:0;
+}
+
+#dropdown {
+	float:left;
+}
+
+.dropdown-ul{
+	position: relative;
+	margin-left: 10vw;
+}
+
+.myMenu li a:link, .myMenu li a:visited {
+	display:block;
+	text-decoration:none;
+	background-color: white;
+	border-right: 1px solid #fff;
+	color:#111;
+}
+
+.myMenu li a:hover {
+	background-color: white;
+}
+
+/*style the sub menu*/
+.myMenu li ul {
+	position:absolute;
+	visibility:hidden;
+
+	border-top:1px solid #fff;
+	margin:0;
+	padding:0;
+}
+
+
+.myMenu li ul li a:link, .myMenu li ul li a:visited {
+	background-color: white;
+	border-bottom: dashed black 1px;
+	margin-left: 2.6vw;
+	margin-left: 3.1vw;
+	width:auto;
+	margin-top: -3vh;
+}
+
+.myMenu li ul li a:hover {
+	background-color: white;
+	color: #E83F6F;	
+}

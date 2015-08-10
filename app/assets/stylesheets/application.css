@@ -217,6 +217,10 @@ a {
 	font-size: 1.3vw;
 }
 
+#dropdown-links{ 
+	margin-left: .3vw;
+	border-bottom: dashed black 1px;
+}
 #socialmedia li {
 	display: inline;
 	padding-right: 1vw;
@@ -241,7 +245,10 @@ a {
 
 #dropdown-image img{
 	margin-top: 1vw;
+}
 
+#dropdown-links a{
+	font-size: 1.3vw;
 }
 
 .footer {
