@@ -7,6 +7,10 @@
 	float:left;
 }
 
+#dropdown:hover{
+	cursor: pointer;
+}
+
 .dropdown-ul{
 	position: relative;
 	margin-left: 10vw;
@@ -25,7 +29,7 @@
 }
 
 /*style the sub menu*/
-.myMenu li ul {
+.ul_hide {
 	position:absolute;
 	visibility:hidden;
 
@@ -34,6 +38,14 @@
 	padding:0;
 }
 
+.ul_show {
+	position:absolute;
+	visibility:visible;
+
+	border-top:1px solid #fff;
+	margin:0;
+	padding:0;
+}
 
 .myMenu li ul li a:link, .myMenu li ul li a:visited {
 	background-color: white;
