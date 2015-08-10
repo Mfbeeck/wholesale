@@ -1,0 +1,22 @@
+<div class="consumers_list">
+	<div id="consumer_info">
+
+	<h2>Winner's Username: <%= @deal.winning_consumer.capitalize %></h2>
+	<ul id="consumers">
+  	  <li><strong>Name:</strong> 
+  	  	<%= @consumer.first_name %>
+  	  	<% if @consumer.last_name %>
+  	  		<%= + " " + @consumer.last_name %>
+  	  	<%end%>
+  	  </li>
+	  <li><strong>E-mail:</strong> <%= @consumer.email %></li>
+	  <% if !@consumer.phone_number.blank?%>
+  	  <li><strong>Phone Number:</strong> <%= @consumer.phone_number %></li>
+  	  <%end%>
+	  <li><strong>Shipping Address:</strong> <%= @deal.winners_shipping_address %></li>
+	</ul>
+	<%= link_to 'Back', supplier_path(@supplier) %>
+
+	<br/>
+	</div>
+</div>
