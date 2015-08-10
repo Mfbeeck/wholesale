@@ -24,6 +24,18 @@ class ApplicationController < ActionController::Base
     redirect_to new_consumer_session
   end
 
+  #Method to send messages using Twilio. It takes the message you want to send and the consumer you want to send it to as arguments.
+  #This method will be called in the orders_controllers update.
+  def send_message(consumer, message)
+    @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
+    twilio_number = ENV["TWILIO_NUMBER"]
+    message = @client.messages.create(
+      from: twilio_number,
+      to: '+1' + consumer.phone_number,
+      body: message
+      )
+  end
+
   def force_supplier_login
     redirect_to new_supplier_session
   end
@@ -69,9 +81,6 @@ class ApplicationController < ActionController::Base
       to: '+1' + consumer.phone_number,
       body: message
       )
-    puts "****************************************************************************"
-    puts message.status
-    puts "****************************************************************************"
   end
 
   def set_array_of_current_consumer_orders_deal_ids

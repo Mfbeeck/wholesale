@@ -25,12 +25,16 @@ class ConsumersController < ApplicationController
 	  @consumer.texts = false
 	  @consumer.result_email = true
 		@consumer.total_points = 0
+    #The line below turns this format "(123)-456-7890" into "1234567890"
 		@consumer.phone_number = @consumer.phone_number.split('').select{|x| x.to_i.to_s == x.to_s}.join
 		# Sends email to user when user is created.
 		@consumer.username = @consumer.username.downcase
-
 		if @consumer.save
-			@consumer.username = @consumer.username.downcase
+      #This method sends a text message to the new user if they entered a valid number.
+      if @consumer.phone_number.length == 10
+        message = "Thank you for being part of ParlayVous. If you would like to receive text notifications please visit your notifications settings and allow that option."
+        send_message(@consumer, message)
+      end
 			session[:consumer_id] = @consumer.id
 			CompanyMailer.welcome_email(@consumer).deliver
 			redirect_to consumer_path(@consumer), notice: "#{@consumer.username.capitalize} was successfully created."
