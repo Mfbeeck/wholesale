@@ -214,6 +214,7 @@ a {
 .consumer_edit_form p {
 	font-size: 1.3vw;
 }
+
 #socialmedia li {
 	display: inline;
 	padding-right: 1vw;
@@ -235,6 +236,12 @@ a {
 #ft-mail:hover {
 	opacity: 1;
 }
+
+#dropdown-image img{
+	margin-top: 1vw;
+
+}
+
 .footer {
 	text-align: center;
 	background-color: #2274A5;
