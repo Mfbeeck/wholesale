@@ -40,12 +40,6 @@ body {
 	font-family: 'Hind', sans-serif;
 }
 
-.deals_list hr {
-	width: 40%;
-	border: 1px solid #2274A5;
-	/*opacity: 0.5;*/
-}
-
 .filter_labels {
 	font-size: 1vw;
 }
@@ -67,11 +61,7 @@ body {
 #home_link a {
 	font: #2274a5;
 }
-.deal_block {
-	margin-left: 3.5vw;
-	margin-right: 3.5vw;
-	width: 30%;
-}
+
 
 .navbar {
 	margin-top: -5px;
@@ -93,35 +83,12 @@ body {
  	background-image: linear-gradient(top, white 30%, #2274A5 400%);
 }*/
 
-
-.deals_list {
-	background-color: white;
-	/*border-radius: 5px;*/
-	/*border: solid black 1px;*/
-	padding-left: 2vw;
-	margin-left: 0vw;
-	padding-top: 5vh;
-	margin-top: 0.5vh;
-	padding-bottom: 1vh;
-	/*width: 67vw;*/
-/*	background-image: linear-gradient(top, white 30%, #2274A5 400%);
-  	background-image: -webkit-linear-gradient(top, white 30%, #2274A5 600%);
-	background-image: -moz-linear-gradient(top, white 30%, #2274A5 400%);
- 	background-image: linear-gradient(top, white 30%, #2274A5 400%);*/
- 	border-radius: 10px;
-}
-
 .filters p {
 	font-size: 1.3vw;
 	margin-left: 2vw;
 	border-bottom: 2px solid #2274A5;
 	width: 60%;
 	/*text-align: center;*/
-}
-
-.image_product a:hover {
-	border-bottom: solid #E83F6F 3px;
-	opacity: .8;
 }
 
 a {
@@ -247,10 +214,16 @@ a {
 .consumer_edit_form p {
 	font-size: 1.3vw;
 }
+
+#dropdown-image img{
+	margin-top: 1vw;
+
+}
+
+
 .footer {
 	text-align: center;
-	
 	background-color: #2274A5;
-	box-shadow: 5px -15px -5px #2274A5;
+	box-shadow: 0px 0 10px  #2274A5;
 	opacity: 0.8;
 }
