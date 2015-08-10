@@ -20,7 +20,7 @@
     <li>
     <%= link_to 'Edit Item', edit_supplier_deal_path(@supplier, deal) %>
     <% if deal.winning_consumer%>
-     | <%= link_to 'Winner Details', suppliers_deals_path(@supplier)%>
+     | <%= link_to 'Winner Details', deal_winners_path(deal)%>
     <%end%>
     </li>
 

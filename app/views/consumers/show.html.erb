@@ -3,20 +3,20 @@
 
 	<ul id="consumers">
 		<% if @consumer.last_name %>
-			<h2>Hi, <%= @consumer.first_name + " " + @consumer.last_name %></h2>
+			<h2>Hi, <%= @consumer.first_name.capitalize + " " + @consumer.last_name.capitalize %></h2>
 		<% else %>
-			<h2>Hi, <%= @consumer.first_name %></h2>
+			<h2>Hi, <%= @consumer.first_name.capitalize %></h2>
 		<% end %>
 		<li>You are logged in as: <strong><%= @consumer.username.capitalize%></strong></li>
-		<li>Email: <%= @consumer.email %></li>
+		<li><strong>Email: </strong><%= @consumer.email %></li>
 		<% if !@consumer.phone_number.blank? %>
 		<li>
-			Phone Number: <%= number_to_phone(@consumer.phone_number) %>
+			<strong>Phone Number: </strong><%= number_to_phone(@consumer.phone_number) %>
 		</li>
 		<%end%>
 
 		<li>
-			Shipping Address: <%= @consumer.address %>
+			<strong>Shipping Address: </strong><%= @consumer.address %>
 		</li>
 	</ul>
 	<div id="links_consumer">

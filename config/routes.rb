@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :deals do
     resources :orders
     resources :comments
+    resources :winners
   end
 
   resources :consumers do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809195423) do
+ActiveRecord::Schema.define(version: 20150810064441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,9 +92,18 @@ ActiveRecord::Schema.define(version: 20150809195423) do
 
   add_index "suppliers", ["username"], name: "index_suppliers_on_username", unique: true, using: :btree
 
+  create_table "winners", force: :cascade do |t|
+    t.integer  "deal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "winners", ["deal_id"], name: "index_winners_on_deal_id", using: :btree
+
   add_foreign_key "comments", "consumers"
   add_foreign_key "comments", "deals"
   add_foreign_key "deals", "suppliers"
   add_foreign_key "orders", "consumers"
   add_foreign_key "orders", "deals"
+  add_foreign_key "winners", "deals"
 end

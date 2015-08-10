@@ -28,7 +28,7 @@
     </style>
   </head>
   <body>
-    <h2>Welcome to <span id="parlayvous">ParlayVous</span>, <%= @user.first_name %>!</h2>
+    <h2>Welcome to <span id="parlayvous">ParlayVous</span>, <%= @user.first_name.capitalize %>!</h2>
     <p>
       You have successfully created an account at <span id="parlayvous">ParlayVous</span> with the
       username: <span><%= @user.username.capitalize %></span>.<br>
