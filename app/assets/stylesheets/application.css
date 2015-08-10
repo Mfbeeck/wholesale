@@ -215,15 +215,44 @@ a {
 	font-size: 1.3vw;
 }
 
+#socialmedia li {
+	display: inline;
+	padding-right: 1vw;
+}
+#ft-fb {
+	opacity: .7;
+}
+#ft-fb:hover {
+	opacity: 1;
+}
+#ft-twr {
+	opacity: .7;
+}
+#ft-twr:hover {
+	opacity: 1;
+}#ft-mail {
+	opacity: .7;
+}
+#ft-mail:hover {
+	opacity: 1;
+}
+
 #dropdown-image img{
 	margin-top: 1vw;
 
 }
-
 
 .footer {
 	text-align: center;
 	background-color: #2274A5;
 	box-shadow: 0px 0 10px  #2274A5;
 	opacity: 0.8;
+	padding-top: 1vh;
+}
+.footercopy a {
+	color: #ffffff;
+}
+.footercopy {
+	padding-top: 2vh;
+	display: inline;
 }

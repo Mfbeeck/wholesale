@@ -6,8 +6,8 @@
 <% @deals.each do |deal| %>
   <% if deal.orders.count < deal.threshold %>
   <ul class = "deal_block">
-
-      <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%></li>
+      <li id="product_price"><%= link_to(number_to_currency(deal.price)) %></li>
+      <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal, class: "actual_image")%></li>
       <br>
       <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li>
       <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li>
