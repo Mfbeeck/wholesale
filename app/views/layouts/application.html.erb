@@ -51,16 +51,16 @@
 			</li>  -->
 
 		  <li class="login_link"><% if current_consumer %>
-			  <%= link_to "#{current_consumer.username}", consumer_path(current_consumer)%>
+			  <%= link_to "#{current_consumer.username.capitalize}", consumer_path(current_consumer)%>
 			    &nbsp;
 	   	  <span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
 			    &nbsp;
 			  <%= link_to "Log out", logout_path, method: "delete" %>
 		  <% else %>
 			   <%= link_to 'Sign in', new_consumer_session_path %>
-			   &nbsp;
-			   <%= link_to 'Sign up', new_consumer_path %>
 		  <% end %>
+		  &nbsp;
+			   <span class='login'><%= link_to 'Sign up', new_consumer_path %>
 	  </li>
     </ul>
   </nav>

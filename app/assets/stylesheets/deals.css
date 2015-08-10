@@ -2,15 +2,43 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
-body {
-	/*font-family: sans-serif, Muli;*/
+
+.deal_block {
+	/*margin-left: 3.5vw;
+	margin-right: 3.5vw;*/
+	width: 24vw;
+}
+.deals_list {
+	background-color: white;
+	/*border-radius: 5px;*/
+	/*border: solid black 1px;*/
+	padding-left: 1.5vw;
+	padding-top: 5vh;
+	margin-top: 0.5vh;
+	padding-bottom: 1vh;
+	/*width: 67vw;*/
+/*	background-image: linear-gradient(top, white 30%, #2274A5 400%);
+  	background-image: -webkit-linear-gradient(top, white 30%, #2274A5 600%);
+	background-image: -moz-linear-gradient(top, white 30%, #2274A5 400%);
+ 	background-image: linear-gradient(top, white 30%, #2274A5 400%);*/
+ 	border-radius: 10px;
+}
+.deals_list hr {
+	width: 40%;
+	border: 1px solid #2274A5;
+	/*opacity: 0.5;*/
+}
+
+.image_product a:hover {
+	border-bottom: solid #E83F6F 3px;
+	opacity: .8;
 }
 
 .deal_image_div{
 	float: left;
 	margin-left: 3vw;
 	margin-top: 2vw;
-	width: 45%;
+	/*width: 45%;*/
 }
 
 .deal_description_display h1{
