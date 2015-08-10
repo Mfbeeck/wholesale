@@ -75,6 +75,7 @@ class OrdersController < ApplicationController
     redirect_to charges_path
   end
 
+  #This method is where we do all of the randomization for the lottery once it has reached capacity
   def update
     @deal = Deal.find(@order.deal_id)
     if !@deal.winning_consumer
@@ -86,9 +87,20 @@ class OrdersController < ApplicationController
         if new_participant.phone_number.length == 10 && new_participant.texts
           send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
         end
+
+        #Below is the logic for picking a winner!!!
+        
         if @deal.orders.count >= @deal.threshold
           @array_of_orders = @deal.orders(:select => :id).collect(&:id)
+          #The variable below captures the sum of the last three digits of the current time
+          @last_three_digits_of_current_time = (Time.now.to_i.to_s.split('')[-3].to_i + Time.now.to_i.to_s.split('')[-2].to_i + Time.now.to_i.to_s.split('')[-1].to_i)
+          #The block below then shuffles the array of winning orders "@last_three_digits_of_current_time" times
+          @last_three_digits_of_current_time.times do
+            @array_of_orders = @array_of_orders.shuffle
+          end
+          #Below we now sample a random order from the newly shuffled array of orders
           @winning_order_id = @array_of_orders.sample #IF WE WANT TO HAVE MULTIPLE WINNERS WE CAN MAKE A FIELD IN THE DEALS FORM FOR NUMBER OF WINNERS AND THEN CALL .sample(@deal.number_of_winners) to select a random sample of that many people
+          #Below we set the deal's winner info into its columns
           @deal.winning_order_id = @winning_order_id
           @winning_order = Order.find(@deal.winning_order_id)
           @winner = Consumer.find(@winning_order.consumer_id)
