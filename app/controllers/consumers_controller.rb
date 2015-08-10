@@ -24,10 +24,13 @@ class ConsumersController < ApplicationController
 		@consumer.total_points = 0
 		@consumer.phone_number = @consumer.phone_number.split('').select{|x| x.to_i.to_s == x.to_s}.join
 		# Sends email to user when user is created.
+		@consumer.username = @consumer.username.downcase
+
 		if @consumer.save
+			@consumer.username = @consumer.username.downcase
 			session[:consumer_id] = @consumer.id
 			CompanyMailer.welcome_email(@consumer).deliver
-			redirect_to consumer_path(@consumer), notice: "#{@consumer.username} was successfully created."
+			redirect_to consumer_path(@consumer), notice: "#{@consumer.username.capitalize} was successfully created."
 		else
 			render action: "new"
 		end
@@ -44,7 +47,7 @@ class ConsumersController < ApplicationController
 		@consumer = Consumer.find(params[:id])
 		@consumer.update(consumer_params)
 		if @consumer.save
-			redirect_to consumer_path(@consumer), notice: "#{@consumer.username}'s info was successfully updated."
+			redirect_to consumer_path(@consumer), notice: "#{@consumer.username.capitalize}'s info was successfully updated."
 		else
 			render action: "edit"
 		end

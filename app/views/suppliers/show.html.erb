@@ -1,13 +1,17 @@
 <div class="consumers_list">
 	<div id="consumer_info">
 
-	<h2><%= @supplier.username.capitalize %> Homepage</h2>
+	<h2><%= @supplier.username.capitalize %>'s Homepage</h2>
 	<ul id="consumers">
-	  <li><strong>Username:</strong> <%= @supplier.username %></li>
+	  <li><strong>Username:</strong> <%= @supplier.username.capitalize %></li>
 	  <li><strong>E-mail:</strong> <%= @supplier.email %></li>
 	  <li><strong>HQ Address:</strong> <%= @supplier.address %></li>
-	  <li><%= link_to 'Update Info', edit_supplier_path(@supplier) %> |
-	  <%= link_to 'View Lotteries', suppliers_deals_path %></li>
-	</ul>
 
-<hr>
+	  <div id = "links_consumer">
+		  <%= link_to 'Update Info', edit_supplier_path(@supplier) %> |
+		  <%= link_to 'View Lotteries', suppliers_deals_path %>
+	  </div>
+	</ul>
+	<br/>
+	</div>
+</div>

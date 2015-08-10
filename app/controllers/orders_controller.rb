@@ -119,7 +119,7 @@ class OrdersController < ApplicationController
               message = "ParlayVous!!! #{@winner.first_name.capitalize}, you just won this item: #{@deal.name}. It will be shipped to #{@deal.winners_shipping_address}. If this is not correct, please contact customer service."
               CompanyMailer.winner_email(@consumer, @deal ).deliver
             else
-              message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username} won this item: #{@deal.name}."
+              message = "Sorry, #{consumer.first_name.capitalize}. Participant #{@winner.username.capitalize} won this item: #{@deal.name}."
             end
             # If he consumer has a phone number and added a valid number he/she will get txt messages.
             if consumer.phone_number.length == 10 && consumer.texts

@@ -2,6 +2,7 @@ class Deal < ActiveRecord::Base
   belongs_to :supplier
   has_many :orders
   has_many :comments
+  has_one :winner
 
   validates :name, :url, :description, :price, :threshold, :product_type, presence: true
 
