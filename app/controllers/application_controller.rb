@@ -33,9 +33,6 @@ class ApplicationController < ActionController::Base
       to: '+1' + consumer.phone_number,
       body: message
       )
-    puts "****************************************************************************"
-    puts message.status
-    puts "****************************************************************************"
   end
 
   def force_supplier_login
