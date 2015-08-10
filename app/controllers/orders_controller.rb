@@ -88,7 +88,7 @@ class OrdersController < ApplicationController
         if new_participant.phone_number.length == 10 && new_participant.texts
           send_message(new_participant, "#{new_participant.first_name}, welcome to a new ParlayVous game!!! Good luck on winning the #{@deal.name}.")
         end
-
+        CompanyMailer.info_email(new_participant, @deal).deliver if new_participant.result_email
         #Below is the logic for picking a winner!!!
         if @deal.orders.count >= @deal.threshold
           @array_of_orders = @deal.orders(:select => :id).collect(&:id)
