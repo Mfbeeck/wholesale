@@ -2,12 +2,22 @@
 
 <% @orders.each do |order| %>
 <% @deal = Deal.find(order.deal_id)%>
-  <ul>
-	  <li><strong>Deal Name: </strong><%= link_to "#{@deal.name}", @deal %></li>
+  <ul class = "orders-index">
+	  <li class="image_product"><%= link_to(image_tag("#{@deal.url}", :size => "200x150"), @deal)%></li>
+	  <li><strong>Item: </strong><%= link_to "#{@deal.name}", @deal %></li>
+	  <% if @deal.winning_consumer && current_consumer.username == @deal.winning_consumer %>
+  	  <li><strong>Status:</strong> Complete <span style = "color: green">(You Won!)</span></li>
+  	  <% elsif @deal.winning_consumer %>
+	  <li><strong>Status:</strong> Complete <span style = "color: red">(You Lost)</span></li>
+	  <%else%>
+  	  <li><strong>Status:</strong> Incomplete (<%=pluralize(@deal.threshold - @deal.orders.count, "Participant")%> Remaining)</li>
+  	  <%end%>
+
+
      <li><%= link_to 'Order/Shipping Details', order %></li>
   </ul>
 <% end %>
-
+<br>
 <%= link_to 'Back To Consumer Home', consumer_path(current_consumer)%>
 
 

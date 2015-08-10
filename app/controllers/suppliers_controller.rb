@@ -10,6 +10,10 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new
   end
 
+  def deals
+    @supplier = current_supplier
+  end
+  
   def create
     @supplier = Supplier.new(supplier_params)
 
