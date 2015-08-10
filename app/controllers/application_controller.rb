@@ -81,7 +81,6 @@ class ApplicationController < ActionController::Base
       to: '+1' + consumer.phone_number,
       body: message
       )
-
   end
 
   def set_array_of_current_consumer_orders_deal_ids
