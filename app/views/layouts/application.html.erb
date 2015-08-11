@@ -9,19 +9,12 @@
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      
+
       //our code will go here
 
   });
   </script>
   <%= csrf_meta_tags %>
-  <!-- <script language="JavaScript">
-  window.onbeforeunload = confirmExit;
-  function confirmExit()
-  {
-    return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
-  }
-</script> -->
 </head>
 <body>
 <div id="fb-root"></div>
@@ -41,12 +34,12 @@
 </script>
 
 <script type="text/javascript">
-  $(document).ready(function() {    
+  $(document).ready(function() {
     $('#dropdown').click(function() {
         $('#dropdown > ul').toggleClass('ul_show');
         $('#dropdown > ul').toggleClass('ul_hide');
     });
-           
+
   });
 </script>
   <nav class="navbar">
@@ -58,10 +51,10 @@
                 <li id="dropdown-links"><%= link_to 'All Products', deals_path %></li>
                 <li id="dropdown-links">
                   <%= link_to 'Electronics', deals_index_electronics_path %>
-                </li>                  
+                </li>
                 <li id="dropdown-links">
                   <%= link_to 'Video Games', deals_index_videogames_path %>
-                </li>               
+                </li>
           </ul>
         </li>
     </ul>

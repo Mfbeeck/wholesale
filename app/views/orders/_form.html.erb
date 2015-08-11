@@ -1,3 +1,11 @@
+<script language="JavaScript">
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+    return "Please confirm your address before leaving this page. If you clicked the 'Confirm Shipping Address' button  already, click on 'Leave this page'.";
+  }
+</script>
+
 <p class = "current_order_address"><%= @order.address%></p>
 
 <%= radio_button_tag(:shipping, "current_address", checked: true) %>
@@ -8,12 +16,12 @@
 <div class = "general_address_form">
 
 <%= form_for @order do |f| %>
-  
+
   <div class = "new_address_form">
     <p><%= f.label "Shipping Address:" %></p>
     <p><%= f.text_field :address %></p>
   </div>
-  
+
   <p>
     <%= f.submit "Confirm Shipping Address" %>
   </p>
@@ -30,7 +38,7 @@
         $('.new_address_form').hide();
         $('#order_address').replaceWith("<input type='hidden' name='order[address]' id='order_address' value='" + defaultValue + "'>");
       }
-      
+
     else if ($("input[type='radio']:checked").val() == "new_address"){
         $('.new_address_form').show();
         $('#order_address').replaceWith('<input type="text" name="order[address]" id="order_address">');
@@ -38,8 +46,8 @@
     });
 
   //   var value = $(this).val();
-  //   switch (value) { 
-  //   case 'current_address': 
+  //   switch (value) {
+  //   case 'current_address':
   //       $('.new_address').hide();
   //       break;
   //   case 'new_address':
