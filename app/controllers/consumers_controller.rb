@@ -2,6 +2,7 @@ class ConsumersController < ApplicationController
     before_action :set_consumer, only: [:notification]
     before_action :redirect_to_consumer_home, only: [:index, :destroy]
     before_action :check_if_consumer_logged_in, only: [:edit]
+    before_action :check_consumer_id, only: [:show, :edit, :update]
 
 
 	def index
@@ -68,6 +69,14 @@ class ConsumersController < ApplicationController
 	end
 
 	private
+
+	def check_consumer_id
+		if current_consumer.id != params[:id].to_i
+			redirect_to consumer_path(current_consumer)
+		else
+		end
+	end
+
 	def consumer_params
 		params.require(:consumer).permit(:username, :email, :password, :password_confirmation, :address, :first_name, :last_name, :created_at, :updated_at, :phone_number, :texts, :result_email)
 	end
