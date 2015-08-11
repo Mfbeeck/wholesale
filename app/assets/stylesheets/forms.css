@@ -1,10 +1,5 @@
 .login-registration-form{
 	text-align: center;
-	background-image: linear-gradient(top, #2274A5 0%, white 200%);
-  background-image: -webkit-linear-gradient(top, #2274A5 0%, white 200%);
-	background-image: -moz-linear-gradient(top, white 0%, #2274A5 200%);
- 	background-image: linear-gradient(top, #2274A5 0%, white 200%);
-/*	background: rgba(34, 116, 165, 1);*/
 	width: 30%;
 	margin: auto;
 /*	border: solid #0047B2 1px;*/

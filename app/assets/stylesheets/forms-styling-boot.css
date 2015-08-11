@@ -7,7 +7,7 @@
     background: #F0F0F0;
     padding: 30px 30px 20px 30px;
     font: 12px Arial, Helvetica, sans-serif;
-    color: #4B8CB3;
+    color: #40B3E5;
     border: solid #E0E0E0 1px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -24,7 +24,7 @@
   display: block;
   margin: -30px -30px 10px -30px;
   color: #FFF;
-  background: #4B8CB3;
+  background: #40B3E5;
   text-shadow: 1px 1px 1px #949494;
   border-radius: 5px 5px 0px 0px;
   -webkit-border-radius: 5px 5px 0px 0px;
@@ -45,7 +45,7 @@
 .smart-green label>span {
     float: left;
     margin-top: 10px;
-    color: #4B8CB3;
+    color: #40B3E5;
 }
 
 .smart-green input[type="text"], .smart-green input[type="email"], .smart-green input[type="tel"], .smart-green input[type="number"], .smart-green input[type="password"], .smart-green textarea, .smart-green select {
@@ -76,7 +76,7 @@
 
 .smart-green #required:after {
   content: " *";
-  color: #4B8CB3;
+  color: #40B3E5;
 }
 
 .smart-green select {
@@ -93,7 +93,7 @@
 }
 
 .smart-green .button {
-  background-color: #4B8CB3;
+  background-color: #40B3E5;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-border-radius: 5px;
@@ -109,7 +109,7 @@
 }
 
 .smart-green .back-button {
-  background-color: #4B8CB3;
+  background-color: #40B3E5;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-border-radius: 5px;
@@ -126,7 +126,7 @@
 }
 
 .smart-green .signup-link {
-    background-color: #4B8CB3;
+    background-color: #40B3E5;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-border-radius: 5px;
@@ -151,7 +151,7 @@
   background: #F0F0F0;
   padding: 30px 30px 20px 30px;
   font: 12px Arial, Helvetica, sans-serif;
-  color: #4B8CB3;
+  color: #40B3E5;
   border: solid #E0E0E0 1px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -274,7 +274,7 @@
   background: #F0F0F0;
   padding: 30px 30px 20px 30px;
   font: 12px Arial, Helvetica, sans-serif;
-  color: #4B8CB3;
+  color: #40B3E5;
   border: solid #E0E0E0 1px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -498,7 +498,7 @@
   background: #F0F0F0;
   padding: 30px 30px 20px 30px;
   font: 12px Arial, Helvetica, sans-serif;
-  color: #4B8CB3;
+  color: #40B3E5;
   border: solid #E0E0E0 1px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
