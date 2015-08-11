@@ -41,8 +41,6 @@ body {
 }
 .yield {
     min-height: 100%;
-     /* equal to footer height */
-    /*margin-bottom: 15vh; */
 	background-color: #FAFAFA;
 	clear: both;
 	padding-top: 13vh;
@@ -88,7 +86,7 @@ body {
 	width: 100vw;
 	z-index: 9999;
 	height: auto;
-	padding-top: 5vh;
+	padding-top: 3vh;
 	box-shadow: 0px 0 10px  #E6E6E6;
 }
 .login_link {
@@ -138,7 +136,7 @@ a {
 }
 #product_type {
 	color: #2274A5;
-	font-size: 26px;
+	font-size: 32px;
 	font-weight: bold;
 }
 .checkbox-tags{
@@ -282,7 +280,7 @@ a {
 	opacity: .8;
 }
 .footer {
-    height:15vh;   /* Height of the footer */
+    height:12vh;   /* Height of the footer */
 	text-align: center;
 	background-color: #2274A5;
 	box-shadow: 0px 0 10px  #2274A5;

@@ -1,47 +1,53 @@
 <div class = "deals_list">
-<hr>
-<p class="main_title">Place Your Bet</p>
-<hr>
-<% if current_consumer %>
-   <input type="checkbox" name="my_orders" id="my_orders"/><span class = "checkbox-tags"> Your Orders</span>
-   <input type="checkbox" name="not_my_orders" id="not_my_orders"/><span class = "checkbox-tags"> Exclude Your Orders</span>
- <% end %>
+ <p class="main_title"><%= image_tag("parlaybanner.png")%></p>
+<div class="checkbox-group">
+   <% if current_consumer %>
+    <input type="checkbox" name="my_orders" id="my_orders"/><span class = "checkbox-tags"> Your Orders</span>
+    <input type="checkbox" name="not_my_orders" id="not_my_orders"/><span class = "checkbox-tags"> Exclude Your Orders</span>
+   <% end %>
+ </div>
 <br>
 <% @deals.each do |deal| %>
   <% if deal.orders.count < deal.threshold %>
     <% if current_consumer %>
       <% @current_consumer_deals = current_consumer.orders(:select => :deal_id).collect(&:deal_id) %>
-      
+
       <% if @current_consumer_deals.include? deal.id %>
         <ul class = "deal_block_consumer">
-          <li id="product_price"><%= link_to(number_to_currency(deal.price)) %></li>
+          <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
           <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal, class: "actual_image")%></li>
-          <br>
-          <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li>
+          <!-- <br> -->
+          <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
           <li class="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
+          <br>
         </ul>
       <%else%>
         <ul class = "deal_block">
-          <li id="product_price"><%= link_to(number_to_currency(deal.price)) %></li>
+          <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
           <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal, class: "actual_image")%></li>
+          <!-- <br> -->
+          <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
+          <!-- <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li> -->
+          <li class="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
           <br>
-          <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li>
-          <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li>
         </ul>
       <% end %>
     <% else %>
       <ul class = "deal_block">
-          <li id="product_price"><%= link_to(number_to_currency(deal.price)) %></li>
+          <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
           <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal, class: "actual_image")%></li>
           <br>
-          <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li>
-          <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li>
+          <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
+          <!-- <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li> -->
+          <li class="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
         </ul>
     <% end %>
   <% end %>
 <% end %>
 </div>
 
+  </div>
+</div>
  <script>
 
 $('#my_orders').click(function(){
@@ -50,7 +56,7 @@ $('#my_orders').click(function(){
     } else {
         $('.deal_block').show();
     };
-}) 
+})
 
 $('#not_my_orders').click(function(){
     if (this.checked) {
@@ -58,6 +64,6 @@ $('#not_my_orders').click(function(){
     } else {
         $('.deal_block_consumer').show();
     };
-}) 
+})
 
 </script>
