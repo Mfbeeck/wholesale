@@ -4,22 +4,24 @@ class DealsController < ApplicationController
   before_action :set_supplier, only: [:create, :edit, :update, :destroy]
   before_action :check_if_supplier_logged_in, only: [:create, :update, :destroy, :edit, :new]
   before_action :set_array_of_current_consumer_orders_deal_ids, only: [:show]
+  before_action :check_supplier_id_for_deals, only: [:show, :edit, :update]
+
 
   # before_action :set_consumer, only: [:show]
 
   def index
-    @deals = Deal.where(threshold_reached: false)
+    @deals = Deal.where(threshold_reached: false).sort {|a,b| a.participants_left <=> b.participants_left}
     # (order_by participants_remaining)
     # @deals = Deal.filter_by(params)
     # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
   end
 
   def index_electronics
-    @deals = Deal.where(:threshold_reached => false, :product_type => "Electronics")
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Electronics").sort {|a,b| a.participants_left <=> b.participants_left}
   end
 
   def index_videogames
-    @deals = Deal.where(:threshold_reached => false, :product_type => "Video Games")
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Video Games").sort {|a,b| a.participants_left <=> b.participants_left}
   end
 
   def new
@@ -80,6 +82,12 @@ class DealsController < ApplicationController
 
   private
 
+  def check_supplier_id_for_deals
+    if current_supplier.id != params[:id].to_i
+      redirect_to supplier_path(current_supplier)
+    else
+    end
+  end
   def participants_remaining
     @deal.threshold - @deal.orders.count
   end

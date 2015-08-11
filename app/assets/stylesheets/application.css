@@ -260,6 +260,7 @@ a {
 	font-size: 1.3vw;
 }
 
+
 #dropdown-links {
 	margin-left: .3vw;
 	border-bottom: dashed #FAFAFA 1px;
@@ -280,7 +281,8 @@ a {
 
 #dropdown-links a {
 	color: #40B3E5;
-	font-size: 1.7vw;
+	padding-right: 16px;
+	font-size: 22px;
 	margin-top: -26px;
 }
 

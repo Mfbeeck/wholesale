@@ -33,7 +33,7 @@
   </label>
   <br/>
   <label style = "display: inline-block; margin-right: -10px; margin-top: 10px">
-    <%= link_to 'Back', suppliers_deals_path, :class =>'back-button'%>
+    <%= link_to 'Back', suppliers_path(current_supplier), :class =>'back-button'%>
   </label>
   <label style = "display: inline-block; float: right; margin-right: -10px; margin-top: 0px;">  
     <%= f.submit 'Create Lottery', :class => 'button' %>

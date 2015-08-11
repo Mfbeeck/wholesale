@@ -19,5 +19,9 @@ class Deal < ActiveRecord::Base
     orders.count >= threshold
   end
 
+  def participants_left
+    threshold - orders.count
+  end
+
   private
 end

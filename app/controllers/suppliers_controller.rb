@@ -1,6 +1,8 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
   before_action :redirect_to_supplier_home, only: [:index, :destroy]
+  before_action :check_supplier_id, only: [:show, :edit, :update]
+
   # before_action :require_logged_in
 
   def index
@@ -66,6 +68,13 @@ class SuppliersController < ApplicationController
   end
 
   private
+
+  def check_supplier_id
+    if current_supplier.id != params[:id].to_i
+      redirect_to supplier_path(current_supplier)
+    else
+    end
+  end
 
   def set_supplier
     @supplier = Supplier.find(params[:id])
