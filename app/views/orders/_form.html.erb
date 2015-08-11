@@ -1,32 +1,43 @@
-<script language="JavaScript">
-  window.onbeforeunload = confirmExit;
-  function confirmExit()
-  {
-    return "Please confirm your address before leaving this page. If you clicked the 'Confirm Shipping Address' button  already, click on 'Leave this page'.";
-  }
-</script>
+ <script language="JavaScript">
+//   window.onbeforeunload = confirmExit;
+//   function confirmExit()
+//   {
+//     return "Please confirm your address before leaving this page. If you clicked the 'Confirm Shipping Address' button  already, click on 'Leave this page'.";
+//   }
+// </script>
 
-<p class = "current_order_address"><%= @order.address%></p>
+<br/>
+<div class = "order-confirm">
+<h1>Please confirm your shipping address.</h1>
+<br/>
+<p class = "current_order_address"><%= @order.address.capitalize%></p>
+<br/>
+<div class = "confirm-old-address">
+<%= radio_button_tag(:shipping, "current_address", checked: true) %><%= label_tag(:shipping, "Use The Address Above") %>
+</div>
+<div class = "confirm-new-address">
+<%= radio_button_tag(:shipping, "new_address") %><%= label_tag(:shipping, "Enter A Different Address Below") %>
+</div>
 
-<%= radio_button_tag(:shipping, "current_address", checked: true) %>
-<%= label_tag(:shipping, "Use this address") %>
-
-<%= radio_button_tag(:shipping, "new_address") %>
-<%= label_tag(:shipping, "Use a different address") %>
 <div class = "general_address_form">
 
 <%= form_for @order do |f| %>
 
   <div class = "new_address_form">
-    <p><%= f.label "Shipping Address:" %></p>
+  <br/>
+    <p><strong><%= f.label "Shipping Address:" %></strong></p>
     <p><%= f.text_field :address %></p>
   </div>
-
+  <br/>
   <p>
-    <%= f.submit "Confirm Shipping Address" %>
+    <%= f.submit "Confirm Shipping Address", :class => 'button'  %>
   </p>
 
 <% end %>
+
+</div>
+</div>
+<br/>
 
 <script>
 
