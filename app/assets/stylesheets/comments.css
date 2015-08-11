@@ -28,24 +28,24 @@
 	font-size: 1vw;
 }
 
-.comment_yours:hover .time{
+.comment_yours:hover .time {
 	color: #C5C5C5;
 	font-size: 1vw;
 	margin-left: 0vw;
 	padding-top: 10vh;
 }
 
-.comment_yours .time{
+.comment_yours .time {
 	color: #C5C5C5;
 	font-size: 1vw;
 	margin-left: -1vw;
 }
 
-.comment_yours .delete_comment_link{
+.comment_yours .delete_comment_link {
 	display: none;
 }
 
-.comment_yours:hover .delete_comment_link{
+.comment_yours:hover .delete_comment_link {
 	display: inline;
 }
 
@@ -66,8 +66,7 @@
 	width: 40%;
 	margin-left: 6.5vw;
 	margin-top: 1vh;
-/*	border-left: solid black 1px;
-*/	padding-left: 1vw;
+  padding-left: 1vw;
 	padding-bottom: 3vh;
 	display: inline-block;
 }
@@ -76,8 +75,7 @@
 	width: 90%;
 	margin-left: 9.2vw;
 	margin-top: 1vh;
-/*	border-left: solid black 1px;
-*/	padding-left: 1vw;
+	padding-left: 1vw;
 	padding-bottom: .5vh;
 }
 
@@ -98,14 +96,12 @@
 	width: 90%;
 	margin-left: 9.2vw;
 	margin-top: 1vh;
-/*	border-left: solid black 1px;
-*/	padding-left: 2.5vw;
+	padding-left: 2.5vw;
 	padding-bottom: 3vh;
 }
 
 .bottom_comments_list li {
-/*	border-bottom: dashed gray 1px;
-*/	width: 90%;
+	width: 90%;
 	font-size: 1.2vw;
 
 }
@@ -125,7 +121,7 @@
 	padding-right: 1vw;
 }
 
-#comment_now{
+#comment_now {
 	text-align: center
 }
 
@@ -138,7 +134,7 @@
 textarea {
    font-family: Hind;
    font-size: 1.2vw;
-} 
+}
 
 .placeholder{
 	color: gray;
