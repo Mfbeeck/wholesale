@@ -1,20 +1,23 @@
-<div class= "login-registration-form">
-<h1>Log In (Supplier)</h1>
-<ul>
-<%= form_tag login_supplier_path do %>
-  <li>
-    <%= label_tag :username %><br/>
-    <%= text_field_tag :username %>
-  </li>
-  <li>
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %>
-  </li>
-  <p>
-    <%= submit_tag 'Log In' %>
-  </p>
+ <br/>
+ <%= form_tag login_supplier_path, :class => "smart-green" do |f| %>
+    <h1>Supplier Login</h1>
+      <label>
+        <span>Username: </span><br/>
+        <%= text_field_tag :username, nil, placeholder: "Username" %>
+      </label>
+      <br/>
+      <label>
+        <span>Password: </span><br/>
+        <%= password_field_tag :password, nil, placeholder: "Password" %>
+      </label>
+      <br />
+      <label style = "display: inline-block; margin-right: -10px">  
+        <%= submit_tag 'Login', :class => 'button' %>
+      </label> 
+      <label style = "display: inline-block; margin-left: 15px; margin-top: 0px;">
+        <%= link_to "Signup", new_supplier_path, method: :get, :class => 'signup-link' %>
+      </label>
+      <br/>
   <% end %>
-  <%= button_to "Signup", new_supplier_path, method: :get %>
-</ul>
-</div>
+  <br/>
 

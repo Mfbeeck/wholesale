@@ -59,7 +59,7 @@ class DealsController < ApplicationController
 
     if @deal.save
       #session[:supplier_id] = @supplier.id
-      redirect_to @supplier, notice: "Deal was successfully created"
+      redirect_to suppliers_deals_path, notice: "Deal was successfully created"
     else
       render action: "new"
     end

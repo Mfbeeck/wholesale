@@ -1,29 +1,31 @@
-<div class="consumer_edit_form">
-  <h1 id="update_title">Notification Settings</h1>
-  <%= form_for(@consumer) do |f| %>
-    <ul>
+  <%= form_for(@consumer, :html => {:class => "update-green"}) do |f| %>
+    <h1 id="update_title">Notification Settings</h1>
+    <ul class = "errors">
       <% @consumer.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
+        <li style="color:red"><%= error %></li>
       <% end %>
     </ul>
-    <p>
-      <%= f.label :phone_number%>:&nbsp;&nbsp;<%= f.telephone_field :phone_number, id: 'phone'  %>
-      <li id = "info-image-for-texts"><%= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
+
+    <label>
+      <span><%= f.label :phone_number%>:</span>&nbsp;&nbsp;<%= f.telephone_field :phone_number, id: 'phone'  %>
+      <!-- <li id = "info-image-for-texts"> --><%#= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
         Text Updates?
         <%= f.check_box :texts %>
-        <span id="popup">This allows us to notify you when you enter a lottery and send you the results of lotteries you have entered upon completion.</span>
-      </li>
-    </p>
-    <p><%= f.label :email%>:&nbsp;&nbsp;<%= f.email_field :email, id: 'email'  %><br />
-      <li id = "info-image-for-texts"><%= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
-        Result Email?
+       <!--  <span id="popup">This allows us to notify you when you enter a lottery and send you the results of lotteries you have entered upon completion.</span> -->
+      <!-- </li> -->
+    </label>
+    <label>
+      <span><%= f.label :email%>:</span>&nbsp;&nbsp;<%= f.email_field :email, id: 'email'  %><br />
+      <!-- <li id = "info-image-for-texts"> --><%#= image_tag("http://vignette2.wikia.nocookie.net/gravityfalls/images/5/55/More_info_icon.png/revision/20131229000053", id: 'info-image')%>
+        Email Notifications?
         <%= f.check_box :result_email %>
-        <span id="popup">This allows us to email you the results of the lotteries you have entered in real time.</span>
-      </li>
-    </p>
-    <p>
-      <%= f.submit 'Update Settings'%>
-    </p>
+<!--         <span id="popup">This allows us to email you the results of the lotteries you have entered in real time.</span>
+ -->      </li>
+    </label>
+    <label style = "display: inline-block; margin-right: -10px; margin-top: 10px">
+      <%= link_to 'Back to Profile', consumer_path(@consumer), :class =>'back-button' %><br><br>
+    </label>
+    <label style = "display: inline-block; float: right; margin-right: -10px; margin-top: 0px;">  
+      <%= f.submit 'Update Settings', :class => 'button' %>
+    </label>
   <% end %>
-  <%= link_to 'Back to Profile', consumer_path(@consumer) %><br><br>
-</div>
