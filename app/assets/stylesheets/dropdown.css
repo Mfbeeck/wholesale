@@ -39,12 +39,20 @@
 }
 
 .ul_show {
-	position:absolute;
-	visibility:visible;
+	position: absolute;
+	visibility: visible;
+	border-top: 1px solid #fff;
+	margin:3px;
+}
 
-	border-top:1px solid #fff;
-	margin:0;
-	padding:0;
+.ul_show li{
+	width: 30px;
+}
+
+#dropdown-links a{
+	width: 126px;
+	padding-left: 10px;
+
 }
 
 .myMenu li ul li a:link, .myMenu li ul li a:visited {

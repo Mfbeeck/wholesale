@@ -276,6 +276,29 @@ a {
 	margin-left: .3vw;
 	border-bottom: dashed black 1px;
 }
+
+.drop {
+}
+
+.drop-border {
+	background-color: #F8F8F8;
+	border-radius: 5px;
+}
+
+#dropdown-image img{
+	margin-top: 1vw;
+}
+
+#dropdown-links a{
+	color: #2274A5;
+	font-size: 1.3vw;
+	margin-top: -26px;
+}
+
+#dropdown-links a:hover{
+	opacity: .8;
+}
+
 #socialmedia li {
 	display: inline;
 	padding-right: 1vw;
@@ -297,21 +320,7 @@ a {
 #ft-mail:hover {
 	opacity: 1;
 }
-#dropdown {
-	border: 2px outset;
-}
-#dropdown-image img{
-	margin-top: 1vw;
-}
 
-#dropdown-links a{
-	color: #2274A5;
-	font-size: 1.3vw;
-	margin-top: -26px;
-}
-#dropdown-links a:hover{
-	opacity: .8;
-}
 .footer {
     height:12vh;   /* Height of the footer */
 	text-align: center;
