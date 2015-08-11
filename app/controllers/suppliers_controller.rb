@@ -17,8 +17,11 @@ class SuppliersController < ApplicationController
   
   def create
     @supplier = Supplier.new(supplier_params)
-
+    
     if @supplier.save
+      if current_consumer
+        session[:consumer_id] = nil
+      end
       session[:supplier_id] = @supplier.id
       redirect_to @supplier, notice: "Supplier was successfully created"
     else

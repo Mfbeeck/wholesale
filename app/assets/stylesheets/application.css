@@ -58,10 +58,13 @@ body {
 	width: auto;
 	margin-top: 0vh;
 }
+
 #home_link a {
 	font: #2274a5;
 }
+
 #logo {
+	margin: auto;
 	font-size: 16pt;
 	font-family: 'La Belle Aurore', cursive;
 	padding-left: 32.5vw;
