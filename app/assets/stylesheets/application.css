@@ -300,18 +300,18 @@ a {
 	padding-right: 1vw;
 }
 #ft-fb {
-	opacity: .7;
+	opacity: .6;
 }
 #ft-fb:hover {
 	opacity: 1;
 }
 #ft-twr {
-	opacity: .7;
+	opacity: .6;
 }
 #ft-twr:hover {
 	opacity: 1;
 }#ft-mail {
-	opacity: .7;
+	opacity: .6;
 }
 #ft-mail:hover {
 	opacity: 1;
@@ -322,8 +322,8 @@ a {
 	position: absolute;
     height:11vh;   /* Height of the footer */
 	text-align: center;
-	background-color: #2274A5;
-	box-shadow: 0px 0 10px  #2274A5;
+	background-color: #40B3E5;
+	box-shadow: 0px 0 10px  #40B3E5;
 	opacity: 0.8;
 	padding-top: 1vh;
 }
