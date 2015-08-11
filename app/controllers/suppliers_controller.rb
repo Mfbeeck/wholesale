@@ -19,7 +19,7 @@ class SuppliersController < ApplicationController
   
   def create
     @supplier = Supplier.new(supplier_params)
-    
+    @supplier.admin = false
     if @supplier.save
       if current_consumer
         session[:consumer_id] = nil

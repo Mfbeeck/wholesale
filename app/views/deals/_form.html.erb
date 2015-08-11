@@ -1,6 +1,6 @@
 </br>
 <%= form_for [@supplier, @deal], :html => {:class => "pink-green"} do |f| %>
-  <h1>Create New Lottery</h1>
+  <h1>Create New Raffle</h1>
   <ul class = "errors">
     <% @deal.errors.full_messages.each do |error| %>
       <li style="color:red"><%= error %></li>
@@ -36,7 +36,7 @@
     <%= link_to 'Back', suppliers_path(current_supplier), :class =>'back-button'%>
   </label>
   <label style = "display: inline-block; float: right; margin-right: -10px; margin-top: 0px;">  
-    <%= f.submit 'Create Lottery', :class => 'button' %>
+    <%= f.submit 'Create Raffle', :class => 'button' %>
   </label>
   <br/>
   <% end %>

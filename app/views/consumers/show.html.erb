@@ -1,6 +1,9 @@
 <div class="order_show">
 	<div id="order_info">
 
+    <div class = "flash-notice">
+    	<p id="notice"><%= notice %></p>
+    </div>
 	<ul id="consumers">
 		<% if @consumer.last_name %>
 			<h2>Hi, <%= @consumer.first_name.capitalize + " " + @consumer.last_name.capitalize %></h2>

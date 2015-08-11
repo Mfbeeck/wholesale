@@ -1,5 +1,8 @@
 <h3>Manage your deals here </h3>
-<p>(<%= link_to 'Create New Lottery', new_deal_path %>)</p>
+<div class = "flash-notice">
+    <p id="notice"><%= notice %></p>
+</div>
+<p>(<%= link_to 'Create New Raffle', new_deal_path %>)</p>
 
 
 <% @supplier.deals.each do |deal| %>

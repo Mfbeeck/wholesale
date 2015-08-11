@@ -16,10 +16,10 @@
         (<%= link_to 'Edit', edit_consumer_order_path(current_consumer, @order) %>)
         </li>
     <% elsif @deal.winning_consumer == current_consumer.username %>
-        <li><strong>ParlayVous!! The lottery for the <%= @deal.name %> has ended and YOU were the winner! Your item will be shipped shortly to: <%= @deal.winners_shipping_address %></li>
+        <li><strong>ParlayVous!! The raffle for the <%= @deal.name %> has ended and YOU were the winner! Your item will be shipped shortly to: <%= @deal.winners_shipping_address %></li>
         <div class="fb-share-button" data-href="http://parlayvous.com/deals/<%= @deal.id %>" data-layout="button"></div>
     <% else %>
-        <li><strong>The lottery for the <%= @deal.name %> has ended and the winner was: <%= @deal.winning_consumer.capitalize %></li>
+        <li><strong>The raffle for the <%= @deal.name %> has ended and the winner was: <%= @deal.winning_consumer.capitalize %></li>
     <% end %>
   </ul>
 

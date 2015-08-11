@@ -198,7 +198,7 @@ class OrdersController < ApplicationController
 
   def check_if_winner_assigned
     if @deal.winning_consumer
-      flash[:notice] = "You can no longer update the shipping address for this item. It has already been shipped to the winner. \n If you are the winner and want to change your address please contact customer service at CarlosHasCheapDeals@gmail.com"
+      flash[:notice] = "You can no longer update the shipping address for this item. It has already been shipped to the winner. \n If you are the winner and want to change your address please contact customer service at Parlay.Vous@gmail.com as soon as possible."
       redirect_to order_path(@order)
     end
   end

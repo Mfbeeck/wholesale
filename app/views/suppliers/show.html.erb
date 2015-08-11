@@ -1,5 +1,8 @@
 <div class="order_show">
 	<div id="order_info">
+    <div class = "flash-notice">
+    	<p id="notice"><%= notice %></p>
+    </div>
 
 	<h2><%= @supplier.username.capitalize %>'s Homepage</h2>
 	<ul id="consumers">
@@ -10,7 +13,7 @@
 	  <div id = "links_consumer">
 		  <%= link_to 'Update Info', edit_supplier_path(@supplier) %> |
 		  <%= link_to 'View Lotteries', suppliers_deals_path %> |
-  		  <%= link_to 'Create New Lottery', new_deal_path %>
+  		  <%= link_to 'Create New Raffle', new_deal_path %>
 
 	  </div>
 	</ul>
