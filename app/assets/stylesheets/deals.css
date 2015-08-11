@@ -2,7 +2,12 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
-
+.deal_block_consumer {
+	/*margin-left: 3.5vw;
+	margin-right: 3.5vw;*/
+	width: 24vw;
+	display: inline-block;
+}
 .deal_block {
 	/*margin-left: 3.5vw;
 	margin-right: 3.5vw;*/
