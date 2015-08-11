@@ -12,7 +12,7 @@
 	/*border-radius: 5px;*/
 	/*border: solid black 1px;*/
 	padding-left: 1.5vw;
-	padding-top: 8vh;
+	padding-top: 5vh;
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
 	/*width: 67vw;*/
@@ -22,20 +22,16 @@
  	background-image: linear-gradient(top, white 30%, #2274A5 400%);*/
  	border-radius: 10px;
 }
-.deals_list hr {
-	width: 40%;
-	border: 1px solid #e83f6f;
-	/*opacity: 0.5;*/
-}
 
 #product_price a{
 	background: #32936f;
 	float: right;
 	margin-right: .5vw;
-	padding-right: 1px;
+	padding: 2px;
 	margin-bottom: -5vh;
 	position: relative;
-  	font-color: white;
+  	color: white;
+  	border-radius: 10px;
 }
 
 .image_product a:hover {
