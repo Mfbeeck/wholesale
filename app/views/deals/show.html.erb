@@ -54,15 +54,18 @@
             <ul class = "bottom_comments_list">
                 <li class = "comment_create_form"><%= render 'comments/form' %></li>
             </ul>
+            <br/>
+            <br/>
 
         <% else%>
             <ul class = "comments_list">
                 <li class = "comments_title"><h3>Comments:</h3></li>
                    <span class = "ajax-comment"><%= render partial: 'comments/comment', collection: @deal.comments %></span>
-                <%if @deal.comments.exists?%>    
                 <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
-                <%end%>
-            </ul>   
+            </ul>
+            <br/>
+            <br/>
+   
         <%end%>
     <% else%>
         <ul class = "comments_list">
@@ -72,6 +75,9 @@
             <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
             <%end%>
         </ul>
+        <br/>
+        <br/>
+
     <%end%>
 </div>
 
