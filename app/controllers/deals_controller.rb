@@ -10,18 +10,18 @@ class DealsController < ApplicationController
   # before_action :set_consumer, only: [:show]
 
   def index
-    @deals = Deal.where(threshold_reached: false)
+    @deals = Deal.where(threshold_reached: false).sort {|a,b| a.participants_left <=> b.participants_left}
     # (order_by participants_remaining)
     # @deals = Deal.filter_by(params)
     # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
   end
 
   def index_electronics
-    @deals = Deal.where(:threshold_reached => false, :product_type => "Electronics")
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Electronics").sort {|a,b| a.participants_left <=> b.participants_left}
   end
 
   def index_videogames
-    @deals = Deal.where(:threshold_reached => false, :product_type => "Video Games")
+    @deals = Deal.where(:threshold_reached => false, :product_type => "Video Games").sort {|a,b| a.participants_left <=> b.participants_left}
   end
 
   def new
