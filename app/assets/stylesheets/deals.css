@@ -40,15 +40,18 @@
   	color: white;
   	border-radius: 5px;
 }
-.image_product a:hover {
-	padding-bottom: 1.5vw;
+
+#image_product a:hover {
+	padding-bottom: -.5vw;
 	z-index: -1;
 	border-bottom: solid #E83F6F 3px;
 	opacity: .8;
+	font-size: 1vw;
 }
 #filter_labels {
 	 -webkit-margin-top: -3vw;
-	/*padding-bottom: 3vw;*/
+	 padding-top: -3vw;
+	padding-bottom: 3vw;
 	font-size: 1vw;
 
 }

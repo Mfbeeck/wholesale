@@ -15,31 +15,29 @@
       <% if @current_consumer_deals.include? deal.id %>
         <ul class = "deal_block_consumer">
           <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
-          <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal, class: "actual_image")%></li>
+          <li id="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
           <!-- <br> -->
           <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
-          <li class="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
           <br>
         </ul>
       <%else%>
         <ul class = "deal_block">
           <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
-          <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal, class: "actual_image")%></li>
+          <li id="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
           <!-- <br> -->
           <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
           <!-- <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li> -->
-          <li class="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
           <br>
         </ul>
       <% end %>
     <% else %>
       <ul class = "deal_block">
           <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
-          <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal, class: "actual_image")%></li>
+          <li id="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
           <br>
           <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
           <!-- <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li> -->
-          <li id="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
+          
         </ul>
     <% end %>
   <% end %>
