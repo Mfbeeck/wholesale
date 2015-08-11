@@ -32,7 +32,6 @@
 #product_price a{
 	z-index: 4;
 	background: #32936f;
-	float: right;
 	margin-right: .5vw;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -41,16 +40,18 @@
   	color: white;
   	border-radius: 5px;
 }
-.image_product a{
-	padding-bottom: 3vh;
-}
 .image_product a:hover {
+	padding-bottom: 1.5vw;
 	z-index: -1;
-	padding-bottom: 3vh;
 	border-bottom: solid #E83F6F 3px;
 	opacity: .8;
 }
+#filter_labels {
+	 -webkit-margin-top: -3vw;
+	/*padding-bottom: 3vw;*/
+	font-size: 1vw;
 
+}
 .deal_image_div{
 	float: left;
 	margin-left: 3vw;
