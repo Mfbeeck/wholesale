@@ -1,27 +1,28 @@
 <%= form_for(@consumer, :html => {:class => "smart-green"}) do |f| %>
   <h1>Signup for ParlayVous</h1>
-  <ul>
+  <ul class = "errors">
   <% @consumer.errors.full_messages.each do |error| %>
     <li style="color:red"><%= error %></li>
   <% end %>
+  </ul>
   <label>
-    <span>Username: </span>
+    <span id = "required">Username: </span>
     <%= f.text_field :username, placeholder: "Username" %>
   </label>
   <label>
-     <span>Password: </span><br/><br/>
+     <span id = "required">Password: </span><br/><br/>
      <%= f.password_field :password, placeholder: "Password" %>
   </label>
   <label>
-     <span>Confirm Password: </span><br/><br/>
+     <span id = "required">Confirm Password: </span><br/><br/>
      <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
   </label>
   <label>
-    <span>Email: </span><br/><br/>
+    <span id = "required">Email: </span><br/><br/>
     <%= f.email_field :email, placeholder: "E-mail"%>
   </label>
   <label>
-    <span>First Name: </span><br/><br/>
+    <span id = "required">First Name: </span><br/><br/>
     <%= f.text_field :first_name, placeholder: "First Name"%>
   </label>
   <label>
@@ -29,7 +30,7 @@
     <%= f.text_field :last_name, placeholder: "Last Name"%>
   </label>
   <label>
-    <span>Address: </span><br/><br/>
+    <span id = "required">Address: </span><br/><br/>
     <%= f.text_field :address, placeholder: "Address"%>
   </label>
   <label>
@@ -39,8 +40,8 @@
   <label>
   <%= f.submit 'Signup', :class => 'button' %>
   </label>
-    </ul>
 <% end %>
+<br/>
 
 <!-- <form action="" method="post" class="smart-green">
     <h1>Contact Form 

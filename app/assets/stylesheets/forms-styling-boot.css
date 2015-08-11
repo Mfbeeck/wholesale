@@ -3,14 +3,20 @@
     margin-left:auto;
     margin-right:auto;
 
-    max-width: 500px;
-    background: #F8F8F8;
+    max-width: 420px;
+    max-height: 700px;
+    background: #F0F0F0;
     padding: 30px 30px 20px 30px;
     font: 12px Arial, Helvetica, sans-serif;
     color: #2274a5;
+    border: solid #E0E0E0 1px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+}
+
+.errors{
+	text-align: center;
 }
 .smart-green h1 {
     font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -23,7 +29,6 @@
     border-radius: 5px 5px 0px 0px;
     -webkit-border-radius: 5px 5px 0px 0px;
     -moz-border-radius: 5px 5px 0px 0px;
-    border-bottom:1px solid #89AF4C;
 
 }
 .smart-green h1>span {
@@ -53,7 +58,7 @@
     outline: 0;
     -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
     box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
-    font: normal 14px/14px Arial, Helvetica, sans-serif;
+    font: normal 12px/12px Arial, Helvetica, sans-serif;
 }
 .smart-green textarea{
     height:100px;
@@ -63,6 +68,12 @@
 .smart-green textarea{
     height:100px;
     padding-top: 10px;
+}
+
+
+.smart-green #required:after {
+    content: " *";
+    color: #2274a5;
 }
 
 .smart-green select {
@@ -88,6 +99,38 @@
     text-shadow: 1px 1px 1px #949494;
 }
 .smart-green .button:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.smart-green .back-button {
+    background-color: #2274a5;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #949494;
+    font-size: 12px;
+}
+.smart-green .back-button:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.smart-green .signup-link {
+    background-color: #2274a5;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    border: none;
+    padding: 10px 25px 9px 25px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #949494;
+    font-size: 12px;
+}
+.smart-green .signup-link:hover {
     opacity: .8;
     cursor: pointer;
 }

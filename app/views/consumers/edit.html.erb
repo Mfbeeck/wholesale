@@ -1,45 +1,49 @@
-<div class="consumer_edit_form">
-  <h1 id="update_title">Update Your Information</h1>
-  <%= form_for(@consumer) do |f| %>
-    <ul>
-      <% @consumer.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
+  <br/>
+  <%= form_for(@consumer, :html => {:class => "smart-green"}) do |f| %>
+    <h1>Update Your Information</h1>
+    <ul class = "errors">
+    <% @consumer.errors.full_messages.each do |error| %>
+      <li style="color:red"><%= error %></li>
+    <% end %>
     </ul>
-    <p>
-      <%= f.label :email, class: 'required' %><br />
-      <%= f.email_field :email %>
-    </p>
-    <p>
-     <%= f.label :password, class: 'required'%><br />
-     <%= f.password_field :password %>
-    </p
-    <p>
-     <%= f.label "Confirm Password", class: 'required'%><br />
-     <%= f.password_field :password_confirmation %>
-    </p>
-    <p>
-      <%= f.label :first_name, class: 'required' %><br />
-      <%= f.text_field :first_name %>
-    </p>
-    <p>
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name %>
-    </p>
-    <p>
-      <%= f.label :address, class: 'required' %><br />
-      <%= f.text_field :address %>
-    </p>
-    <p>
-      <%= f.label :phone_number%><br />
-      <%= f.telephone_field :phone_number, id: 'phone'  %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
+      <label>
+        <span id = "required">Email: </span><br/><br/>
+        <%= f.email_field :email, placeholder: "E-mail"%>
+      </label>
+      <label>
+         <span id = "required">Password: </span><br/><br/>
+         <%= f.password_field :password, placeholder: "Password" %>
+      </label>
+      <label>
+         <span id = "required">Confirm Password: </span><br/><br/>
+         <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+      </label>
+      <label>
+        <span id = "required">First Name: </span><br/><br/>
+        <%= f.text_field :first_name, placeholder: "First Name"%>
+      </label>
+      <label>
+        <span>Last Name: </span><br/><br/>
+        <%= f.text_field :last_name, placeholder: "Last Name"%>
+      </label>
+      <label>
+        <span id = "required">Address: </span><br/><br/>
+        <%= f.text_field :address, placeholder: "Address"%>
+      </label>
+      <label>
+         <span>Phone Number: </span><br/><br/>
+         <%= f.telephone_field :phone_number, id: 'phone_us', placeholder: "Phone Number"%>
+      </label>
+      <br/>
+      <label style = "display: inline-block; margin-right: -10px; margin-top: 10px">
+        <%= link_to 'Back to Profile', consumer_path(@consumer), :class =>'back-button' %><br><br>
+      </label>
+      <label style = "display: inline-block; float: right; margin-right: -10px; margin-top: 0px;">  
+        <%= f.submit 'Update', :class => 'button' %>
+      </label>
   <% end %>
-  <%= link_to 'Back to Profile', consumer_path(@consumer) %><br><br>
-</div>
+<br/>
+
 
 
 <!-- // $(document).ready(function(){

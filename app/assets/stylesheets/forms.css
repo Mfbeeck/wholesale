@@ -35,14 +35,5 @@
 	font-size: 1.2vw;
 }
 
-label.required{
-	margin-left: .5vw;
-}
-
-label.required:after {
-    content: " *";
-    color: white;
-    font-size: 1vw;
-}
 
 
