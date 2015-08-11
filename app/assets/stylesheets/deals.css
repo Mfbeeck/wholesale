@@ -45,7 +45,9 @@
   	color: white;
   	border-radius: 5px;
 }
-
+#image_product {
+	text-align: center;
+}
 #image_product a:hover {
 	padding-bottom: -.5vw;
 	z-index: -1;
