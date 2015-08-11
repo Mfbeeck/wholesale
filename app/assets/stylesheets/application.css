@@ -33,7 +33,7 @@ time, mark, audio, video {
     font-size: 100%;
     /*font: inherit;*/
     vertical-align: baseline;
-} 
+}
 
 body {
 	background-color: white;
@@ -169,12 +169,12 @@ a {
 	padding-bottom: .6vh;
 	color: white;
 	background: #008cdd;
-	background-image: -webkit-linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);
+	/*background-image: -webkit-linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);
 	background-image: -moz-linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);
 	background-image: -ms-linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
 	background-image: -o-linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
-	background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);			
-	background: linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);			
+	background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+	background: linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);			*/
 	-webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
 	-moz-box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
 	-ms-box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
@@ -228,7 +228,7 @@ a {
     #info-image-for-texts #popup {
         position:absolute;
         width:16vw;
-/*        margin-right:-22vw;  width + left/right padding 
+/*        margin-right:-22vw;  width + left/right padding
 */        margin-top: -1.9vw;
         padding:1.2vw;
         color:#fff;
@@ -269,7 +269,7 @@ a {
 	font-size: 1.3vw;
 }
 
-#dropdown-links{ 
+#dropdown-links{
 	margin-left: .3vw;
 	border-bottom: dashed #FAFAFA 1px;
 }

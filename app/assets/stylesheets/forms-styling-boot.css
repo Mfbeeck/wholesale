@@ -9,8 +9,7 @@
     background: #F0F0F0;
     padding: 30px 30px 20px 30px;
     font: 12px Arial, Helvetica, sans-serif;
-    color: #4B8CB3
-;
+    color: #4B8CB3;
     border: solid #E0E0E0 1px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -83,7 +82,7 @@
     background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
     background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
    appearance:none;
-    -webkit-appearance:none; 
+    -webkit-appearance:none;
    	-moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
@@ -218,7 +217,7 @@
     background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
     background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
    appearance:none;
-    -webkit-appearance:none; 
+    -webkit-appearance:none;
    	-moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
@@ -338,7 +337,7 @@
     background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
     background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
    appearance:none;
-    -webkit-appearance:none; 
+    -webkit-appearance:none;
     -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
@@ -423,7 +422,7 @@
     margin-top: 10px;
     color: #EB2D98;
 }
-.order-confirm input[type="text"] { 
+.order-confirm input[type="text"] {
     color: black;
     height: 30px;
     line-height:15px;
@@ -562,7 +561,7 @@
     background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
     background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
    appearance:none;
-    -webkit-appearance:none; 
+    -webkit-appearance:none;
     -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
