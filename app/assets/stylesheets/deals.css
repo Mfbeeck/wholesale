@@ -27,11 +27,12 @@
 	background: #32936f;
 	float: right;
 	margin-right: .5vw;
-	padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
 	margin-bottom: -5vh;
-	position: relative;
+	position: absolute;
   	color: white;
-  	border-radius: 10px;
+  	border-radius: 5px;
 }
 
 .image_product a:hover {
