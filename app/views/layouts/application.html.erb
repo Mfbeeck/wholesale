@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>ParlayVous</title>
-  <link rel='shortcut icon' href='logowheel.ico' type='image/x-icon'/ >
   <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Muli|Source+Code+Pro|Hind:400,600' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -16,6 +15,7 @@
   });
   </script>
   <%= csrf_meta_tags %>
+  <link rel='shortcut icon' href='assets/images/favicon.ico' type='image/x-icon'/>
 </head>
 <body>
 	<div class="entire-page">
@@ -46,9 +46,9 @@
         </script>
         <nav class="navbar">
         	<ul class="myMenu">
-        		<li id = "dropdown"><%= image_tag("http://cdn.flaticon.com/png/256/23182.png", :size => "18x18", :id => "dropdown-image")%>
+        		<li id = "dropdown"><%= image_tag("http://cdn.flaticon.com/png/256/23182.png", :size => "25x25", :id => "dropdown-image")%>
         			&nbsp;&nbsp;
-        			<span class = "product_type", style = "color: #2274A5; font-weight: bold">Product Type</span></a>
+        			<span id="product_type">Products&nbsp;</span></a>
         			<ul class = "ul_hide">
         				<li id="dropdown-links"><%= link_to 'All Products', deals_path %></li>
         				<li id="dropdown-links">

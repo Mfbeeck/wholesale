@@ -45,7 +45,7 @@ body {
     /*margin-bottom: 15vh; */
 	background-color: #FAFAFA;
 	clear: both;
-	padding-top: 15vh;
+	padding-top: 13vh;
 }
 .yield:after {
   content: "";
@@ -73,10 +73,12 @@ body {
 	font: #2274a5;
 }
 #logo {
-	padding-left: 25vw;
+	padding-left: 23vw;
 	padding-top: -2vh;
 }
-
+#logo:hover {
+	opacity: .8;
+}
 .navbar {
 	opacity: .9;
 	margin-top: -3px;
@@ -134,11 +136,11 @@ a {
 .navbar a:hover {
 	color: #e83f6f;
 }
-
-.deal_block {
-	display: inline-block;
+#product_type {
+	color: #2274A5;
+	font-size: 26px;
+	font-weight: bold;
 }
-
 .checkbox-tags{
 	font-size: 1.2vw;
 }
@@ -264,15 +266,21 @@ a {
 #ft-mail:hover {
 	opacity: 1;
 }
-
+#dropdown {
+	border: 2px outset;
+}
 #dropdown-image img{
 	margin-top: 1vw;
 }
 
 #dropdown-links a{
+	color: #2274A5;
 	font-size: 1.3vw;
+	margin-top: -26px;
 }
-
+#dropdown-links a:hover{
+	opacity: .8;
+}
 .footer {
     height:15vh;   /* Height of the footer */
 	text-align: center;
