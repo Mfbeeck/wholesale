@@ -3,38 +3,31 @@
   They will automatically be included in application.css.
 */
 .deal_block_consumer {
-	/*margin-left: 3.5vw;
-	margin-right: 3.5vw;*/
 	width: 24vw;
 	display: inline-block;
 }
+
 .deal_block {
-	/*margin-left: 3.5vw;
-	margin-right: 3.5vw;*/
 	width: 24vw;
 	display: inline-block;
 }
+
 .deals_list {
-	/*border-radius: 5px;*/
-	/*border: solid black 1px;*/
 	padding-left: 1.5vw;
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
-	/*width: 67vw;*/
-/*	background-image: linear-gradient(top, white 30%, #2274A5 400%);
-  	background-image: -webkit-linear-gradient(top, white 30%, #2274A5 600%);
-	background-image: -moz-linear-gradient(top, white 30%, #2274A5 400%);
- 	background-image: linear-gradient(top, white 30%, #2274A5 400%);*/
  	border-radius: 10px;
 }
+
 .checkbox-group {
 	text-align: center;
-	
 }
+
 .main_title {
 	padding-top: 3vh;
 }
-#product_price a{
+
+#product_price a {
 	z-index: 4;
 	background: #32936f;
 	margin-right: .5vw;
@@ -42,12 +35,14 @@
 	padding-right: 5px;
 	margin-bottom: -5vh;
 	position: absolute;
-  	color: white;
-  	border-radius: 5px;
+  color: white;
+  border-radius: 5px;
 }
+
 #image_product {
 	text-align: center;
 }
+
 #image_product a:hover {
 	padding-bottom: -.5vw;
 	z-index: -1;
@@ -55,25 +50,25 @@
 	opacity: .8;
 	font-size: 1vw;
 }
+
 #filter_labels {
 	 -webkit-margin-top: -3vw;
 	 padding-top: -3vw;
 	padding-bottom: 3vw;
 	font-size: 1vw;
-
 }
-.deal_image_div{
+
+.deal_image_div {
 	float: left;
 	margin-left: 3vw;
 	margin-top: 2vw;
-	/*width: 45%;*/
 }
 
-.deal_description_display h1{
+.deal_description_display h1 {
 	font-size: 2vw;
 }
 
-.deal_description_display li{
+.deal_description_display li {
 	font-size: 1.2vw;
 }
 
@@ -81,7 +76,7 @@
 	font-size: 1.4vw;
 }
 
-.deal_description_display p{
+.deal_description_display p {
 	font-size: 1.4vw;
 }
 
@@ -92,34 +87,32 @@
 
 .stripe-button-el {
 	width: 10vw;
-
 }
 
-
-.deal_description_div{
+.deal_description_div {
 	float: left;
 	margin-left: 0vw;
 	margin-top: 2vh;
 	width: 40%;
 }
 
-.deal_description_display form{
+.deal_description_display form {
 	font-size: 1.4vw;
 }
 
-#new_deal_link a{
+#new_deal_link a {
 	color: black;
 	margin-left: .8vw;
 	padding-left: 1vw;
 }
 
-#new_deal_link a:hover{
+#new_deal_link a:hover {
 	color: white;
 	background-color: black;
 	border-radius: 2vw;
 	padding-right: 1vw;
 }
 
-.supplier-deals-list{
+.supplier-deals-list {
 	display: inline-block;
 }

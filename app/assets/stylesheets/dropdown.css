@@ -7,11 +7,11 @@
 	float:left;
 }
 
-#dropdown:hover{
+#dropdown:hover {
 	cursor: pointer;
 }
 
-.dropdown-ul{
+.dropdown-ul {
 	position: relative;
 	margin-left: 10vw;
 }
@@ -32,7 +32,6 @@
 .ul_hide {
 	position:absolute;
 	visibility:hidden;
-
 	border-top:1px solid #fff;
 	margin:0;
 	padding:0;
@@ -45,14 +44,13 @@
 	margin:3px;
 }
 
-.ul_show li{
+.ul_show li {
 	width: 30px;
 }
 
-#dropdown-links a{
+#dropdown-links a {
 	width: 126px;
 	padding-left: 10px;
-
 }
 
 .myMenu li ul li a:link, .myMenu li ul li a:visited {
@@ -66,5 +64,5 @@
 
 .myMenu li ul li a:hover {
 	background-color: white;
-	color: #E83F6F;	
+	color: #E83F6F;
 }
