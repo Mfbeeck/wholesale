@@ -9,6 +9,7 @@ class DealsController < ApplicationController
 
   def index
     @deals = Deal.where(threshold_reached: false)
+    # (order_by participants_remaining)
     # @deals = Deal.filter_by(params)
     # Deal.where("product_type = 'Electronics'") #+ Deal.where("product_type = 'Video Games'")
   end
@@ -78,6 +79,10 @@ class DealsController < ApplicationController
 
 
   private
+
+  def participants_remaining
+    @deal.threshold - @deal.orders.count
+  end
 
   def set_supplier
     #security fix

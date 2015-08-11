@@ -125,6 +125,14 @@ a {
 	display: inline-block;
 }
 
+.checkbox-tags{
+	font-size: 1.2vw;
+}
+
+.deal_block_consumer {
+	display: inline-block;
+}
+
 .display_deal {
 	text-align: center
 }
