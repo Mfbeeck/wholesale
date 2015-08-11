@@ -52,7 +52,7 @@
   font-size: 1.5vw;
   background-image: linear-gradient(top, #2274A5 0%, white 200%);
   background-image: -webkit-linear-gradient(top, #2274A5 0%, white 200%);
-  background-image: -moz-linear-gradient(top, white 0%, #2274A5 200%);
+  background-image: -moz-linear-gradient(bottom, white 0%, #2274A5 200%);
   background-image: linear-gradient(top, #2274A5 0%, white 200%);
   color: white;
   /*padding-top: 10px;*/
