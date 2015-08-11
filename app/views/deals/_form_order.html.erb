@@ -19,11 +19,7 @@
   &nbsp;&nbsp;
   <% if current_consumer.total_points >= @deal.price.to_i%>
     <li class = "pay_with_points">
-      <%= button_to "Pay with Points", create_points_order_path(@deal), class: "points-order-button"%>
+      <%= button_to "Pay with Points", create_points_order_path(@deal), class: "points-order-button", data: { :confirm => "Are you sure you want to pay with points?" }%>
     </li>
-  <!--
-  <form method = "post">
-  <a href="/deals/<%#=@deal.id%>/create_points_order" class="stripe-connect"><span>Pay with Points</span></a>
-  </form> -->
   <%end%>
 </ul>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get '/new_consumer_session' => 'sessions#new_consumer'
 
-  get '/suppliers/about' => 'suppliers#about'
+  get '/about' => 'suppliers#about'
 
   get '/deals/:id/checkout' => 'deals#checkout', as: :checkout
 
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   end
 
   delete 'logout' => 'sessions#destroy'
-  
+
   get 'logout_supplier' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
