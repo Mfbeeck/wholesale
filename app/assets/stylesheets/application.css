@@ -49,9 +49,6 @@ body {
   content: "";
   display: block;
 }
-.filter_labels {
-	font-size: 1vw;
-}
 
 .main_title {
 	text-align: center;

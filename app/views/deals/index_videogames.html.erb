@@ -30,9 +30,6 @@
           <!-- <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li> -->
           <li class="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
           <br>
-          <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
-          <!-- <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li> -->
-          <li class="filter_labels"><strong>Participant Limit:</strong> <%= deal.threshold %> (<%= deal.threshold - deal.orders.count %> Tickets Left)</li>
         </ul>
       <% end %>
     <% else %>
