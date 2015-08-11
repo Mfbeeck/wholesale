@@ -12,7 +12,6 @@
 	/*border-radius: 5px;*/
 	/*border: solid black 1px;*/
 	padding-left: 1.5vw;
-	padding-top: 5vh;
 	margin-top: 0.5vh;
 	padding-bottom: 1vh;
 	/*width: 67vw;*/
@@ -22,7 +21,13 @@
  	background-image: linear-gradient(top, white 30%, #2274A5 400%);*/
  	border-radius: 10px;
 }
-
+.checkbox-group {
+	text-align: center;
+	
+}
+.main_title {
+	padding-top: 3vh;
+}
 #product_price a{
 	background: #32936f;
 	float: right;
