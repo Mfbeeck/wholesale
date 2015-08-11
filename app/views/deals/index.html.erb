@@ -46,46 +46,6 @@
 <% end %>
 </div>
 
-
-  <!-- <div class="consumer_column">
-
-    <% if current_consumer %>
-      <div class="consumer_column1">
-      <ul id="consumer_profile">
-      	<li><p><%= link_to "You are logged in as #{current_consumer.username.capitalize}", consumer_path(current_consumer)%></p></li>
-      </ul>
-      </div>
-    <%end%>
-
-  <div class="filters">
-  <p class="filter_title"><strong>What are you looking for?</strong></p>
-  <ul>
-    <li class="filter_labels">
-      <%= check_box_tag(:product_type, "Electronics") %>
-      <%= label_tag(:product_type, "Electronics") %>
-    </li>
-    <li class="filter_labels">
-      <%= check_box_tag(:product_type, "Video Games") %>
-      <%= label_tag(:product_type, "Video Games") %>
-    </li>
-  </ul>
-
-    <p class="filter_title"><strong>Filter by:</strong></p>
-      <ul>
-        <li class = "filter_labels">
-          <%= check_box_tag(:filter_type, "order_status") %>
-          <%= label_tag(:filter_type, "Almost Complete") %>
-        </li>
-        <li class = "filter_labels">
-          <%= check_box_tag(:filter_type, "your_orders") %>
-          <%= label_tag(:filter_type, "Your Active Lotteries") %>
-        </li>
-      </ul>
-      <br>
-      <% if current_supplier %>
-      <p id = "new_deal_link"><%= link_to 'New Deal', new_deal_path %></p>
-      <% end %>  -->
-
   </div>
 </div>
  <script>
