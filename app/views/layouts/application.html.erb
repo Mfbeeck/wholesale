@@ -17,89 +17,91 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="fb-root"></div>
-<script>
-   (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=201664189890797";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+	<div class="entire-page">
+		<div id="fb-root"></div>
+		<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=201664189890797";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 
      window.fbAsyncInit = function(){  // this gets triggered when FB object gets initialized
-            console.log("FB Object initiated");
+     	console.log("FB Object initiated");
             FB.XFBML.parse(); // now we can safely call parse method
-       };
-</script>
+        };
+        </script>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#dropdown').click(function() {
-        $('#dropdown > ul').toggleClass('ul_show');
-        $('#dropdown > ul').toggleClass('ul_hide');
-    });
+        <script type="text/javascript">
+        $(document).ready(function() {
+        	$('#dropdown').click(function() {
+        		$('#dropdown > ul').toggleClass('ul_show');
+        		$('#dropdown > ul').toggleClass('ul_hide');
+        	});
 
-  });
-</script>
-  <nav class="navbar">
-    <ul class="myMenu">
-        <li id = "dropdown"><%= image_tag("http://cdn.flaticon.com/png/256/23182.png", :size => "18x18", :id => "dropdown-image")%>
-            &nbsp;&nbsp;
-            <span class = "product_type", style = "color: #2274A5; font-weight: bold">Product Type</span></a>
-          <ul class = "ul_hide">
-                <li id="dropdown-links"><%= link_to 'All Products', deals_path %></li>
-                <li id="dropdown-links">
-                  <%= link_to 'Electronics', deals_index_electronics_path %>
-                </li>
-                <li id="dropdown-links">
-                  <%= link_to 'Video Games', deals_index_videogames_path %>
-                </li>
-          </ul>
-        </li>
-    </ul>
-<li id="logo"><%= link_to 'ParlayVous', deals_path%></li>
+        });
+        </script>
+        <nav class="navbar">
+        	<ul class="myMenu">
+        		<li id = "dropdown"><%= image_tag("http://cdn.flaticon.com/png/256/23182.png", :size => "18x18", :id => "dropdown-image")%>
+        			&nbsp;&nbsp;
+        			<span class = "product_type", style = "color: #2274A5; font-weight: bold">Product Type</span></a>
+        			<ul class = "ul_hide">
+        				<li id="dropdown-links"><%= link_to 'All Products', deals_path %></li>
+        				<li id="dropdown-links">
+        					<%= link_to 'Electronics', deals_index_electronics_path %>
+        				</li>
+        				<li id="dropdown-links">
+        					<%= link_to 'Video Games', deals_index_videogames_path %>
+        				</li>
+        			</ul>
+        		</li>
+        	</ul>
+        	<li id="logo"><%= link_to 'ParlayVous', deals_path%></li>
 
-			<% if current_supplier || current_consumer %>
-        <% if current_supplier %>
-          <li class="login_link">
-            <%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
-            <%= link_to "Log out", logout_path, method: "delete" %>
-          </li>
-        <% else %>
-          <li class="login_link">
-            <%= link_to "#{current_consumer.username.capitalize}", consumer_path(current_consumer)%>
-            &nbsp;
-            <span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
-            &nbsp;
-            <%= link_to "Log out", logout_path, method: "delete" %>
-          </li>
-        <% end %>
-      <% else %>
-        <li class="login_link"><%= link_to 'Sign in', new_consumer_session_path %>
-          &nbsp;
-          <span class='login'><%= link_to 'Sign up', new_consumer_path %>
-        </li>
-      <%end%>
-    </ul>
-  </nav>
-<div>
-<p id="notice"><%= notice %></p>
-</div>
+        	<% if current_supplier || current_consumer %>
+        	<% if current_supplier %>
+        	<li class="login_link">
+        		<%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
+        		<%= link_to "Log out", logout_path, method: "delete" %>
+        	</li>
+        	<% else %>
+        	<li class="login_link">
+        		<%= link_to "#{current_consumer.username.capitalize}", consumer_path(current_consumer)%>
+        		&nbsp;
+        		<span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
+        		&nbsp;
+        		<%= link_to "Log out", logout_path, method: "delete" %>
+        	</li>
+        	<% end %>
+        	<% else %>
+        	<li class="login_link"><%= link_to 'Sign in', new_consumer_session_path %>
+        		&nbsp;
+        		<span class='login'><%= link_to 'Sign up', new_consumer_path %>
+        		</li>
+        		<%end%>
+        	</ul>
+        </nav>
+        <div>
+        	<p id="notice"><%= notice %></p>
+        </div>
 
-<div class="yield"><%= yield %></div>
+        <div class="yield"><%= yield %></div>
 
-<footer>
-  <div class="footer">
-	<ul id="socialmedia">
-		  <li id="ft-fb"><a href="https://www.facebook.com"><img src="http://cdn.mysitemyway.com/icons-watermarks/simple-black/social-media/social-media_facebook-square/social-media_facebook-square_simple-black_512x512.png" width=35px hieght:35px></a></li>
-		  <li id="ft-twr"><a href="https://twitter.com"><img src="https://cdn1.iconfinder.com/data/icons/capsocial/500/twitter-512.png" width=35px hieght:35px></a></li>
-		  <li id="ft-mail"><a href="mailto:parlay.vous@gmail.com"><img src="http://freeiconbox.com/icon/256/27958.png" width=35px hieght:35px></a></li>
-		</ul>
-	<span class="footercopy">
-			<li><%= link_to 'About us', suppliers_about_path %> | &copy; 2015 Powered by ParlayVous.</li>
-	</span>
-  </div>
-</footer>
+
+        	<div class="footer">
+        		<ul id="socialmedia">
+        			<li id="ft-fb"><a href="https://www.facebook.com"><img src="http://cdn.mysitemyway.com/icons-watermarks/simple-black/social-media/social-media_facebook-square/social-media_facebook-square_simple-black_512x512.png" width=35px hieght:35px></a></li>
+        			<li id="ft-twr"><a href="https://twitter.com"><img src="https://cdn1.iconfinder.com/data/icons/capsocial/500/twitter-512.png" width=35px hieght:35px></a></li>
+        			<li id="ft-mail"><a href="mailto:parlay.vous@gmail.com"><img src="http://freeiconbox.com/icon/256/27958.png" width=35px hieght:35px></a></li>
+        		</ul>
+        		<span class="footercopy">
+        			<li><%= link_to 'About us', suppliers_about_path %> | &copy; 2015 Powered by ParlayVous.</li>
+        		</span>
+        	</div>
+
+    </div>
 </body>
 </html>

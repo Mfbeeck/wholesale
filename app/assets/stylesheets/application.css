@@ -40,9 +40,16 @@ body {
 	font-family: 'Hind', sans-serif;
 }
 .yield {
+    min-height: 100%;
+     /* equal to footer height */
+    margin-bottom: 10vh; 
 	background-color: #FAFAFA;
 	clear: both;
 	padding-top: 10vh;
+}
+.yield:after {
+  content: "";
+  display: block;
 }
 .filter_labels {
 	font-size: 1vw;
@@ -62,13 +69,10 @@ body {
 	width: auto;
 	margin-top: 0vh;
 }
-
 #home_link a {
 	font: #2274a5;
 }
-
 #logo {
-	margin: auto;
 	font-size: 16pt;
 	font-family: 'La Belle Aurore', cursive;
 	padding-left: 32.5vw;
@@ -272,6 +276,7 @@ a {
 }
 
 .footer {
+    height:10vh;   /* Height of the footer */
 	text-align: center;
 	background-color: #2274A5;
 	box-shadow: 0px 0 10px  #2274A5;
@@ -285,3 +290,9 @@ a {
 	padding-top: 2vh;
 	display: inline;
 }
+@media only screen and (max-device-width: 480px) {
+	.navbar {
+		background-color: blue;
+	}
+
+	}
