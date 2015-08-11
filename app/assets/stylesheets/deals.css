@@ -10,6 +10,7 @@
 .deal_block {
 	width: 24vw;
 	display: inline-block;
+	padding-bottom: 2vh;
 }
 
 .deals_list {

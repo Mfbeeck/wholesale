@@ -15,9 +15,9 @@
       <% if @current_consumer_deals.include? deal.id %>
         <ul class = "deal_block_consumer">
           <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
-          <li id="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%>
+          <li id="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%></li>
           <progress value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> <%=deal.orders.count%>/<%=deal.threshold%>
-          </li>
+          
           <!-- <br> -->
           <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
           <br>
@@ -39,7 +39,7 @@
           <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
           <li id="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%>
           <progress value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> <%=deal.orders.count%>/<%=deal.threshold%>
-
+          <br>
           <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
           <!-- <li class="filter_labels"><strong>Ticket price:</strong> <%= number_to_currency(deal.price) %></li> -->
           

@@ -41,7 +41,7 @@ body {
 }
 
 .yield {
-    min-height: 74vh;
+    min-height: 76vh;
 	background-color: #FAFAFA;
 	clear: both;
 	padding-top: 15vh;
@@ -320,7 +320,7 @@ a {
 .footer {
 	width: 100%;
 	position: absolute;
-  height:11vh;   /* Height of the footer */
+    height: 8vh;   /* Height of the footer */
 	text-align: center;
 	background-color: #40B3E5;
 	box-shadow: 0px 0 10px  #40B3E5;
@@ -330,10 +330,11 @@ a {
 
 .footercopy a {
 	color: #ffffff;
-	font-size: 17px;
+	font-size: 12px;
 }
 
 .footercopy {
 	padding-top: 2vh;
 	display: inline;
+	font-size: 12px;
 }
