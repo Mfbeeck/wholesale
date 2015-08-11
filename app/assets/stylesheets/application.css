@@ -164,14 +164,47 @@ a {
 	display:inline-block;
 }
 
+
 .points-order-button{
 	width: 10vw;
-	height: 5.5vh;
+	height: 5.42vh;
 	padding-top: .7vh;
+	padding-bottom: .6vh;
 	color: white;
-	background-color: blue;
-	border: solid blue 1px;
+	background: #008cdd;
+	background-image: -webkit-linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);
+	background-image: -moz-linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);
+	background-image: -ms-linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+	background-image: -o-linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+	background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);			
+	background: linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);			
+	-webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
+	-moz-box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
+	-ms-box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
+	-o-box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
+	text-shadow: 0 .5px .5px rgba(0,0,0,0.53);
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
 	border-radius: 5px;
+	border: solid #008cdd 1px;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 13.5px;
+    font-weight: 450
+
+
+}
+
+.points-order-button:hover {
+	color: #fff;
+	background-position: 0;
+	cursor: pointer;
+}
+.points-order-button:active {
+	background: #008cdd;
 }
 
 .checkout_options{

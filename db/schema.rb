@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810064441) do
+ActiveRecord::Schema.define(version: 20150811160621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150810064441) do
     t.string   "winning_consumer"
     t.string   "winners_shipping_address"
     t.boolean  "threshold_reached"
+    t.integer  "remaining_participants"
   end
 
   add_index "deals", ["supplier_id"], name: "index_deals_on_supplier_id", using: :btree
