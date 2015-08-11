@@ -7,6 +7,7 @@
 	/*margin-left: 3.5vw;
 	margin-right: 3.5vw;*/
 	width: 24vw;
+	display: inline-block;
 }
 .deals_list {
 	/*border-radius: 5px;*/
@@ -29,6 +30,7 @@
 	padding-top: 3vh;
 }
 #product_price a{
+	z-index: 4;
 	background: #32936f;
 	float: right;
 	margin-right: .5vw;
@@ -39,8 +41,12 @@
   	color: white;
   	border-radius: 5px;
 }
-
+.image_product a{
+	padding-bottom: 3vh;
+}
 .image_product a:hover {
+	z-index: -1;
+	padding-bottom: 3vh;
 	border-bottom: solid #E83F6F 3px;
 	opacity: .8;
 }
