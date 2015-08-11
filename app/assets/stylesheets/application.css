@@ -40,10 +40,10 @@ body {
 	font-family: 'Hind', sans-serif;
 }
 .yield {
-    min-height: 100%;
+    min-height: 74vh;
 	background-color: #FAFAFA;
 	clear: both;
-	padding-top: 13vh;
+	padding-top: 15vh;
 }
 .yield:after {
   content: "";
@@ -310,7 +310,9 @@ a {
 	opacity: .8;
 }
 .footer {
-    height:12vh;   /* Height of the footer */
+	width: 100%;
+	position: absolute;
+    height:11vh;   /* Height of the footer */
 	text-align: center;
 	background-color: #2274A5;
 	box-shadow: 0px 0 10px  #2274A5;
