@@ -84,6 +84,12 @@ body {
 #charities-list{
 	display: inline;
 }
+#charities-list a:hover {
+	color: white;
+}
+#charities-list a {
+	color: #2274a5;
+}
 
 #create-charity a{
 	color: white;
