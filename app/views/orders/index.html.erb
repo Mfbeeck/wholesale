@@ -1,24 +1,28 @@
+<div class = "suppliers-listed-deals">
+<br/>
 <h1>Orders</h1>
-
+<br/>
 <% @orders.each do |order| %>
 <% @deal = Deal.find(order.deal_id)%>
   <ul class = "orders-index">
 	  <li class="image_product"><%= link_to(image_tag("#{@deal.url}", :size => "200x150"), @deal)%></li>
-	  <li><strong>Item: </strong><%= link_to "#{@deal.name}", @deal %></li>
 	  <% if @deal.winning_consumer && current_consumer.username == @deal.winning_consumer %>
-  	  <li><strong>Status:</strong> Complete <span style = "color: green">(You Won!)</span></li>
+  	  <li><span style = "margin-left:65px">You Won!</span></li>
   	  <% elsif @deal.winning_consumer %>
-	  <li><strong>Status:</strong> Complete <span style = "color: red">(You Lost)</span></li>
+	  <li><span style = "margin-left:72px">You Lost</span></li>
 	  <%else%>
-  	  <li><strong>Status: </strong><span style = "color:red"><%=pluralize(@deal.threshold - @deal.orders.count, "Participant")%> Remaining</span></li>
+  	   <li><progress class = "prog-bar", value="<%=@deal.orders.count%>" max="<%=@deal.threshold%>"></progress> &nbsp;<%=@deal.orders.count%>/<%=@deal.threshold%></li>
   	  <%end%>
 
 
-     <li><%= link_to 'Order/Shipping Details', order %></li>
+     <li><span style = "margin-left: 18px"><%= link_to 'Order/Shipping Details', order %></span></li>
+     <br/>
   </ul>
+  &nbsp;&nbsp;
 <% end %>
 <br>
 <p class="consumerback"><%= link_to 'Back To Consumer Home', consumer_path(current_consumer)%></p>
-
+<br/>
+</div>
 
 <!-- <%# link_to 'New Deal', new_deal_path %> -->

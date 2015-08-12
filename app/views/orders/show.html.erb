@@ -22,8 +22,9 @@
         <li><strong>The raffle for the <%= @deal.name %> has ended and the winner was: <%= @deal.winning_consumer.capitalize %></li>
     <% end %>
   </ul>
-
+<br/>
 <%= link_to 'Back To Orders', orders_path(current_consumer) %>
+<br/>
 
 </div>
 </div>
