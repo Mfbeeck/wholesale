@@ -14,7 +14,7 @@
       <label style = "display: inline-block; margin-right: -10px">
         <%= submit_tag 'Login', :class => 'button' %>
       </label>
-      <% if current_supplier.admin %>
+      <% if current_supplier && current_supplier.admin %>
         <label style = "display: inline-block; margin-left: 15px; margin-top: 0px;">
           <%= link_to "Signup", new_supplier_path, method: :get, :class => 'signup-link' %>
         </label>
