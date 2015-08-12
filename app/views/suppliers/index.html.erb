@@ -1,8 +1,8 @@
 <div class = "about-section">
+  <div class="supplier_index">
 <br/>
-<h2 style = "color: white; text-align: center">Our Charities</h2>
-(<%= link_to 'Create New Charity', new_supplier_path, :id => "create-charity" %>)
-<br/><br/>
+<h2>Our Charities</h2>
+<br/>
 <% @suppliers.each do |supplier| %>
   <ul id = "charities-list">
     <li><strong>Charity Name:</strong> <%= supplier.company_name %></li>
@@ -17,9 +17,8 @@
     <br/>
 <% end %>
   </ul>
-(<%= link_to 'Back To Home', supplier_path(current_supplier), :id => "create-charity" %>)
-
+<p class="new_charity"><%= link_to 'Create Charity', new_supplier_path, :id => "create-charity" %> | <%= link_to 'Back', supplier_path(current_supplier), :id => "create-charity" %></p>
 
 </div>
+</div>
 <br/>
-
