@@ -29,6 +29,6 @@ class CompanyMailer < ApplicationMailer
     @user = consumer
     @url  = 'https://parlayvous.herokuapp.com/new_consumer_session'
     email_with_name = %("#{@user.first_name}" <#{@user.email}>)
-    mail(to: email_with_name, subject: 'You are now participating for a <%= #{@deal.name} %>!')
+    mail(to: email_with_name, subject: 'You are now participating in a raffle!')
   end
 end
