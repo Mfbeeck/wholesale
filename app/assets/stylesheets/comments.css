@@ -108,6 +108,8 @@
 
 .comment_input_box{
 	margin-top: 2vh;
+	margin-left: 1.5vw;
+	-moz-margin-left: -1.5vw;
 }
 
 .comment_box {

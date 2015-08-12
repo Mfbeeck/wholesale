@@ -1,12 +1,15 @@
 <div class="order_show">
   <div id="order_info">
+    <div class = "flash-notice">
+    <p id="notice"><%= notice %></p>
+    </div>
   <ul>
   <% if @deal.orders.count < @deal.threshold %>
         <li id="product_link"><strong>Product: </strong><%= link_to "#{@deal.name}", @deal %></li>
         <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
         <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %> (<%= @deal.threshold - @deal.orders.count %> Remaining)</li>
         <li><strong>Shipping Address:</strong> <%= @order.address %>
-          <span id="updateaddress"><%= link_to 'Edit your address', edit_consumer_order_path(current_consumer, @order) %></span>
+          <span id="updateaddress"><%= link_to 'Edit', edit_consumer_order_path(current_consumer, @order) %></span>
         </li>
     <% elsif @deal.winning_consumer.nil? %>
         <li><strong>Product: </strong><%= link_to "#{@deal.name}", @deal %></li>
