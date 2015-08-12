@@ -1,7 +1,10 @@
 <div class="order_show">
 	<div id="order_info">
+    <div class = "flash-notice">
+    	<p id="notice"><%= notice %></p>
+    </div>
 
-	<h2><%= @supplier.username.capitalize %>'s Homepage</h2>
+	<h2><%= @supplier.company_name.capitalize %>'s Homepage</h2>
 	<ul id="consumers">
 	  <li><strong>Username:</strong> <%= @supplier.username.capitalize %></li>
 	  <li><strong>E-mail:</strong> <%= @supplier.email %></li>
@@ -9,8 +12,13 @@
 
 	  <div id = "links_consumer">
 		  <%= link_to 'Update Info', edit_supplier_path(@supplier) %> |
-		  <%= link_to 'View Lotteries', suppliers_deals_path %> |
-  		  <%= link_to 'Create New Lottery', new_deal_path %>
+		  <%= link_to 'View Your Raffles', suppliers_deals_path %> |
+  		  <%= link_to 'Create New Raffle', new_deal_path %>
+  		  <br/>
+		  <% if current_supplier.admin %>
+		  <%= link_to 'View Charities', suppliers_path %>
+		  <% end %>
+
 
 	  </div>
 	</ul>

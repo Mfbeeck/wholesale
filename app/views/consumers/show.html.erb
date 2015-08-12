@@ -1,6 +1,9 @@
 <div class="order_show">
 	<div id="order_info">
 
+    <div class = "flash-notice">
+    	<p id="notice"><%= notice %></p>
+    </div>
 	<ul id="consumers">
 		<% if @consumer.last_name %>
 			<h2>Hi, <%= @consumer.first_name.capitalize + " " + @consumer.last_name.capitalize %></h2>
@@ -21,7 +24,7 @@
 	</ul>
 	<div id="links_consumer">
 		<%= link_to "Update Your Information", edit_consumer_path(@consumer) %> |
-		<%= link_to "Check Your Orders", consumer_orders_path(@consumer) %><br>
+		<%= link_to "Check Your Raffles", consumer_orders_path(@consumer) %><br>
 		<%= link_to "Notification Settings", consumers_notification_path %><br>
 	</div>
 	</div>

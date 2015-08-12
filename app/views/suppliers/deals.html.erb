@@ -1,5 +1,8 @@
-<h3>Manage your deals here </h3>
-<p>(<%= link_to 'Create New Lottery', new_deal_path %>)</p>
+<h3>Manage your raffles here </h3>
+<div class = "flash-notice">
+    <p id="notice"><%= notice %></p>
+</div>
+<p>(<%= link_to 'Create New Raffle', new_deal_path %>)</p>
 
 
 <% @supplier.deals.each do |deal| %>
@@ -9,7 +12,7 @@
     <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "200x150"), deal)%></li>
     <%#end%>
     <li><strong>Item: </strong><%= link_to "#{deal.name}", deal %></li>
-    <li><strong>Bid Price:</strong> <%= number_to_currency(deal.price) %></li>
+    <li><strong>Ticket Price:</strong> <%= number_to_currency(deal.price) %></li>
     <li><strong>Participant Limit:</strong> <%= deal.threshold %></li>
 
     <%if deal.winning_consumer%>

@@ -8,7 +8,8 @@
     <div class = "deal_description_div">
       <ul class = "deal_description_display">
         <h1 class='deal_name'><%= @deal.name %></h1>
-        <p class='deal_price_show'><strong>Ticket Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <%= pluralize(@deal.price.to_i, 'Point') %></p>
+         <p class="charity"><strong>Charity: </strong><%= @deal.supplier.company_name%></p>
+        <p class='deal_price_show'><strong>Ticket Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <%= pluralize(@deal.price.to_i*2, 'Point') %></p>
         <p class="bid_limit"><strong>Participant's Limit:</strong> <%= @deal.threshold %></p>
         <% if @deal.orders.count < @deal.threshold %>
         <p class="current_limit"><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></p>
@@ -80,7 +81,7 @@
 
 <meta property="og:url"                content="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>" />
 <meta property="og:title"              content="ParlayVous:" />
-<meta property="og:description"        content="Feeling Lucky? Check out ParlayVous to enter a lottery for an <%=@deal.name%>" />
+<meta property="og:description"        content="Feeling Lucky? Feeling Generous? Check out ParlayVous to enter a raffle for an <%=@deal.name%>" />
 <meta property="og:image"              content="<%=@deal.url%>" />
 
 

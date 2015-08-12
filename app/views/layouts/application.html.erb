@@ -67,32 +67,32 @@
         	<li id="logo"><%= link_to image_tag("davidslogo.png", :size => "225x50")  , deals_path%></li>
 
         	<% if current_supplier || current_consumer %>
-        	<% if current_supplier %>
-        	<li class="login_link">
-        		<%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
-        		<%= link_to "Log out", logout_path, method: "delete" %>
-        	</li>
+            	<% if current_supplier %>
+            	<li class="login_link">
+            		<%= link_to "Username: #{current_supplier.username.capitalize}", supplier_path(current_supplier)%>
+            		<%= link_to "Log out", logout_path, method: "delete" %>
+            	</li>
+            	<% else %>
+            	<li class="login_link">
+            		<%= link_to "#{current_consumer.username.capitalize}", consumer_path(current_consumer)%>
+            		&nbsp;
+            		<span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
+            		&nbsp;
+            		<%= link_to "Log out", logout_path, method: "delete" %>
+            	</li>
+            	<% end %>
         	<% else %>
-        	<li class="login_link">
-        		<%= link_to "#{current_consumer.username.capitalize}", consumer_path(current_consumer)%>
-        		&nbsp;
-        		<span class= "points_link"><%= "Points:" %></span><span class="points"><%= "#{current_consumer.total_points}" %></span>
-        		&nbsp;
-        		<%= link_to "Log out", logout_path, method: "delete" %>
-        	</li>
-        	<% end %>
-        	<% else %>
-        	<li class="login_link"><%= link_to 'Sign in', new_consumer_session_path %>
+        	<li class="login_link"><%= link_to 'Log in', new_consumer_session_path %>
         		&nbsp;
         		<span class='login'><%= link_to 'Sign up', new_consumer_path %>
-        		</li>
-        		<%end%>
+    		</li>
+            <li class="login_link"><%= link_to 'Charity', new_supplier_session_path %>
+                &nbsp;
+            </li>
+    		<%end%>
         	</ul>
         </nav>
-        <div>
-        	<p id="notice"><%= notice %></p>
-        </div>
-
+        
         <div class="yield"><%= yield %></div>
 
 
