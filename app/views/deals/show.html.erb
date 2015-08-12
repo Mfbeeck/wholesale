@@ -1,54 +1,51 @@
-<div class = "deal_details_div">
-  <br>
-  <div class = "deal_image_div">
-    <ul class = "deal_image_ul">
-      <li><%= image_tag @deal.url, :class => "deal_show_image_tag" %></li>
-    </ul>
-  </div>
-  <div class = "deal_description_div">
-    <ul class = "deal_description_display">
-      <h1><%= @deal.name %></h1>
-      <li><strong>Ticket Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <span class = "points_price"><%= pluralize(@deal.price.to_i, 'Point') %></span></li>
-      <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
-      <% if @deal.orders.count < @deal.threshold %>
-        <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
-      <% end %>
-      <li><strong>Description:</strong> <%= @deal.description %></li>
-      <div class="fb-like" 
-        data-href="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>" 
-        data-layout="standard" 
-        data-action="like" 
-        data-show-faces="true">
-      </div>
-      <% if !@deal.is_threshold_reached %>
-        <% if current_consumer %>
-          <% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
-            <%= render 'form_order' %>
-          <% else %>
-            <h3>You are already betting on this deal. Good luck!</h3>
-          <% end %>
-        <% else %>
-          <p><%= link_to 'Login', new_consumer_session_path %> as a consumer to order!</p>
+  <div class = "deal_details_div">
+    <br>
+    <div class = "deal_image_div">
+      <ul class = "deal_image_ul">
+        <li><%= image_tag @deal.url, :class => "deal_show_image_tag" %></li>
+      </ul>
+    </div>
+    <div class = "deal_description_div">
+      <ul class = "deal_description_display">
+        <h1 class='deal_name'><%= @deal.name %></h1>
+        <p class='deal_price_show'><strong>Ticket Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <%= pluralize(@deal.price.to_i, 'Point') %></p>
+        <p class="bid_limit"><strong>Participant's Limit:</strong> <%= @deal.threshold %></p>
+        <% if @deal.orders.count < @deal.threshold %>
+        <p class="current_limit"><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></p>
         <% end %>
-      <% else %>
-        <div class = "threshold_notice">
-          <h3>This deal has ended and the winner was: <%=@deal.winning_consumer.capitalize%></h3>
-        </div>
-      <%end%>
-    </ul>
-        <br>
-        <br>
-        <br>
-  </div>
-</div>
-<div class = "comments_box">
-  <p>Buy a ticket and join the conversation below!</p>
+        <p class="description"><strong>Description:</strong> <%= @deal.description %></p>
+      <div class="fb-like" 
+      data-href="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>" 
+      data-layout="standard" 
+      data-action="like" 
+      data-show-faces="true">
+    </div>
+    <% if !@deal.is_threshold_reached %>
+    <% if current_consumer %>
+    <% if current_consumer.orders.find_by_deal_id(@deal.id).nil? %>
+    <div class="payment_button"><%= render 'form_order' %></div>
+    <% else %>
+    <h3>You are already betting on this deal. Good luck!</h3>
+    <% end %>
+    <% else %>
+    <%= link_to 'Login', new_consumer_session_path %> as a consumer to order!
+    <% end %>
+    <% else %>
+    <div class = "threshold_notice">
+      <h3>This deal has ended and the winner was: <%=@deal.winning_consumer.capitalize%></h3>
+    </div>
+    </div>
+    <%end%>
+  </ul>
+  <br>
+  <br>
+  <br>
 </div>
 <div class = "comments">
     <% if current_consumer%>
         <%if @current_consumer_orders_deal_ids.include? @deal.id%> 
             <ul class = "comments_list">
-                <li class = "comments_title"><h3>Comments:</h3></li>
+                <li class = "comments_title"><h3>join the conversation below!</h3></li>
                 <span class = "ajax-comment"><%= render partial: 'comments/comment', collection: @deal.comments %></span>
             </ul>
             <ul class = "bottom_comments_list">
@@ -59,7 +56,7 @@
 
         <% else%>
             <ul class = "comments_list">
-                <li class = "comments_title"><h3>Comments:</h3></li>
+                <li class = "comments_title"><h3>join the conversation below!</h3></li>
                    <span class = "ajax-comment"><%= render partial: 'comments/comment', collection: @deal.comments %></span>
                 <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
             </ul>
@@ -69,7 +66,7 @@
         <%end%>
     <% else%>
         <ul class = "comments_list">
-            <li class = "comments_title"><h3>Comments:</h3></li>
+            <li class = "comments_title"><h3>join the conversation below!</h3></li>
                 <span class = "ajax-comment"><%= render partial: 'comments/comment', collection: @deal.comments %></span>
             <%if @deal.comments.exists?%>    
             <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>

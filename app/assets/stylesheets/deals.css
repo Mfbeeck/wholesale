@@ -61,25 +61,18 @@
 	margin-top: 2vw;
 }
 
-.deal_description_display h1 {
-	font-size: 2vw;
-}
-
-.deal_description_display li {
-	font-size: 1.2vw;
-}
-
-.deal_description_display h3{
-	font-size: 1.4vw;
-}
-
 .deal_description_display p {
 	font-size: 1.4vw;
 }
-
+.deal_detail_div {
+	display: inline-block;
+}
 .deal_show_image_tag {
-	width: 100%;
-	height: 100%;
+	border: dashed gray 1px;
+	border-radius: 2px;
+	width: 35vw;
+	height: 45vh;
+	margin-top: -4vh;
 }
 
 .stripe-button-el {
@@ -87,16 +80,22 @@
 }
 
 .deal_description_div {
-	float: left;
-	margin-left: 0vw;
-	margin-top: 2vh;
-	width: 40%;
+	margin-left: 45vw;
+	width: 40vw;
 }
 
 .deal_description_display form {
 	font-size: 1.4vw;
 }
-
+.comments {
+	margin-top: 15vh;
+}
+textarea.placeholder {
+	margin-left: 26vw;
+}
+.comment_create_form {
+	margin-left: 26vw;
+}
 #new_deal_link a {
 	color: black;
 	margin-left: .8vw;
