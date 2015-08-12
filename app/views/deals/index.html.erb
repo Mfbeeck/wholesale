@@ -16,7 +16,7 @@
         <ul class = "deal_block_consumer">
           <li id="product_price"><%= link_to(number_to_currency(deal.price), deal) %></li>
           <li id="image_product"><%= link_to(image_tag("#{deal.url}", :size => "300x250"), deal)%></li>
-          <progress value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> <%=deal.orders.count%>/<%=deal.threshold%>
+          <progress value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> &nbsp;<%=deal.orders.count%>/<%=deal.threshold%>
           
           <!-- <br> -->
           <!-- <li class="filter_labels"><strong>Product:</strong> <%= deal.name %></li> -->
