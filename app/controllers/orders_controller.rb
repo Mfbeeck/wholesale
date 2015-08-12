@@ -14,20 +14,25 @@ class OrdersController < ApplicationController
   #This method creates an order after a logged in consumer clicks on the "Pay With Points" button.
   def create_points_order
     @deal = Deal.find(params[:deal_id])
-    @order = Order.new
-    @order.consumer_id = current_consumer.id
-    @order.deal_id = params[:deal_id]
-    @order.address = current_consumer.address
-    if @order.save
-      @consumer.total_points = (@consumer.total_points - (@deal.price.to_i*2))
-      @consumer.save #this just returns false, how do i get it to actually save
-      if @deal.has_exceeded_threshold?
-        @deal.threshold_reached = true
-        @deal.save
+    if current_consumer.total_points >= (@deal.price * 2)
+      @order = Order.new
+      @order.consumer_id = current_consumer.id
+      @order.deal_id = params[:deal_id]
+      @order.address = current_consumer.address
+      if @order.save
+        @consumer.total_points = (@consumer.total_points - (@deal.price.to_i*2))
+        @consumer.save #this just returns false, how do i get it to actually save
+        if @deal.has_exceeded_threshold?
+          @deal.threshold_reached = true
+          @deal.save
+        end
+        redirect_to edit_consumer_order_path(current_consumer, @order)
+      else
+        flash[:notice] = 'You have already bought a ticket for this raffle!'
+        redirect_to :back
       end
-      redirect_to edit_consumer_order_path(current_consumer, @order)
     else
-      flash[:notice] = 'You have already bought a ticket for this raffle!'
+      flash[:notice] = 'You do not have enough points!'
       redirect_to :back
     end
   end
