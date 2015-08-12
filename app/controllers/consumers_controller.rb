@@ -70,12 +70,16 @@ class ConsumersController < ApplicationController
 	private
 
 	def check_consumer_id
-		if current_supplier.admin
-		else
-			if current_consumer.id != params[:id].to_i
-				redirect_to consumer_path(current_consumer)
+		if session != nil
+			if current_supplier && current_supplier.admin
 			else
+				if current_consumer.id != params[:id].to_i
+					redirect_to consumer_path(current_consumer)
+				else
+				end
 			end
+		else
+			redirect_to root_path
 		end
 	end
 
