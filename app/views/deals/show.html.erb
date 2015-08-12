@@ -15,10 +15,10 @@
         <p class="current_limit"><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></p>
         <% end %>
         <p class="description"><strong>Description:</strong> <%= @deal.description %></p>
-      <div class="fb-like" 
-      data-href="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>" 
-      data-layout="standard" 
-      data-action="like" 
+      <div class="fb-like"
+      data-href="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>"
+      data-layout="standard"
+      data-action="like"
       data-show-faces="true">
     </div>
     <% if !@deal.is_threshold_reached %>
@@ -44,9 +44,9 @@
 </div>
 <div class = "comments">
     <% if current_consumer%>
-        <%if @current_consumer_orders_deal_ids.include? @deal.id%> 
+        <%if @current_consumer_orders_deal_ids.include? @deal.id%>
             <ul class = "comments_list">
-                <li class = "comments_title"><h3>join the conversation below!</h3></li>
+                <li class = "comments_title"><h3>Join the conversation below!</h3></li>
                 <span class = "ajax-comment"><%= render partial: 'comments/comment', collection: @deal.comments %></span>
             </ul>
             <ul class = "bottom_comments_list">
@@ -57,19 +57,19 @@
 
         <% else%>
             <ul class = "comments_list">
-                <li class = "comments_title"><h3>join the conversation below!</h3></li>
+                <li class = "comments_title"><h3>Join the conversation below!</h3></li>
                    <span class = "ajax-comment"><%= render partial: 'comments/comment', collection: @deal.comments %></span>
                 <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
             </ul>
             <br/>
             <br/>
-   
+
         <%end%>
     <% else%>
         <ul class = "comments_list">
-            <li class = "comments_title"><h3>join the conversation below!</h3></li>
+            <li class = "comments_title"><h3>Join the conversation below!</h3></li>
                 <span class = "ajax-comment"><%= render partial: 'comments/comment', collection: @deal.comments %></span>
-            <%if @deal.comments.exists?%>    
+            <%if @deal.comments.exists?%>
             <li class = "placeholder"><textarea class = "placeholder" rows="2" cols="40">Buy a ticket to comment . . .</textarea></li>
             <%end%>
         </ul>
@@ -83,5 +83,3 @@
 <meta property="og:title"              content="ParlayVous:" />
 <meta property="og:description"        content="Feeling Lucky? Feeling Generous? Check out ParlayVous to enter a raffle for an <%=@deal.name%>" />
 <meta property="og:image"              content="<%=@deal.url%>" />
-
-
