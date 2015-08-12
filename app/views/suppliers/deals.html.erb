@@ -1,40 +1,46 @@
-<h3>Manage your raffles here </h3>
+<div class = "suppliers-listed-deals">
 <div class = "flash-notice">
     <p id="notice"><%= notice %></p>
 </div>
-<p>(<%= link_to 'Create New Raffle', new_deal_path %>)</p>
+<h1>Manage Your Raffles</h1>
+<p><%= link_to '+ Create New Raffle', new_deal_path %></p>
+<br/>
 
 
-<% @supplier.deals.each do |deal| %>
+<% @deals.each do |deal| %>
   <ul class = "supplier-deals-list">
     <%# if !deal.url.empty? %>
     <!-- Shouldn't use this because it should always show a square of that size to keep the divs aligned even if no image is chosen or if is a broken url -->
     <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "200x150"), deal)%></li>
     <%#end%>
-    <li><strong>Item: </strong><%= link_to "#{deal.name}", deal %></li>
-    <li><strong>Ticket Price:</strong> <%= number_to_currency(deal.price) %></li>
-    <li><strong>Participant Limit:</strong> <%= deal.threshold %></li>
-
     <%if deal.winning_consumer%>
-    <li><strong>Status: </strong><span style = "color: green">Winner Chosen</span></li>
+    <li><progress class = "prog-bar", value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> &nbsp;<%=deal.orders.count%>/<%=deal.threshold%></li>    
     <%else%>
-    <li><strong>Status: </strong><span style = "color:red">Awaiting <%=pluralize(deal.threshold - deal.orders.count, "Participant")%></span></li>
+    <li><progress class = "prog-bar", value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> &nbsp;<%=deal.orders.count%>/<%=deal.threshold%></li>
     <%end%>
-    <li>
-    <%= link_to 'Edit Item', edit_supplier_deal_path(@supplier, deal) %>
     <% if deal.winning_consumer%>
+    <li style = "margin-left: 12px">
+    <%= link_to 'Edit Item', edit_supplier_deal_path(@supplier, deal) %>
      | <%= link_to 'Winner Details', deal_winners_path(deal)%>
+     </li>
+    <%else%>
+    <li style = "margin-left: 64px">
+    <%= link_to 'Edit Item', edit_supplier_deal_path(@supplier, deal) %>
+    </li>
     <%end%>
     </li>
+    <br>
 
 
   </ul>
+  &nbsp;&nbsp;&nbsp;
+
   <% end %>
 <%#= @orders.each do |order| %>
 <%#=order.quantity%>
 <%#end%>
 <br/>
 <br/>
-    <%= link_to 'Back To Profile', supplier_path(@supplier)%>
-<hr>
-
+    <p><%= link_to 'Back To Profile', supplier_path(@supplier), :class => "run-back"%></p>
+<br/>
+</div>

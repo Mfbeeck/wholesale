@@ -92,3 +92,36 @@ body {
 #create-charity a:visited{
 	color: white;
 }
+
+.suppliers-listed-deals {
+	margin-left: 80px;
+}
+
+.suppliers-listed-deals h1 {
+	text-align: center;
+	margin-left: -80px;
+	font-size: 30px;
+	color: #40B3E5;
+	text-decoration: underline;
+}
+
+.suppliers-listed-deals p {
+text-align: center;
+margin-left: -80px;
+}
+
+.suppliers-listed-deals a:visited {
+color: #40B3E5;
+}
+.suppliers-listed-deals a {
+color: #40B3E5;
+}
+
+.suppliers-listed-deals .run-back {
+	margin-left: -40px;
+}
+
+.prog-bar {
+	width: 50%;
+	margin-left: 40px;
+}

@@ -149,6 +149,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = @consumer.orders.all
+    # .sort {|a,b| a.participants_on_order <=> b.participants_on_order}
   end
 
   def edit
@@ -165,6 +166,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def participants_on_order
+
+  end
 
   def set_order
     @order = Order.find(params[:id])

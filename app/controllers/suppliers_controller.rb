@@ -16,6 +16,7 @@ class SuppliersController < ApplicationController
 
   def deals
     @supplier = current_supplier
+    @deals = current_supplier.deals.sort {|a,b| b.participants_left <=> a.participants_left}
   end
   
   def create
