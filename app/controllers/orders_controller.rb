@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @order.deal_id = params[:deal_id]
     @order.address = current_consumer.address
     if @order.save
-      @consumer.total_points = (@consumer.total_points - @deal.price.to_i)
+      @consumer.total_points = (@consumer.total_points - (@deal.price.to_i*2))
       @consumer.save #this just returns false, how do i get it to actually save
       if @deal.has_exceeded_threshold?
         @deal.threshold_reached = true
