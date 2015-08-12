@@ -71,8 +71,9 @@
 	border: dashed gray 1px;
 	border-radius: 2px;
 	width: 35vw;
-	height: 45vh;
+	height: auto;
 	margin-top: -4vh;
+	margin-left: 10vw;
 }
 
 .stripe-button-el {
@@ -80,7 +81,7 @@
 }
 
 .deal_description_div {
-	margin-left: 45vw;
+	margin-left: 60vw;
 	width: 40vw;
 }
 
@@ -88,7 +89,8 @@
 	font-size: 1.4vw;
 }
 .comments {
-	margin-top: 15vh;
+clear: both;
+margin-top: 5vh;
 }
 textarea.placeholder {
 	margin-left: 26vw;
