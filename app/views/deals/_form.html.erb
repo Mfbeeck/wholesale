@@ -9,7 +9,7 @@
 
   <label>
     <span id = "required">Item Name: </span>
-    <%= f.text_field :name, placeholder: "Username" %>
+    <%= f.text_field :name, placeholder: "Item name" %>
   </label>
   <label>
      <span id = "required">Image URL: </span><br/><br/>
@@ -35,10 +35,9 @@
   <label style = "display: inline-block; margin-right: -10px; margin-top: 10px">
     <%= link_to 'Back', suppliers_path(current_supplier), :class =>'back-button'%>
   </label>
-  <label style = "display: inline-block; float: right; margin-right: -10px; margin-top: 0px;">  
+  <label style = "display: inline-block; float: right; margin-right: -10px; margin-top: 0px;">
     <%= f.submit 'Create Raffle', :class => 'button' %>
   </label>
   <br/>
   <% end %>
   <br/>
-

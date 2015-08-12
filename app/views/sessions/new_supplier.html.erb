@@ -11,13 +11,14 @@
         <%= password_field_tag :password, nil, placeholder: "Password" %>
       </label>
       <br />
-      <label style = "display: inline-block; margin-right: -10px">  
+      <label style = "display: inline-block; margin-right: -10px">
         <%= submit_tag 'Login', :class => 'button' %>
-      </label> 
-      <label style = "display: inline-block; margin-left: 15px; margin-top: 0px;">
-        <%= link_to "Signup", new_supplier_path, method: :get, :class => 'signup-link' %>
       </label>
+      <% if current_supplier && current_supplier.admin %>
+        <label style = "display: inline-block; margin-left: 15px; margin-top: 0px;">
+          <%= link_to "Signup", new_supplier_path, method: :get, :class => 'signup-link' %>
+        </label>
+      <% end %>
       <br/>
   <% end %>
   <br/>
-
