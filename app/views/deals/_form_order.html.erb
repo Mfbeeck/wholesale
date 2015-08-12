@@ -17,7 +17,7 @@
     <% end %>
   </li>
   &nbsp;&nbsp;
-  <% if current_consumer.total_points >= @deal.price.to_i%>
+  <% if current_consumer.total_points >= (@deal.price.to_i*2)%>
     <li class = "pay_with_points">
       <%= button_to "Pay with Points", create_points_order_path(@deal), class: "points-order-button", data: { :confirm => "Are you sure you want to pay with points?" }%>
     </li>
