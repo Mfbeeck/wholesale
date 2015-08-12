@@ -9,7 +9,7 @@
     <ul class = "deal_description_display">
       <h1><%= @deal.name %></h1>
       <li><strong>Charity: </strong><%= @deal.supplier.company_name%></li>
-      <li><strong>Ticket Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <span class = "points_price"><%= pluralize(@deal.price.to_i, 'Point') %></span></li>
+      <li><strong>Ticket Price:</strong> <%= number_to_currency(@deal.price) %>&nbsp;or <span class = "points_price"><%= pluralize(@deal.price.to_i*2, 'Point') %></span></li>
       <li><strong>Participant's Limit:</strong> <%= @deal.threshold %></li>
       <% if @deal.orders.count < @deal.threshold %>
         <li><strong>Current Number of Participants:</strong> <%= @deal.orders.count %></li>
