@@ -325,7 +325,7 @@
     Deal.create(
       id: 115,
       name: "Xbox One",
-      description: "500GB Hard Drive",,
+      description: "500GB Hard Drive",
       price: 40,
       image: nil,
       threshold: 10,
