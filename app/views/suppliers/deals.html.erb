@@ -19,7 +19,7 @@
     <li><progress class = "prog-bar", value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> &nbsp;<%=deal.orders.count%>/<%=deal.threshold%></li>
     <%end%>
     <% if deal.winning_consumer%>
-    <li style = "margin-left: 12px">
+    <li style = "margin-left: 20px">
       <%= link_to 'Winner Details', deal_winners_path(deal)%>
      </li>
     <%else%>
