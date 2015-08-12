@@ -12,8 +12,13 @@
 
 	  <div id = "links_consumer">
 		  <%= link_to 'Update Info', edit_supplier_path(@supplier) %> |
-		  <%= link_to 'View Lotteries', suppliers_deals_path %> |
+		  <%= link_to 'View Your Raffles', suppliers_deals_path %> |
   		  <%= link_to 'Create New Raffle', new_deal_path %>
+  		  <br/>
+		  <% if current_supplier.admin %>
+		  <%= link_to 'View Charities', suppliers_path %>
+		  <% end %>
+
 
 	  </div>
 	</ul>

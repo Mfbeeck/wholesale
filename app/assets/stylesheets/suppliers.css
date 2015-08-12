@@ -69,3 +69,15 @@ body {
 	font-size: 1vw;
 
 }
+
+#charities-list{
+	display: inline;
+}
+
+#create-charity a{
+	color: white;
+}
+
+#create-charity a:visited{
+	color: white;
+}

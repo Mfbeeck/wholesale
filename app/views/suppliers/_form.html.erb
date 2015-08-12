@@ -1,10 +1,14 @@
 <%= form_for(@supplier, :html => {:class => "smart-green"}) do |f| %>
-  <h1>Signup for ParlayVous (Supplier)</h1>
+  <h1>Signup for ParlayVous (Charity)</h1>
   <ul class = "errors">
   <% @supplier.errors.full_messages.each do |error| %>
     <li style="color:red"><%= error %></li>
   <% end %>
   </ul>
+  <label>
+    <span id = "required">Charity Name: </span><br/><br/>
+    <%= f.text_field :company_name, placeholder: "Charity Name"%>
+  </label>
   <label>
     <span id = "required">Email: </span><br/><br/>
     <%= f.email_field :email, placeholder: "E-mail"%>

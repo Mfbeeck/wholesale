@@ -1,7 +1,8 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_to_supplier_home, only: [:index, :destroy]
+  before_action :redirect_to_supplier_home, only: [:destroy]
   before_action :check_supplier_id, only: [:show, :edit, :update]
+  before_action :check_admin, only: [:index, :edit, :update, :destroy, :create]
 
   # before_action :require_logged_in
 
@@ -24,8 +25,7 @@ class SuppliersController < ApplicationController
       if current_consumer
         session[:consumer_id] = nil
       end
-      session[:supplier_id] = @supplier.id
-      redirect_to @supplier, notice: "Supplier was successfully created"
+      redirect_to suppliers_path, notice: "Supplier was successfully created"
     else
       render action: "new"
     end
@@ -69,10 +69,20 @@ class SuppliersController < ApplicationController
 
   private
 
-  def check_supplier_id
-    if current_supplier.id != params[:id].to_i
-      redirect_to supplier_path(current_supplier)
+  def check_admin
+    if current_supplier.admin
     else
+      redirect_to supplier_path(current_supplier)
+    end
+  end
+
+  def check_supplier_id
+    if current_supplier.admin
+    else  
+      if current_supplier.id != params[:id].to_i
+        redirect_to supplier_path(current_supplier)
+      else
+      end
     end
   end
 

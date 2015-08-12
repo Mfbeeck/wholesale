@@ -1,9 +1,8 @@
 class ConsumersController < ApplicationController
     before_action :set_consumer, only: [:notification]
-    before_action :redirect_to_consumer_home, only: [:index, :destroy]
+    before_action :redirect_to_else, only: [:index, :destroy]
     before_action :check_if_consumer_logged_in, only: [:edit]
     before_action :check_consumer_id, only: [:show, :edit, :update]
-
 
 	def index
 		@consumers = Consumer.all
@@ -22,7 +21,7 @@ class ConsumersController < ApplicationController
 	end
 
 	def create
-		@consumer = Consumer.new(consumer_params)
+	  @consumer = Consumer.new(consumer_params)
 	  @consumer.texts = false
 	  @consumer.result_email = true
 		@consumer.total_points = 0
@@ -71,9 +70,12 @@ class ConsumersController < ApplicationController
 	private
 
 	def check_consumer_id
-		if current_consumer.id != params[:id].to_i
-			redirect_to consumer_path(current_consumer)
+		if current_supplier.admin
 		else
+			if current_consumer.id != params[:id].to_i
+				redirect_to consumer_path(current_consumer)
+			else
+			end
 		end
 	end
 
@@ -83,6 +85,17 @@ class ConsumersController < ApplicationController
 
 	def set_consumer
     	@consumer = current_consumer
+  	end
+
+  	def redirect_to_else
+  		if current_supplier || current_consumer
+  			if current_supplier.admin
+  			else
+  				redirect_to root_path
+  			end
+		else
+			redirect_to root_path
+		end
   	end
 
 end

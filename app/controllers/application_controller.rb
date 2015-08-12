@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_consumer_home
-    redirect_to current_consumer
+    redirect_to root_path
   end
 
   def require_logged_in
