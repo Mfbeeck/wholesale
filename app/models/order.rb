@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   # after_save :check_if_threshold_reached
 
   validates :consumer_id, uniqueness: { scope: :deal_id,
-    message: "can only have one bid per deal." }
+    message: "can only have one ticket per raffle." }
 
   private
 

@@ -4,7 +4,7 @@ class DealsController < ApplicationController
   before_action :set_supplier, only: [:create, :edit, :update, :destroy]
   before_action :check_if_supplier_logged_in, only: [:create, :update, :destroy, :edit, :new]
   before_action :set_array_of_current_consumer_orders_deal_ids, only: [:show]
-  before_action :check_supplier_id_for_deals, only: [:edit, :update]
+  # before_action :check_supplier_id_for_deals, only: [:edit]
 
 
   # before_action :set_consumer, only: [:show]
@@ -46,7 +46,7 @@ class DealsController < ApplicationController
   def update
     respond_to do |format|
       if @deal.update(deal_params)
-        format.html { redirect_to @supplier, notice: 'Deal was successfully updated.' }
+        format.html { redirect_to @supplier, notice: 'Raffle was successfully updated.' }
         format.json { render :show, status: :ok, location: @supplier }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class DealsController < ApplicationController
 
     if @deal.save
       #session[:supplier_id] = @supplier.id
-      redirect_to suppliers_deals_path, notice: "Deal was successfully created"
+      redirect_to suppliers_deals_path, notice: "Raffle was successfully created"
     else
       render action: "new"
     end
@@ -70,7 +70,7 @@ class DealsController < ApplicationController
   def destroy
     @deal.destroy
     respond_to do |format|
-      format.html { redirect_to supplier_path(@supplier), notice: 'Deal was successfully destroyed.' }
+      format.html { redirect_to supplier_path(@supplier), notice: 'Raffle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

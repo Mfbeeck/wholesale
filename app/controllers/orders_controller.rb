@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
       end
       redirect_to edit_consumer_order_path(current_consumer, @order)
     else
-      flash[:notice] = 'You have already bid on this deal!'
+      flash[:notice] = 'You have already bought a ticket for this raffle!'
       redirect_to :back
     end
   end
@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
         @deal.save
       end
     else
-      flash[:notice] = 'You have already bid on this deal!'
+      flash[:notice] = 'You have already purchased a ticket for this item. Goodluck!'
       redirect_to :back
     end
   end
@@ -130,12 +130,12 @@ class OrdersController < ApplicationController
           redirect_to order_path(@order)
           #format.html { redirect_to order_path(@order)}
           #format.json { render :show, status: :ok, location: current_consumer }
-          flash[:notice] = 'Your bid and shipping address have been confirmed and a winner has been announced!'
+          flash[:notice] = 'Your ticket purchase and shipping address have been confirmed and a winner has been announced!'
         else
           redirect_to order_path(@order)
           #format.html { redirect_to order_path(@order)}
           #format.json { render :show, status: :ok, location: current_consumer }
-          flash[:notice] = 'Your bid and shipping address have been confirmed!'
+          flash[:notice] = 'Your ticket purchase and shipping address have been confirmed!'
         end
       else
         render :edit
