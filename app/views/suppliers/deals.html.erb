@@ -14,14 +14,13 @@
     <li class="image_product"><%= link_to(image_tag("#{deal.url}", :size => "200x150"), deal)%></li>
     <%#end%>
     <%if deal.winning_consumer%>
-    <li><progress class = "prog-bar", value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> &nbsp;<%=deal.orders.count%>/<%=deal.threshold%></li>    
+    <li><progress class = "prog-bar", value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> &nbsp;<%=deal.orders.count%>/<%=deal.threshold%></li>
     <%else%>
     <li><progress class = "prog-bar", value="<%=deal.orders.count%>" max="<%=deal.threshold%>"></progress> &nbsp;<%=deal.orders.count%>/<%=deal.threshold%></li>
     <%end%>
     <% if deal.winning_consumer%>
     <li style = "margin-left: 12px">
-    <%= link_to 'Edit Item', edit_supplier_deal_path(@supplier, deal) %>
-     | <%= link_to 'Winner Details', deal_winners_path(deal)%>
+      <%= link_to 'Winner Details', deal_winners_path(deal)%>
      </li>
     <%else%>
     <li style = "margin-left: 64px">
