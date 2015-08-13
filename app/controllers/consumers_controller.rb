@@ -24,7 +24,7 @@ class ConsumersController < ApplicationController
 	  @consumer = Consumer.new(consumer_params)
 	  @consumer.texts = false
 	  @consumer.result_email = true
-		@consumer.total_points = 0
+		@consumer.total_points = 300
     	#The line below turns this format "(123)-456-7890" into "1234567890"
 		@consumer.phone_number = @consumer.phone_number.split('').select{|x| x.to_i.to_s == x.to_s}.join
 		# Sends email to user when user is created.
