@@ -42,7 +42,11 @@
   <br>
   <br>
 </div>
+<<<<<<< HEAD
 <br>  
+=======
+<br>
+>>>>>>> a4a1f5388e8e39384071ffbc7e09ecd9ccc51bab
 <div class = "comments">
     <% if current_consumer%>
         <%if @current_consumer_orders_deal_ids.include? @deal.id%>
@@ -79,8 +83,3 @@
 
     <%end%>
 </div>
-
-<meta property="og:url"                content="http://parlayvous.herokuapp.com/deals/<%=@deal.id%>" />
-<meta property="og:title"              content="ParlayVous:" />
-<meta property="og:description"        content="Feeling Lucky? Feeling Generous? Check out ParlayVous to enter a raffle for an <%=@deal.name%>" />
-<meta property="og:image"              content="<%=@deal.url%>" />
