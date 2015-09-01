@@ -1,28 +1,20 @@
-== README
+== ParlayVous (parlayvous.co)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ParlayVous is a portfolio piece built by Carlos Quiroga (cquiro), Matias Beeck (Mfbeeck) and David Isaza (davidisaza21) as
+a final project for the web immersive program offered by Wyncode in Miami, FL. It was built during the last two weeks of
+the course.
 
-Things you may want to cover:
+It is a raffle hosting site for non-profit organizations to host their raffles and raise money. By using this app, non-profits
+will be able to reach more people and they won't have to deal with collecting money and selling paper tickets. Everything is
+done online. The users of the site will get to participate in several raffles while contributing to a cause and potentially
+"buying" cool items at low prices.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The site is hosted in Heroku and to build it we used:
+- Ruby on rails
+- PostgreSQL
+- jQuery
+- HTML
+- CSS
+- Twilio API for texting
+- Stripe API for credit card payments
+- Some Ruby gems.
